@@ -5,12 +5,12 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="BrowseRecycledDesktops">
+    Name="BrowseRecycledPrinters">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="RCCHelpDeskInventoryData" />
       <DisplayName
-        Value="Recycled Desktops" />
+        Value="Recycled Printers" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -22,7 +22,7 @@
           Kind="Group"
           View="Microsoft.LightSwitch.MobileWeb:TabPages">
           <ContentItem
-            Name="DesktopList"
+            Name="PrinterList"
             Kind="Group">
             <ContentItem
               Name="SearchText"
@@ -31,17 +31,27 @@
               View="Microsoft.LightSwitch.MobileWeb:TextBox">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="Search Text" />
+                  Value="SearchText" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="BrowseRecycledDesktops/Properties[SearchText]" />
+                      Member="BrowseRecycledPrinters/Properties[SearchText]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootValueControl/Properties[PlaceholderText]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="Search Recycled Printers"
+                        ResultType=":String" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
                 <ControlPropertySource
                   Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[AttachedLabelPosition]">
                   <ScreenExpressionTree>
@@ -55,26 +65,26 @@
               </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
-              Name="RecycledDesktops"
+              Name="RecycledPrinters"
               Kind="Collection"
-              DataType="CollectionView$Desktop"
+              DataType="CollectionView$Printer"
               View="Microsoft.LightSwitch.MobileWeb:TileList">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="RecycledDesktops" />
+                  Value="RecycledPrinters" />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="BrowseRecycledDesktops/Properties[RecycledDesktops]" />
+                      Member="BrowseRecycledPrinters/Properties[RecycledPrinters]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
                 Name="rows"
                 Kind="Details"
-                DataType="Desktop"
+                DataType="Printer"
                 View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
                 <ContentItem.Attributes>
                   <DisplayName
@@ -86,14 +96,14 @@
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="ComputerName"
+                  Name="EquipID"
                   Kind="Value"
                   DataType=":String?">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Desktop/Properties[ComputerName]" />
+                          Member="Printer/Properties[EquipID]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -103,7 +113,7 @@
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
-                            Value="Large"
+                            Value="Small"
                             ResultType=":String" />
                         </ChainExpression>
                       </ScreenExpressionTree>
@@ -122,7 +132,7 @@
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <MemberExpression
-                            Member="Desktop/Properties[Brand]" />
+                            Member="Printer/Properties[Brand]" />
                         </ChainExpression>
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
@@ -135,31 +145,8 @@
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <MemberExpression
-                            Member="Desktop/Properties[Model]" />
+                            Member="Printer/Properties[Model]" />
                         </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  Name="Location"
-                  Kind="Details"
-                  DataType="Location">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Desktop/Properties[Location]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="Location1"
-                    Kind="Details"
-                    DataType="Location">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
@@ -172,7 +159,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Desktop/Properties[Serial]" />
+                          Member="Printer/Properties[Serial]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -182,7 +169,7 @@
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
-                            Value="Small"
+                            Value="Large"
                             ResultType=":String" />
                         </ChainExpression>
                       </ScreenExpressionTree>
@@ -208,7 +195,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <CallExpression
-                        Target="BrowseRecycledDesktops/Methods[RecycledDesktops_ItemTap]" />
+                        Target="BrowseRecycledPrinters/Methods[RecycledPrinters_ItemTap]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ControlPropertySource>
@@ -216,11 +203,11 @@
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
-                Name="ShowBrowseDesktops"
+                Name="ShowBrowsePrinters"
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Active Desktops" />
+                    Value="Active Printers" />
                 </ContentItem.Attributes>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -228,7 +215,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <CallExpression
-                          Target="!module/Methods[showBrowseDesktops]" />
+                          Target="!module/Methods[showBrowsePrinters]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
@@ -289,24 +276,24 @@
           ParameterType=":String" />
       </ScreenMethod>
       <ScreenMethod
-        Name="RecycledDesktops_ItemTap" />
+        Name="RecycledPrinters_ItemTap" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
-        Name="RecycledDesktops"
+        Name="RecycledPrinters"
         PageSize="45"
-        PropertyType="CollectionView$Desktop">
+        PropertyType="CollectionView$Printer">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="RecycledDesktopsQuery"
-            ReturnType="Desktop*">
+            Name="RecycledPrintersQuery"
+            ReturnType="Printer*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[RecycledDesktops]" />
+                  Member="RCCHelpDeskInventoryData/Members[RecycledPrinters]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -314,12 +301,12 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="BrowseRecycledDesktops/Properties[RecycledDesktops]/Query">
+              Target="BrowseRecycledPrinters/Properties[RecycledPrinters]/Query">
               <ArgumentExpression
                 Parameter="SearchText">
                 <ChainExpression>
                   <MemberExpression
-                    Member="BrowseRecycledDesktops/Properties[SearchText]" />
+                    Member="BrowseRecycledPrinters/Properties[SearchText]" />
                 </ChainExpression>
               </ArgumentExpression>
             </CallExpression>
@@ -333,10 +320,10 @@
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showBrowseRecycledDesktops">
+      Name="showBrowseRecycledPrinters">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="BrowseRecycledDesktops" />
+          TargetScreen="BrowseRecycledPrinters" />
       </ApplicationMethod.Attributes>
     </ApplicationMethod>
   </Application.Methods>

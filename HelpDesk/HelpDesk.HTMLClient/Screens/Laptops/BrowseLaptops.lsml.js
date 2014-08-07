@@ -10,7 +10,7 @@ myapp.BrowseLaptops.SearchText_postRender = function (element, contentItem) {
     onInputAsYouType(element, 1, function (text) {
         contentItem.screen.SearchText = text;
     });
-
+    
     function onInputAsYouType(element, numberOfRequiredChars, done) {
         var inputbox = $("input", $(element));
         inputbox.on("input", function (e) {

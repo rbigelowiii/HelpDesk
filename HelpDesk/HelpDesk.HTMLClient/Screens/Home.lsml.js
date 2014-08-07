@@ -30,12 +30,12 @@ myapp.Home.created = function (screen) {
     screen.getCanAddDevice().then(function success() {
         screen.findContentItem("ShowAddEditDesktop").isVisible = true;
         screen.findContentItem("ShowAddEditLaptop").isVisible = true;
+        screen.findContentItem("ShowAddEditPrinter").isVisible = true;
     }, function error() {
         screen.findContentItem("ShowAddEditDesktop").isVisible = false;
         screen.findContentItem("ShowAddEditLaptop").isVisible = false;
+        screen.findContentItem("ShowAddEditPrinter").isVisible = false;
     });
-
-    
 };
 
 myapp.Home.EnterTicket_execute = function (screen) {
@@ -135,6 +135,9 @@ myapp.Home.CurrentUser_postRender = function (element, contentItem) {
                 $(element).find(".ui-icon").remove();
                 element.innerHTML = " - Welcome, " + result.results[0].UserFirstName + " " + result.results[0].UserLastName;
                 contentItem.screen.findContentItem("CurrentUser").isVisible = true;
+            }, function () {
+                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers.addNew();
+                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
             });
     });
 };
@@ -147,4 +150,17 @@ myapp.Home.ShowHelp_Tap_execute = function (screen) {
         });
     });
     screen.showPopup("Help");
+};
+myapp.Home.ShowAddEditPrinter_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditPrinter(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.Printer = new myapp.Printer();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewPrinter(addEditScreen.Printer);
+            }
+        }
+    });
 };

@@ -97,6 +97,15 @@
     <Content Include="Screens\Laptops\ViewLaptop.lsml.js">
       <DependentUpon>ViewLaptop.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\Printers\BrowsePrinters.lsml.js">
+      <DependentUpon>BrowsePrinters.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Printers\BrowseRecycledPrinters.lsml.js">
+      <DependentUpon>BrowseRecycledPrinters.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Printers\ViewPrinter.lsml.js">
+      <DependentUpon>ViewPrinter.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\TicketComments\AddEditTicketComment.lsml.js">
       <DependentUpon>AddEditTicketComment.lsml</DependentUpon>
     </Content>
@@ -166,6 +175,7 @@
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Desktops.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Laptops.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Locations.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Printers.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\TicketComments.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Tickets.lsml" />
     <LightSwitchModel Include="Screens\Desktops\AddEditDesktop.lsml" />
@@ -177,6 +187,10 @@
     <LightSwitchModel Include="Screens\Laptops\BrowseLaptops.lsml" />
     <LightSwitchModel Include="Screens\Laptops\BrowseRecycledLaptops.lsml" />
     <LightSwitchModel Include="Screens\Laptops\ViewLaptop.lsml" />
+    <LightSwitchModel Include="Screens\Printers\AddEditPrinter.lsml" />
+    <LightSwitchModel Include="Screens\Printers\BrowsePrinters.lsml" />
+    <LightSwitchModel Include="Screens\Printers\BrowseRecycledPrinters.lsml" />
+    <LightSwitchModel Include="Screens\Printers\ViewPrinter.lsml" />
     <LightSwitchModel Include="Screens\TicketComments\AddEditTicketComment.lsml" />
     <LightSwitchModel Include="Screens\TicketComments\ViewTicketComment.lsml" />
     <LightSwitchModel Include="Screens\Tickets\AddEditTicket.lsml" />

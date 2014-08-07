@@ -110,3 +110,11 @@ myapp.ViewLaptop.SupportURL_postRender = function (element, contentItem) {
     // Write code here.
     element.innerHTML = '<a href="' + contentItem.screen.SupportURL + '" target="_blank">' + contentItem.screen.SupportURL + '</a>';
 };
+myapp.ViewLaptop.Tickets1_ItemTap_execute = function (screen) {
+    // Write code here.
+    myapp.showViewTicket(screen.Tickets.selectedItem, "BrowseLaptops", {
+        afterClosed: function () {
+            screen.Tickets.load();
+        }
+    });
+};

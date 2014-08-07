@@ -2,6 +2,7 @@
 
 myapp.ViewDesktop.Details_postRender = function (element, contentItem) {
     // Write code here.
+    myapp.ac
     var name = contentItem.screen.Desktop.details.getModel()[':@SummaryProperty'].property.name;
     contentItem.dataBind("screen.Desktop." + name, function (value) {
         contentItem.screen.details.displayName = value;
@@ -27,7 +28,7 @@ myapp.ViewDesktop.WarrantyExp_postRender = function (element, contentItem) {
 };
 myapp.ViewDesktop.Tickets1_ItemTap_execute = function (screen) {
     // Write code here.
-    myapp.showViewTicket(screen.Tickets.selectedItem, "ViewDesktop", {
+    myapp.showViewTicket(screen.Tickets.selectedItem, "BrowseTickets", {
         afterClosed: function () {
             screen.Tickets.load();
         }
