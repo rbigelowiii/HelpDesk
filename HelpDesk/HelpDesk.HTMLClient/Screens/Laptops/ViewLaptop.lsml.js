@@ -27,7 +27,7 @@ myapp.ViewLaptop.WarrantyExp_postRender = function (element, contentItem) {
 };
 myapp.ViewLaptop.Delete_execute = function (screen) {
     // Write code here.
-    screen.Laptop.deleteEntity();
+    screenscreen.Laptop.deleteEntity();
     screen.details.dataWorkspace.RCCHelpDeskInventoryData.saveChanges().then(function () {
         myapp.cancelChanges();
     });

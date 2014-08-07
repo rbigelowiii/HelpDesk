@@ -31,10 +31,12 @@ myapp.Home.created = function (screen) {
         screen.findContentItem("ShowAddEditDesktop").isVisible = true;
         screen.findContentItem("ShowAddEditLaptop").isVisible = true;
         screen.findContentItem("ShowAddEditPrinter").isVisible = true;
+        screen.findContentItem("ShowAddEditTablet").isVisible = true;
     }, function error() {
         screen.findContentItem("ShowAddEditDesktop").isVisible = false;
         screen.findContentItem("ShowAddEditLaptop").isVisible = false;
         screen.findContentItem("ShowAddEditPrinter").isVisible = false;
+        screen.findContentItem("ShowAddEditTablet").isVisible = false;
     });
 };
 
@@ -160,6 +162,19 @@ myapp.Home.ShowAddEditPrinter_Tap_execute = function (screen) {
         afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
                 myapp.showViewPrinter(addEditScreen.Printer);
+            }
+        }
+    });
+};
+myapp.Home.ShowAddEditTablet_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditTablet(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.Tablet = new myapp.Tablet();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewTablet(addEditScreen.Tablet);
             }
         }
     });
