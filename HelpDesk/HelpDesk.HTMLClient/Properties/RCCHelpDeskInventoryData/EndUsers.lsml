@@ -7,16 +7,14 @@
   <EntityType>
     <EntityType.Attributes>
       <Proxy
-        Target="ServiceInterface:TicketComment" />
+        Target="ServiceInterface:EndUser" />
       <DefaultScreen
-        Value="ViewTicketComment">
+        Value="ViewEndUser">
         <DefaultScreen.Attributes>
           <ScreenParameterMapping
-            ScreenParameter="ViewTicketComment/Properties[TicketComment]" />
+            ScreenParameter="ViewEndUser/Properties[EndUser]" />
         </DefaultScreen.Attributes>
       </DefaultScreen>
-      <SummaryProperty
-        Property="TicketComment/Properties[CommentDate]" />
     </EntityType.Attributes>
   </EntityType>
 </Application>

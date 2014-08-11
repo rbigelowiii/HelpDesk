@@ -123,6 +123,27 @@
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression
+                            Target="!module/Methods[showViewEndUser]">
+                            <ArgumentExpression
+                              Parameter="EndUser">
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="ViewTicket/Properties[Ticket]" />
+                                <MemberExpression
+                                  Member="EndUser" />
+                              </ChainExpression>
+                            </ArgumentExpression>
+                          </CallExpression>
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
                   Name="KnowledgeBase"
