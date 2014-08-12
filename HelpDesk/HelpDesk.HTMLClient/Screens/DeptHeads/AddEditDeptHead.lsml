@@ -5,12 +5,12 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="AddEditTech">
+    Name="AddEditDeptHead">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="RCCHelpDeskInventoryData" />
       <DisplayName
-        Value="Tech" />
+        Value="DeptHead" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -30,49 +30,58 @@
                 Value="Details" />
             </ContentItem.Attributes>
             <ContentItem
-              Name="UserName"
-              Kind="Value"
-              DataType=":String"
-              View="Microsoft.LightSwitch.MobileWeb:Text">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="AddEditTech/Properties[Tech]" />
-                    <MemberExpression
-                      Member="UserName" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem
-              Name="EndUser"
+              Name="columns"
               Kind="Details"
-              DataType="EndUser">
+              DataType="DeptHead"
+              View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="columns" />
+              </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="AddEditTech/Properties[Tech]" />
-                    <MemberExpression
-                      Member="EndUser" />
+                      Member="AddEditDeptHead/Properties[DeptHead]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                Name="RowTemplate"
-                Kind="Details"
-                DataType="EndUser"
-                View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+                Name="UserName"
+                Kind="Value"
+                DataType=":String"
+                View="Microsoft.LightSwitch.MobileWeb:Text">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
-                    <ChainExpression />
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="DeptHead/Properties[UserName]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="EndUser"
+                Kind="Details"
+                DataType="EndUser">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="DeptHead/Properties[EndUser]" />
+                    </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="Group"
-                  Kind="Group"
+                  Name="RowTemplate"
+                  Kind="Details"
+                  DataType="EndUser"
                   View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
                   <ContentItem
                     Name="UserFirstName"
                     Kind="Value"
@@ -96,29 +105,6 @@
                           <MemberExpression
                             Member="EndUser/Properties[UserLastName]" />
                         </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  Name="Department"
-                  Kind="Details"
-                  DataType="Department">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="EndUser/Properties[Department]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="Department1"
-                    Kind="Details"
-                    DataType="Department">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
@@ -181,8 +167,8 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
-        Name="Tech"
-        PropertyType="Tech">
+        Name="DeptHead"
+        PropertyType="DeptHead">
         <ScreenProperty.Attributes>
           <IsParameter />
         </ScreenProperty.Attributes>
@@ -191,14 +177,14 @@
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showAddEditTech">
+      Name="showAddEditDeptHead">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="AddEditTech" />
+          TargetScreen="AddEditDeptHead" />
       </ApplicationMethod.Attributes>
       <ApplicationMethodParameter
-        Name="Tech"
-        ParameterType="Tech" />
+        Name="DeptHead"
+        ParameterType="DeptHead" />
     </ApplicationMethod>
   </Application.Methods>
 </Application>

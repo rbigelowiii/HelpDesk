@@ -85,6 +85,12 @@
     <Content Include="Screens\Departments\ViewDepartment.lsml.js">
       <DependentUpon>ViewDepartment.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\DeptHeads\BrowseDeptHeads.lsml.js">
+      <DependentUpon>BrowseDeptHeads.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\DeptHeads\ViewDeptHead.lsml.js">
+      <DependentUpon>ViewDeptHead.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\Desktops\BrowseDesktops.lsml.js">
       <DependentUpon>BrowseDesktops.lsml</DependentUpon>
     </Content>
@@ -203,6 +209,7 @@
     </LightSwitchModel>
     <LightSwitchModel Include="Properties\Proxies.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Departments.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\DeptHeads.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Desktops.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\EndUsers.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Laptops.lsml" />
@@ -216,6 +223,9 @@
     <LightSwitchModel Include="Screens\Departments\BrowseDepartments.lsml" />
     <LightSwitchModel Include="Screens\Departments\SelectEndUser.lsml" />
     <LightSwitchModel Include="Screens\Departments\ViewDepartment.lsml" />
+    <LightSwitchModel Include="Screens\DeptHeads\AddEditDeptHead.lsml" />
+    <LightSwitchModel Include="Screens\DeptHeads\BrowseDeptHeads.lsml" />
+    <LightSwitchModel Include="Screens\DeptHeads\ViewDeptHead.lsml" />
     <LightSwitchModel Include="Screens\Desktops\AddEditDesktop.lsml" />
     <LightSwitchModel Include="Screens\Desktops\BrowseDesktops.lsml" />
     <LightSwitchModel Include="Screens\Desktops\BrowseRecycledDesktops.lsml" />

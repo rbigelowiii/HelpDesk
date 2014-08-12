@@ -50,7 +50,18 @@ myapp.Home.created = function (screen) {
     }, function error() {
         screen.findContentItem("ShowAddEditTech").isVisible = false;
     });
+    
+    screen.getCanAddDept().then(function success() {
+        screen.findContentItem("ShowAddEditDepartment").isVisible = true;
+    }, function error() {
+        screen.findContentItem("ShowAddEditDepartment").isVisible = false;
+    });
 
+    screen.getCanAddDeptHead().then(function success() {
+        screen.findContentItem("ShowAddEditDeptHead").isVisible = true;
+    }, function error() {
+        screen.findContentItem("ShowAddEditDeptHead").isVisible = false;
+    });
 };
 
 myapp.Home.EnterTicket_execute = function (screen) {
@@ -227,4 +238,30 @@ myapp.Home.Tickets_postRender = function (element, contentItem) {
                 myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
             });
     }); 
+};
+myapp.Home.ShowAddEditDepartment_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditDepartment(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.Department = new myapp.Department();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewDepartment(addEditScreen.Department);
+            }
+        }
+    });
+};
+myapp.Home.ShowAddEditDeptHead_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditDeptHead(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.DeptHead = new myapp.DeptHead();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewDeptHead(addEditScreen.DeptHead);
+            }
+        }
+    });
 };
