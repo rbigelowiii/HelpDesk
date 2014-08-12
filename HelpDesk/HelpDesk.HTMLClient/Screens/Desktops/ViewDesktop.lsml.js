@@ -63,9 +63,10 @@ myapp.ViewDesktop.created = function (screen) {
             screen.findContentItem("Recycle").isVisible = false;
         });
     }
+
     if (screen.Desktop.Brand.indexOf("Dell") != -1) {
         screen.findContentItem("SupportURL").isVisible = true;
-        screen.supportURL = "http://www.dell.com/support/my-support/us/en/04/product-support/servicetag/" + screen.Desktop.Serial;
+        screen.SupportURL = "http://www.dell.com/support/my-support/us/en/04/product-support/servicetag/" + screen.Desktop.Serial;
     }
 };
 myapp.ViewDesktop.Recycle_execute = function (screen) {

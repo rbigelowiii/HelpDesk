@@ -5,12 +5,12 @@
     <Partial />
   </Application.Attributes>
   <Screen
-    Name="ViewDesktop">
+    Name="ViewTech">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="RCCHelpDeskInventoryData" />
       <DisplayName
-        Value="Desktop" />
+        Value="Tech" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -32,7 +32,7 @@
             <ContentItem
               Name="columns"
               Kind="Details"
-              DataType="Desktop"
+              DataType="Tech"
               View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
               <ContentItem.Attributes>
                 <DisplayName
@@ -42,7 +42,7 @@
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="ViewDesktop/Properties[Desktop]" />
+                      Member="ViewTech/Properties[Tech]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
@@ -50,176 +50,61 @@
                 Name="left"
                 Kind="Group">
                 <ContentItem
-                  Name="ComputerName"
+                  Name="UserFirstName"
                   Kind="Value"
                   DataType=":String?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Desktop/Properties[ComputerName]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="Brand"
-                  Kind="Value"
-                  DataType=":String?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Desktop/Properties[Brand]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="Model"
-                  Kind="Value"
-                  DataType=":String?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Desktop/Properties[Model]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="EndUser1"
-                  Kind="Details"
-                  DataType="EndUser"
-                  View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
                   <ContentItem.Attributes>
                     <DisplayName
-                      Value="End User" />
+                      Value="First Name" />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Desktop/Properties[EndUser1]" />
+                          Member="Tech/Properties[EndUser]" />
+                        <MemberExpression
+                          Member="UserFirstName" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
-                  <ContentItem
-                    Name="UserFirstName"
-                    Kind="Value"
-                    DataType=":String?">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="End User" />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="EndUser/Properties[UserFirstName]" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem.PropertySources>
-                      <ControlPropertySource
-                        Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[AttachedLabelPosition]">
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <ConstantExpression
-                              Value="None"
-                              ResultType=":String" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ControlPropertySource>
-                    </ContentItem.PropertySources>
-                  </ContentItem>
-                  <ContentItem
-                    Name="UserLastName"
-                    Kind="Value"
-                    DataType=":String?">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value=" " />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="EndUser/Properties[UserLastName]" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem.PropertySources>
-                      <ControlPropertySource
-                        Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[AttachedLabelPosition]">
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <ConstantExpression
-                              Value="None"
-                              ResultType=":String" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ControlPropertySource>
-                    </ContentItem.PropertySources>
-                  </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  Name="OperatingSystem1"
-                  Kind="Details"
-                  DataType="OperatingSystem">
+                  Name="UserName"
+                  Kind="Value"
+                  DataType=":String">
                   <ContentItem.Attributes>
                     <DisplayName
-                      Value="Operating System" />
+                      Value="UserName" />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Desktop/Properties[OperatingSystem1]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RowTemplate2"
-                    Kind="Details"
-                    DataType="OperatingSystem">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  Name="ShipDate"
-                  Kind="Value"
-                  DataType=":DateTime?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
+                          Member="Tech/Properties[EndUser]" />
                         <MemberExpression
-                          Member="Desktop/Properties[ShipDate]" />
+                          Member="UserName" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="Location"
+                  Name="Department"
                   Kind="Details"
-                  DataType="Location">
+                  DataType="Department">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Desktop/Properties[Location]" />
+                          Member="Tech/Properties[EndUser]" />
+                        <MemberExpression
+                          Member="Department" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="RowTemplate1"
+                    Name="Department1"
                     Kind="Details"
-                    DataType="Location">
+                    DataType="Department">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -254,80 +139,39 @@
                 Name="right"
                 Kind="Group">
                 <ContentItem
-                  Name="Serial"
-                  Kind="Value"
-                  DataType=":String">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Desktop/Properties[Serial]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CPU"
+                  Name="UserLastName"
                   Kind="Value"
                   DataType=":String?">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Last Name" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Desktop/Properties[CPU]" />
+                          Member="Tech/Properties[EndUser]" />
+                        <MemberExpression
+                          Member="UserLastName" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="RAM"
+                  Name="UserPhone"
                   Kind="Value"
                   DataType=":String?">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Phone" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Desktop/Properties[RAM]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="HDD"
-                  Kind="Value"
-                  DataType=":String?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
+                          Member="Tech/Properties[EndUser]" />
                         <MemberExpression
-                          Member="Desktop/Properties[HDD]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="SupportURL"
-                  IsHidden="True"
-                  Kind="Value"
-                  DataType=":String?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="ViewDesktop/Properties[SupportURL]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="WarrantyExp"
-                  Kind="Value"
-                  DataType=":DateTime?">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Desktop/Properties[WarrantyExp]" />
+                          Member="UserPhone" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -356,6 +200,77 @@
                 </ContentItem.PropertySources>
               </ContentItem>
             </ContentItem>
+            <ContentItem.CommandItems>
+              <ContentItem
+                Name="EditTech"
+                IsHidden="True"
+                Kind="Command">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Edit" />
+                </ContentItem.Attributes>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="!module/Methods[showAddEditTech]">
+                          <ArgumentExpression
+                            Parameter="Tech">
+                            <ChainExpression>
+                              <MemberExpression
+                                Member="ViewTech/Properties[Tech]" />
+                            </ChainExpression>
+                          </ArgumentExpression>
+                        </CallExpression>
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-edit"
+                          ResultType="Microsoft.LightSwitch:String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                Name="Delete"
+                IsHidden="True"
+                Kind="Command">
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression
+                          Target="ViewTech/Methods[Delete]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-remove"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+            </ContentItem.CommandItems>
+          </ContentItem>
+          <ContentItem
+            Name="Tickets"
+            Kind="Group"
+            View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
             <ContentItem
               Name="Tickets1"
               Kind="Collection"
@@ -369,7 +284,7 @@
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <MemberExpression
-                      Member="ViewDesktop/Properties[Tickets]" />
+                      Member="ViewTech/Properties[Tickets]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
@@ -405,7 +320,7 @@
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
-                            Value="Small"
+                            Value="Large"
                             ResultType=":String" />
                         </ChainExpression>
                       </ScreenExpressionTree>
@@ -430,7 +345,7 @@
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
-                            Value="Large"
+                            Value="Small"
                             ResultType=":String" />
                         </ChainExpression>
                       </ScreenExpressionTree>
@@ -463,7 +378,7 @@
                   </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
-                  Name="EndUser"
+                  Name="EndUser1"
                   Kind="Details"
                   DataType="EndUser">
                   <ContentItem.DataSource>
@@ -478,29 +393,6 @@
                     Name="EndUser2"
                     Kind="Details"
                     DataType="EndUser">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  Name="Tech"
-                  Kind="Details"
-                  DataType="Tech">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Ticket/Properties[Tech]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="Tech1"
-                    Kind="Details"
-                    DataType="Tech">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -526,8 +418,10 @@
                   Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ItemTap]">
                   <ScreenExpressionTree>
                     <ChainExpression>
+                      <MemberExpression
+                        Member="ViewTech/Properties[Tickets]" />
                       <CallExpression
-                        Target="ViewDesktop/Methods[Tickets1_ItemTap]" />
+                        Target="viewSelected" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ControlPropertySource>
@@ -545,96 +439,6 @@
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
-                Name="EditDesktop"
-                IsHidden="True"
-                Kind="Command">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Edit" />
-                </ContentItem.Attributes>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="!module/Methods[showAddEditDesktop]">
-                          <ArgumentExpression
-                            Parameter="Desktop">
-                            <ChainExpression>
-                              <MemberExpression
-                                Member="ViewDesktop/Properties[Desktop]" />
-                            </ChainExpression>
-                          </ArgumentExpression>
-                        </CallExpression>
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-edit"
-                          ResultType="Microsoft.LightSwitch:String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="Recycle"
-                IsHidden="True"
-                Kind="Command">
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="ViewDesktop/Methods[Recycle]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-trash"
-                          ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="Delete"
-                IsHidden="True"
-                Kind="Command">
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <CallExpression
-                          Target="ViewDesktop/Methods[Delete]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="msls-remove"
-                          ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
                 Name="ShowAddEditTicket"
                 Kind="Command">
                 <ContentItem.Attributes>
@@ -647,7 +451,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <CallExpression
-                          Target="ViewDesktop/Methods[ShowAddEditTicket_Tap]" />
+                          Target="ViewTech/Methods[ShowAddEditTicket_Tap]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
@@ -708,18 +512,14 @@
           ParameterType=":String" />
       </ScreenMethod>
       <ScreenMethod
-        Name="Tickets1_ItemTap" />
-      <ScreenMethod
-        Name="Recycle" />
-      <ScreenMethod
         Name="Delete" />
       <ScreenMethod
         Name="ShowAddEditTicket_Tap" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
-        Name="Desktop"
-        PropertyType="Desktop">
+        Name="Tech"
+        PropertyType="Tech">
         <ScreenProperty.Attributes>
           <IsParameter />
         </ScreenProperty.Attributes>
@@ -739,37 +539,28 @@
               <QuerySourceExpressionTree>
                 <ChainExpression>
                   <MemberExpression
-                    Member="ViewDesktop/Properties[Desktop]" />
+                    Member="ViewTech/Properties[Tech]" />
                   <MemberExpression
                     Member="Tickets" />
                 </ChainExpression>
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
-            <ScreenQueryDefinition.SortCriteria>
-              <SortCriterion
-                Direction="Descending">
-                <ChainExpression>
-                  <MemberExpression
-                    Member="DateSubmitted" />
-                </ChainExpression>
-              </SortCriterion>
-            </ScreenQueryDefinition.SortCriteria>
           </ScreenQueryDefinition>
         </ScreenCollectionProperty.Query>
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="ViewDesktop/Properties[Tickets]/Query" />
+              Target="ViewTech/Properties[Tickets]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
       <ScreenCollectionProperty
-        Name="CanUpdateDevice"
+        Name="CanUpdateTech"
         PageSize="45"
         PropertyType="CollectionView$Tech">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="CanUpdateDeviceQuery"
+            Name="CanUpdateTechQuery"
             ReturnType="Tech*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
@@ -777,7 +568,7 @@
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanUpdateDevice]" />
+                  Member="RCCHelpDeskInventoryData/Members[CanUpdateTech]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -785,17 +576,17 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="ViewDesktop/Properties[CanUpdateDevice]/Query" />
+              Target="ViewTech/Properties[CanUpdateTech]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
       <ScreenCollectionProperty
-        Name="CanDelDevice"
+        Name="CanDelTech"
         PageSize="45"
         PropertyType="CollectionView$Tech">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
-            Name="CanDelDeviceQuery"
+            Name="CanDelTechQuery"
             ReturnType="Tech*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
@@ -803,7 +594,7 @@
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanDelDevice]" />
+                  Member="RCCHelpDeskInventoryData/Members[CanDelTech]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -811,51 +602,22 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="ViewDesktop/Properties[CanDelDevice]/Query" />
+              Target="ViewTech/Properties[CanDelTech]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        Name="CanRecycleDevice"
-        PageSize="1"
-        PropertyType="CollectionView$Tech">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanRecycleDeviceQuery"
-            ReturnType="Tech*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanRecycleDevice]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ViewDesktop/Properties[CanRecycleDevice]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenProperty
-        Name="SupportURL"
-        PropertyType=":String?" />
     </Screen.Properties>
   </Screen>
   <Application.Methods>
     <ApplicationMethod
-      Name="showViewDesktop">
+      Name="showViewTech">
       <ApplicationMethod.Attributes>
         <ShowScreenMethod
-          TargetScreen="ViewDesktop" />
+          TargetScreen="ViewTech" />
       </ApplicationMethod.Attributes>
       <ApplicationMethodParameter
-        Name="Desktop"
-        ParameterType="Desktop" />
+        Name="Tech"
+        ParameterType="Tech" />
     </ApplicationMethod>
   </Application.Methods>
 </Application>

@@ -44,6 +44,13 @@ myapp.Home.created = function (screen) {
     }, function error() {
         screen.findContentItem("ShowAddEditEndUser").isVisible = false;
     });
+
+    screen.getCanAddTech().then(function success() {
+        screen.findContentItem("ShowAddEditTech").isVisible = true;
+    }, function error() {
+        screen.findContentItem("ShowAddEditTech").isVisible = false;
+    });
+
 };
 
 myapp.Home.EnterTicket_execute = function (screen) {
@@ -134,21 +141,6 @@ myapp.Home.ShowAddEditLaptop_Tap_execute = function (screen) {
         }
     });
 };
-myapp.Home.CurrentUser_postRender = function (element, contentItem) {
-    // Write code here.
-    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-        myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(PromiseResult)
-            .execute()
-            .then(function (result) {
-                $(element).find(".ui-icon").remove();
-                element.innerHTML = " - Welcome, " + result.results[0].UserFirstName + " " + result.results[0].UserLastName;
-                contentItem.screen.findContentItem("CurrentUser").isVisible = true;
-            }, function () {
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers.addNew();
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
-            });
-    });
-};
 
 myapp.Home.ShowHelp_Tap_execute = function (screen) {
     // Write code here.
@@ -197,4 +189,42 @@ myapp.Home.ShowAddEditEndUser_Tap_execute = function (screen) {
             }
         }
     });
+};
+myapp.Home.ShowAddEditTech_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditTech(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.Tech = new myapp.Tech();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewTech(addEditScreen.Tech);
+            }
+        }
+    });
+};
+myapp.Home.Tickets_postRender = function (element, contentItem) {
+    // Write code here.
+    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
+        myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(PromiseResult)
+            .execute()
+            .then(function (result) {
+                $(element).closest("[data-role='page']").find(
+                    ".msls-title-area").append(
+                    "<div style='color:dimgray;font-size:15px;'>Welcome, " + result.results[0].UserFirstName + " " + result.results[0].UserLastName + "</div>");
+            }, function () {
+                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers.addNew();
+                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
+            });
+    });
+
+    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
+        myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs_SingleOrDefault(PromiseResult)
+            .execute()
+            .then(function (result) {
+            }, function () {
+                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs.addNew();
+                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
+            });
+    }); 
 };

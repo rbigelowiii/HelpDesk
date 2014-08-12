@@ -67,6 +67,7 @@ myapp.ViewLaptop.created = function (screen) {
     }, function error() {
         screen.findContentItem("EditLaptop").isVisible = false;
     });
+
     if (screen.Laptop.Brand.indexOf("Dell") != -1) {
         screen.findContentItem("SupportURL").isVisible = true;
         screen.SupportURL = "http://www.dell.com/support/my-support/us/en/04/product-support/servicetag/" + screen.Laptop.Serial;

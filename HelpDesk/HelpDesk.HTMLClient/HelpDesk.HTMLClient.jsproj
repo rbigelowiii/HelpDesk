@@ -76,6 +76,15 @@
     <Content Include="Content\Images\user-splash-screen.png" />
     <Content Include="Content\Web.config" />
     <Content Include="packages.config" />
+    <Content Include="Screens\Departments\BrowseDepartments.lsml.js">
+      <DependentUpon>BrowseDepartments.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Departments\SelectEndUser.lsml.js">
+      <DependentUpon>SelectEndUser.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Departments\ViewDepartment.lsml.js">
+      <DependentUpon>ViewDepartment.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\Desktops\BrowseDesktops.lsml.js">
       <DependentUpon>BrowseDesktops.lsml</DependentUpon>
     </Content>
@@ -120,6 +129,12 @@
     </Content>
     <Content Include="Screens\Tablets\ViewTablet.lsml.js">
       <DependentUpon>ViewTablet.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Techs\BrowseTechs.lsml.js">
+      <DependentUpon>BrowseTechs.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Techs\ViewTech.lsml.js">
+      <DependentUpon>ViewTech.lsml</DependentUpon>
     </Content>
     <Content Include="Screens\TicketComments\AddEditTicketComment.lsml.js">
       <DependentUpon>AddEditTicketComment.lsml</DependentUpon>
@@ -187,14 +202,20 @@
       <ProjectCritical>true</ProjectCritical>
     </LightSwitchModel>
     <LightSwitchModel Include="Properties\Proxies.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Departments.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Desktops.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\EndUsers.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Laptops.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Locations.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Printers.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Tablets.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Techs.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\TicketComments.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Tickets.lsml" />
+    <LightSwitchModel Include="Screens\Departments\AddEditDepartment.lsml" />
+    <LightSwitchModel Include="Screens\Departments\BrowseDepartments.lsml" />
+    <LightSwitchModel Include="Screens\Departments\SelectEndUser.lsml" />
+    <LightSwitchModel Include="Screens\Departments\ViewDepartment.lsml" />
     <LightSwitchModel Include="Screens\Desktops\AddEditDesktop.lsml" />
     <LightSwitchModel Include="Screens\Desktops\BrowseDesktops.lsml" />
     <LightSwitchModel Include="Screens\Desktops\BrowseRecycledDesktops.lsml" />
@@ -215,6 +236,9 @@
     <LightSwitchModel Include="Screens\Tablets\BrowseRecycledTablets.lsml" />
     <LightSwitchModel Include="Screens\Tablets\BrowseTablets.lsml" />
     <LightSwitchModel Include="Screens\Tablets\ViewTablet.lsml" />
+    <LightSwitchModel Include="Screens\Techs\AddEditTech.lsml" />
+    <LightSwitchModel Include="Screens\Techs\BrowseTechs.lsml" />
+    <LightSwitchModel Include="Screens\Techs\ViewTech.lsml" />
     <LightSwitchModel Include="Screens\TicketComments\AddEditTicketComment.lsml" />
     <LightSwitchModel Include="Screens\TicketComments\ViewTicketComment.lsml" />
     <LightSwitchModel Include="Screens\Tickets\AddEditTicket.lsml" />
