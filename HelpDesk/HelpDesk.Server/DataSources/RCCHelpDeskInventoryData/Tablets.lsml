@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Tablet">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Serial"
+        PropertyType=":String">
+        <KeyProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Brand"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Model"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastVerified"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Recycled"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Tickets"
+        Association="FK_Tickets_Tablet"
+        FromEnd="Tablets"
+        ToEnd="Tickets" />
+      <NavigationProperty
+        Name="EndUser1"
+        Association="FKEndUser_Tablet"
+        FromEnd="Tablets"
+        ToEnd="EndUsers" />
+      <NavigationProperty
+        Name="OperatingSystem1"
+        Association="FKTabletOS"
+        FromEnd="Tablets"
+        ToEnd="OperatingSystems" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_Tickets_Tablet">
+    <AssociationEnd
+      Name="Tablets"
+      EntityType="Tablet">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Tickets"
+      Multiplicity="Many"
+      EntityType="Ticket" />
+  </Association>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Tablets"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Tablet" />
+    <AssociationSet
+      Name="FK_Tickets_Tablet"
+      Association="FK_Tickets_Tablet">
+      <AssociationSetEnd
+        Name="Tablets"
+        EntitySet="Tablets" />
+      <AssociationSetEnd
+        Name="Tickets"
+        EntitySet="Tickets" />
+    </AssociationSet>
+    <QueryOperation
+      Name="Tablets_Single"
+      ReturnType="Tablet">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Tablets" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Tablets_SingleOrDefault"
+      ReturnType="Tablet">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Tablets" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="RCCHelpDeskInventoryDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Tablets">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Tablets" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Serial"
+          Nullable="False"
+          Type="varchar"
+          Property="Tablet/Properties[Serial]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Brand"
+          Nullable="True"
+          Type="varchar"
+          Property="Tablet/Properties[Brand]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Model"
+          Nullable="True"
+          Type="varchar"
+          Property="Tablet/Properties[Model]" />
+        <SsdlProperty
+          Name="LastVerified"
+          Nullable="True"
+          Type="datetime"
+          Property="Tablet/Properties[LastVerified]" />
+        <SsdlProperty
+          Name="Recycled"
+          Nullable="True"
+          Type="bit"
+          Property="Tablet/Properties[Recycled]" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="EndUser"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="EndUser" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="OperatingSystem"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="OperatingSystem" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Tickets_Tablet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Tickets_Tablet" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Tablet]/Members[Tablets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Tablet]/Members[Tickets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Tablet_Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

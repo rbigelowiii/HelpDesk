@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <QueryOperation
+      Name="MyTickets"
+      ReturnType="Ticket*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="And">
+            <BinaryExpression.Left>
+              <BinaryExpression
+                NodeType="And">
+                <BinaryExpression.Left>
+                  <BinaryExpression
+                    NodeType="And">
+                    <BinaryExpression.Left>
+                      <BinaryExpression
+                        NodeType="And">
+                        <BinaryExpression.Left>
+                          <BinaryExpression
+                            NodeType="Or">
+                            <BinaryExpression.Left>
+                              <BinaryExpression
+                                NodeType="Or">
+                                <BinaryExpression.Left>
+                                  <BinaryExpression
+                                    NodeType="Or">
+                                    <BinaryExpression.Left>
+                                      <BinaryExpression
+                                        NodeType="Or">
+                                        <BinaryExpression.Left>
+                                          <BinaryExpression
+                                            NodeType="Or">
+                                            <BinaryExpression.Left>
+                                              <BinaryExpression
+                                                NodeType="Or">
+                                                <BinaryExpression.Left>
+                                                  <BinaryExpression
+                                                    NodeType="Or">
+                                                    <BinaryExpression.Left>
+                                                      <BinaryExpression
+                                                        NodeType="Or">
+                                                        <BinaryExpression.Left>
+                                                          <BinaryExpression
+                                                            NodeType="Or">
+                                                            <BinaryExpression.Left>
+                                                              <BinaryExpression
+                                                                NodeType="Or">
+                                                                <BinaryExpression.Left>
+                                                                  <BinaryExpression
+                                                                    NodeType="Or">
+                                                                    <BinaryExpression.Left>
+                                                                      <BinaryExpression
+                                                                        NodeType="Or">
+                                                                        <BinaryExpression.Left>
+                                                                          <BinaryExpression
+                                                                            NodeType="Or">
+                                                                            <BinaryExpression.Left>
+                                                                              <BinaryExpression
+                                                                                NodeType="Or">
+                                                                                <BinaryExpression.Left>
+                                                                                  <BinaryExpression
+                                                                                    NodeType="Or">
+                                                                                    <BinaryExpression.Left>
+                                                                                      <BinaryExpression
+                                                                                        NodeType="Or">
+                                                                                        <BinaryExpression.Left>
+                                                                                          <BinaryExpression
+                                                                                            NodeType="Contains">
+                                                                                            <BinaryExpression.Left>
+                                                                                              <ChainExpression>
+                                                                                                <MemberExpression
+                                                                                                  Member="Desktop" />
+                                                                                                <MemberExpression
+                                                                                                  Member="Brand" />
+                                                                                              </ChainExpression>
+                                                                                            </BinaryExpression.Left>
+                                                                                            <BinaryExpression.Right>
+                                                                                              <ParameterExpression
+                                                                                                Parameter="SearchText" />
+                                                                                            </BinaryExpression.Right>
+                                                                                          </BinaryExpression>
+                                                                                        </BinaryExpression.Left>
+                                                                                        <BinaryExpression.Right>
+                                                                                          <BinaryExpression
+                                                                                            NodeType="Contains">
+                                                                                            <BinaryExpression.Left>
+                                                                                              <ChainExpression>
+                                                                                                <MemberExpression
+                                                                                                  Member="Desktop" />
+                                                                                                <MemberExpression
+                                                                                                  Member="ComputerName" />
+                                                                                              </ChainExpression>
+                                                                                            </BinaryExpression.Left>
+                                                                                            <BinaryExpression.Right>
+                                                                                              <ParameterExpression
+                                                                                                Parameter="SearchText" />
+                                                                                            </BinaryExpression.Right>
+                                                                                          </BinaryExpression>
+                                                                                        </BinaryExpression.Right>
+                                                                                      </BinaryExpression>
+                                                                                    </BinaryExpression.Left>
+                                                                                    <BinaryExpression.Right>
+                                                                                      <BinaryExpression
+                                                                                        NodeType="Contains">
+                                                                                        <BinaryExpression.Left>
+                                                                                          <ChainExpression>
+                                                                                            <MemberExpression
+                                                                                              Member="Desktop" />
+                                                                                            <MemberExpression
+                                                                                              Member="Location" />
+                                                                                            <MemberExpression
+                                                                                              Member="LocationName" />
+                                                                                          </ChainExpression>
+                                                                                        </BinaryExpression.Left>
+                                                                                        <BinaryExpression.Right>
+                                                                                          <ParameterExpression
+                                                                                            Parameter="SearchText" />
+                                                                                        </BinaryExpression.Right>
+                                                                                      </BinaryExpression>
+                                                                                    </BinaryExpression.Right>
+                                                                                  </BinaryExpression>
+                                                                                </BinaryExpression.Left>
+                                                                                <BinaryExpression.Right>
+                                                                                  <BinaryExpression
+                                                                                    NodeType="Contains">
+                                                                                    <BinaryExpression.Left>
+                                                                                      <ChainExpression>
+                                                                                        <MemberExpression
+                                                                                          Member="Desktop" />
+                                                                                        <MemberExpression
+                                                                                          Member="Model" />
+                                                                                      </ChainExpression>
+                                                                                    </BinaryExpression.Left>
+                                                                                    <BinaryExpression.Right>
+                                                                                      <ParameterExpression
+                                                                                        Parameter="SearchText" />
+                                                                                    </BinaryExpression.Right>
+                                                                                  </BinaryExpression>
+                                                                                </BinaryExpression.Right>
+                                                                              </BinaryExpression>
+                                                                            </BinaryExpression.Left>
+                                                                            <BinaryExpression.Right>
+                                                                              <BinaryExpression
+                                                                                NodeType="Contains">
+                                                                                <BinaryExpression.Left>
+                                                                                  <ChainExpression>
+                                                                                    <MemberExpression
+                                                                                      Member="Desktop" />
+                                                                                    <MemberExpression
+                                                                                      Member="OperatingSystem1" />
+                                                                                    <MemberExpression
+                                                                                      Member="OSName" />
+                                                                                  </ChainExpression>
+                                                                                </BinaryExpression.Left>
+                                                                                <BinaryExpression.Right>
+                                                                                  <ParameterExpression
+                                                                                    Parameter="SearchText" />
+                                                                                </BinaryExpression.Right>
+                                                                              </BinaryExpression>
+                                                                            </BinaryExpression.Right>
+                                                                          </BinaryExpression>
+                                                                        </BinaryExpression.Left>
+                                                                        <BinaryExpression.Right>
+                                                                          <BinaryExpression
+                                                                            NodeType="Contains">
+                                                                            <BinaryExpression.Left>
+                                                                              <ChainExpression>
+                                                                                <MemberExpression
+                                                                                  Member="Desktop" />
+                                                                                <MemberExpression
+                                                                                  Member="Serial" />
+                                                                              </ChainExpression>
+                                                                            </BinaryExpression.Left>
+                                                                            <BinaryExpression.Right>
+                                                                              <ParameterExpression
+                                                                                Parameter="SearchText" />
+                                                                            </BinaryExpression.Right>
+                                                                          </BinaryExpression>
+                                                                        </BinaryExpression.Right>
+                                                                      </BinaryExpression>
+                                                                    </BinaryExpression.Left>
+                                                                    <BinaryExpression.Right>
+                                                                      <BinaryExpression
+                                                                        NodeType="Contains">
+                                                                        <BinaryExpression.Left>
+                                                                          <ChainExpression>
+                                                                            <MemberExpression
+                                                                              Member="Laptop" />
+                                                                            <MemberExpression
+                                                                              Member="Brand" />
+                                                                          </ChainExpression>
+                                                                        </BinaryExpression.Left>
+                                                                        <BinaryExpression.Right>
+                                                                          <ParameterExpression
+                                                                            Parameter="SearchText" />
+                                                                        </BinaryExpression.Right>
+                                                                      </BinaryExpression>
+                                                                    </BinaryExpression.Right>
+                                                                  </BinaryExpression>
+                                                                </BinaryExpression.Left>
+                                                                <BinaryExpression.Right>
+                                                                  <BinaryExpression
+                                                                    NodeType="Contains">
+                                                                    <BinaryExpression.Left>
+                                                                      <ChainExpression>
+                                                                        <MemberExpression
+                                                                          Member="Laptop" />
+                                                                        <MemberExpression
+                                                                          Member="ComputerName" />
+                                                                      </ChainExpression>
+                                                                    </BinaryExpression.Left>
+                                                                    <BinaryExpression.Right>
+                                                                      <ParameterExpression
+                                                                        Parameter="SearchText" />
+                                                                    </BinaryExpression.Right>
+                                                                  </BinaryExpression>
+                                                                </BinaryExpression.Right>
+                                                              </BinaryExpression>
+                                                            </BinaryExpression.Left>
+                                                            <BinaryExpression.Right>
+                                                              <BinaryExpression
+                                                                NodeType="Contains">
+                                                                <BinaryExpression.Left>
+                                                                  <ChainExpression>
+                                                                    <MemberExpression
+                                                                      Member="Laptop" />
+                                                                    <MemberExpression
+                                                                      Member="Model" />
+                                                                  </ChainExpression>
+                                                                </BinaryExpression.Left>
+                                                                <BinaryExpression.Right>
+                                                                  <ParameterExpression
+                                                                    Parameter="SearchText" />
+                                                                </BinaryExpression.Right>
+                                                              </BinaryExpression>
+                                                            </BinaryExpression.Right>
+                                                          </BinaryExpression>
+                                                        </BinaryExpression.Left>
+                                                        <BinaryExpression.Right>
+                                                          <BinaryExpression
+                                                            NodeType="Contains">
+                                                            <BinaryExpression.Left>
+                                                              <ChainExpression>
+                                                                <MemberExpression
+                                                                  Member="Laptop" />
+                                                                <MemberExpression
+                                                                  Member="OperatingSystem1" />
+                                                                <MemberExpression
+                                                                  Member="OSName" />
+                                                              </ChainExpression>
+                                                            </BinaryExpression.Left>
+                                                            <BinaryExpression.Right>
+                                                              <ParameterExpression
+                                                                Parameter="SearchText" />
+                                                            </BinaryExpression.Right>
+                                                          </BinaryExpression>
+                                                        </BinaryExpression.Right>
+                                                      </BinaryExpression>
+                                                    </BinaryExpression.Left>
+                                                    <BinaryExpression.Right>
+                                                      <BinaryExpression
+                                                        NodeType="Contains">
+                                                        <BinaryExpression.Left>
+                                                          <ChainExpression>
+                                                            <MemberExpression
+                                                              Member="Laptop" />
+                                                            <MemberExpression
+                                                              Member="Serial" />
+                                                          </ChainExpression>
+                                                        </BinaryExpression.Left>
+                                                        <BinaryExpression.Right>
+                                                          <ParameterExpression
+                                                            Parameter="SearchText" />
+                                                        </BinaryExpression.Right>
+                                                      </BinaryExpression>
+                                                    </BinaryExpression.Right>
+                                                  </BinaryExpression>
+                                                </BinaryExpression.Left>
+                                                <BinaryExpression.Right>
+                                                  <BinaryExpression
+                                                    NodeType="Contains">
+                                                    <BinaryExpression.Left>
+                                                      <ChainExpression>
+                                                        <MemberExpression
+                                                          Member="Printer" />
+                                                        <MemberExpression
+                                                          Member="Brand" />
+                                                      </ChainExpression>
+                                                    </BinaryExpression.Left>
+                                                    <BinaryExpression.Right>
+                                                      <ParameterExpression
+                                                        Parameter="SearchText" />
+                                                    </BinaryExpression.Right>
+                                                  </BinaryExpression>
+                                                </BinaryExpression.Right>
+                                              </BinaryExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <BinaryExpression
+                                                NodeType="Contains">
+                                                <BinaryExpression.Left>
+                                                  <ChainExpression>
+                                                    <MemberExpression
+                                                      Member="Printer" />
+                                                    <MemberExpression
+                                                      Member="Serial" />
+                                                  </ChainExpression>
+                                                </BinaryExpression.Left>
+                                                <BinaryExpression.Right>
+                                                  <ParameterExpression
+                                                    Parameter="SearchText" />
+                                                </BinaryExpression.Right>
+                                              </BinaryExpression>
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <BinaryExpression
+                                            NodeType="Contains">
+                                            <BinaryExpression.Left>
+                                              <ChainExpression>
+                                                <MemberExpression
+                                                  Member="Tablet" />
+                                                <MemberExpression
+                                                  Member="Brand" />
+                                              </ChainExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <ParameterExpression
+                                                Parameter="SearchText" />
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <BinaryExpression
+                                        NodeType="Contains">
+                                        <BinaryExpression.Left>
+                                          <ChainExpression>
+                                            <MemberExpression
+                                              Member="Tablet" />
+                                            <MemberExpression
+                                              Member="Model" />
+                                          </ChainExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <ParameterExpression
+                                            Parameter="SearchText" />
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <BinaryExpression
+                                    NodeType="Contains">
+                                    <BinaryExpression.Left>
+                                      <ChainExpression>
+                                        <MemberExpression
+                                          Member="Tablet" />
+                                        <MemberExpression
+                                          Member="Serial" />
+                                      </ChainExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <ParameterExpression
+                                        Parameter="SearchText" />
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <BinaryExpression
+                                NodeType="Contains">
+                                <BinaryExpression.Left>
+                                  <ChainExpression>
+                                    <MemberExpression
+                                      Member="Tech" />
+                                    <MemberExpression
+                                      Member="UserName" />
+                                  </ChainExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <ParameterExpression
+                                    Parameter="SearchText" />
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <BinaryExpression
+                            NodeType="Equal">
+                            <BinaryExpression.Left>
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="Category" />
+                              </ChainExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <ParameterExpression
+                                Parameter="Category" />
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <BinaryExpression
+                        NodeType="Equal">
+                        <BinaryExpression.Left>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="Priority" />
+                          </ChainExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <ParameterExpression
+                            Parameter="Priority" />
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <BinaryExpression
+                    NodeType="Equal">
+                    <BinaryExpression.Left>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Status" />
+                      </ChainExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <ParameterExpression
+                        Parameter="Status" />
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <TernaryExpression
+                NodeType="Between">
+                <TernaryExpression.First>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="DateSubmitted" />
+                  </ChainExpression>
+                </TernaryExpression.First>
+                <TernaryExpression.Second>
+                  <ParameterExpression
+                    Parameter="BeginDate" />
+                </TernaryExpression.Second>
+                <TernaryExpression.Third>
+                  <ParameterExpression
+                    Parameter="EndDate" />
+                </TernaryExpression.Third>
+              </TernaryExpression>
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Tickets" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="SearchText"
+        IsOptional="True"
+        ParameterType=":String?" />
+      <QueryOperationParameter
+        Name="Category"
+        IsOptional="True"
+        ParameterType=":String?" />
+      <QueryOperationParameter
+        Name="Priority"
+        IsOptional="True"
+        ParameterType=":String?" />
+      <QueryOperationParameter
+        Name="Status"
+        IsOptional="True"
+        ParameterType=":String?" />
+      <QueryOperationParameter
+        Name="BeginDate"
+        IsOptional="True"
+        ParameterType=":DateTime?" />
+      <QueryOperationParameter
+        Name="EndDate"
+        IsOptional="True"
+        ParameterType=":DateTime?" />
+      <QueryOperation.SortCriteria>
+        <SortCriterion
+          Direction="Descending">
+          <ChainExpression>
+            <MemberExpression
+              Member="DateSubmitted" />
+          </ChainExpression>
+        </SortCriterion>
+      </QueryOperation.SortCriteria>
+    </QueryOperation>
+  </EntityContainer>
+</ServiceApplication>

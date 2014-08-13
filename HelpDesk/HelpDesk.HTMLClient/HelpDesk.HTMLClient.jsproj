@@ -106,8 +106,29 @@
     <Content Include="Screens\EndUsers\ViewEndUser.lsml.js">
       <DependentUpon>ViewEndUser.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\HelpFilesSet\AddEditHelpFile.lsml.js">
+      <DependentUpon>AddEditHelpFile.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\HelpFilesSet\BrowseHelpFiles.lsml.js">
+      <DependentUpon>BrowseHelpFiles.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\HelpFilesSet\HelpDialog.lsml.js">
+      <DependentUpon>HelpDialog.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\HelpFilesSet\ViewHelpFile.lsml.js">
+      <DependentUpon>ViewHelpFile.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\Home.lsml.js">
       <DependentUpon>Home.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\KB\AddEditKBItem.lsml.js">
+      <DependentUpon>AddEditKBItem.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\KB\BrowseKB.lsml.js">
+      <DependentUpon>BrowseKB.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\KB\ViewKBItem.lsml.js">
+      <DependentUpon>ViewKBItem.lsml</DependentUpon>
     </Content>
     <Content Include="Screens\Laptops\BrowseLaptops.lsml.js">
       <DependentUpon>BrowseLaptops.lsml</DependentUpon>
@@ -117,6 +138,18 @@
     </Content>
     <Content Include="Screens\Laptops\ViewLaptop.lsml.js">
       <DependentUpon>ViewLaptop.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Locations\BrowseLocations.lsml.js">
+      <DependentUpon>BrowseLocations.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Locations\ViewLocation.lsml.js">
+      <DependentUpon>ViewLocation.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\OperatingSystems\BrowseOperatingSystems.lsml.js">
+      <DependentUpon>BrowseOperatingSystems.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\OperatingSystems\ViewOperatingSystem.lsml.js">
+      <DependentUpon>ViewOperatingSystem.lsml</DependentUpon>
     </Content>
     <Content Include="Screens\Printers\BrowsePrinters.lsml.js">
       <DependentUpon>BrowsePrinters.lsml</DependentUpon>
@@ -212,8 +245,11 @@
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\DeptHeads.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Desktops.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\EndUsers.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\HelpFiles.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\KnowledgeBases.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Laptops.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Locations.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\OperatingSystems.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Printers.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Tablets.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Techs.lsml" />
@@ -233,11 +269,24 @@
     <LightSwitchModel Include="Screens\EndUsers\AddEditEndUser.lsml" />
     <LightSwitchModel Include="Screens\EndUsers\BrowseEndUsers.lsml" />
     <LightSwitchModel Include="Screens\EndUsers\ViewEndUser.lsml" />
+    <LightSwitchModel Include="Screens\HelpFilesSet\AddEditHelpFile.lsml" />
+    <LightSwitchModel Include="Screens\HelpFilesSet\BrowseHelpFiles.lsml" />
+    <LightSwitchModel Include="Screens\HelpFilesSet\HelpDialog.lsml" />
+    <LightSwitchModel Include="Screens\HelpFilesSet\ViewHelpFile.lsml" />
     <LightSwitchModel Include="Screens\Home.lsml" />
+    <LightSwitchModel Include="Screens\KB\AddEditKBItem.lsml" />
+    <LightSwitchModel Include="Screens\KB\BrowseKB.lsml" />
+    <LightSwitchModel Include="Screens\KB\ViewKBItem.lsml" />
     <LightSwitchModel Include="Screens\Laptops\AddEditLaptop.lsml" />
     <LightSwitchModel Include="Screens\Laptops\BrowseLaptops.lsml" />
     <LightSwitchModel Include="Screens\Laptops\BrowseRecycledLaptops.lsml" />
     <LightSwitchModel Include="Screens\Laptops\ViewLaptop.lsml" />
+    <LightSwitchModel Include="Screens\Locations\AddEditLocation.lsml" />
+    <LightSwitchModel Include="Screens\Locations\BrowseLocations.lsml" />
+    <LightSwitchModel Include="Screens\Locations\ViewLocation.lsml" />
+    <LightSwitchModel Include="Screens\OperatingSystems\AddEditOperatingSystem.lsml" />
+    <LightSwitchModel Include="Screens\OperatingSystems\BrowseOperatingSystems.lsml" />
+    <LightSwitchModel Include="Screens\OperatingSystems\ViewOperatingSystem.lsml" />
     <LightSwitchModel Include="Screens\Printers\AddEditPrinter.lsml" />
     <LightSwitchModel Include="Screens\Printers\BrowsePrinters.lsml" />
     <LightSwitchModel Include="Screens\Printers\BrowseRecycledPrinters.lsml" />

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="KnowledgeBase">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="ArticleID"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="ArticleText"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ArticleTitle"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Tickets"
+        Association="FK_Tickets_KnowledgeBase"
+        FromEnd="KnowledgeBase"
+        ToEnd="Tickets" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_Tickets_KnowledgeBase">
+    <AssociationEnd
+      Name="KnowledgeBase"
+      EntityType="KnowledgeBase">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Tickets"
+      Multiplicity="Many"
+      EntityType="Ticket" />
+  </Association>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="KnowledgeBases"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="KnowledgeBase" />
+    <AssociationSet
+      Name="FK_Tickets_KnowledgeBase"
+      Association="FK_Tickets_KnowledgeBase">
+      <AssociationSetEnd
+        Name="KnowledgeBase"
+        EntitySet="KnowledgeBases" />
+      <AssociationSetEnd
+        Name="Tickets"
+        EntitySet="Tickets" />
+    </AssociationSet>
+    <QueryOperation
+      Name="KnowledgeBases_Single"
+      ReturnType="KnowledgeBase">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="ArticleID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="ArticleID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="KnowledgeBases" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ArticleID"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'ArticleID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="KnowledgeBases_SingleOrDefault"
+      ReturnType="KnowledgeBase">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="ArticleID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="ArticleID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="KnowledgeBases" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ArticleID"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'ArticleID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="RCCHelpDeskInventoryDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="KnowledgeBases">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="KnowledgeBase" />
+        <SsdlProperty
+          Name="ArticleID"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="KnowledgeBase/Properties[ArticleID]" />
+        <SsdlProperty
+          Name="ArticleText"
+          Nullable="True"
+          Type="varchar(max)"
+          Property="KnowledgeBase/Properties[ArticleText]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="ArticleTitle"
+          Nullable="True"
+          Type="varchar"
+          Property="KnowledgeBase/Properties[ArticleTitle]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Tickets_KnowledgeBase">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Tickets_KnowledgeBase" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_KnowledgeBase]/Members[KnowledgeBase]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ArticleID" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_KnowledgeBase]/Members[Tickets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="KBArticle" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

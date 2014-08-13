@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Laptop">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Serial"
+        PropertyType=":String">
+        <KeyProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="CPU"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RAM"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="HDD"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ComputerName"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ShipDate"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="WarrantyExp"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Brand"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Model"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastVerified"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Recycled"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Tickets"
+        Association="FK_Tickets_Laptop"
+        FromEnd="Laptops"
+        ToEnd="Tickets" />
+      <NavigationProperty
+        Name="EndUser1"
+        Association="FKLaptopEndUser"
+        FromEnd="Laptops"
+        ToEnd="EndUsers" />
+      <NavigationProperty
+        Name="OperatingSystem1"
+        Association="FKLaptopOS"
+        FromEnd="Laptops"
+        ToEnd="OperatingSystems" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_Tickets_Laptop">
+    <AssociationEnd
+      Name="Laptops"
+      EntityType="Laptop">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Tickets"
+      Multiplicity="Many"
+      EntityType="Ticket" />
+  </Association>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Laptops"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Laptop" />
+    <AssociationSet
+      Name="FK_Tickets_Laptop"
+      Association="FK_Tickets_Laptop">
+      <AssociationSetEnd
+        Name="Laptops"
+        EntitySet="Laptops" />
+      <AssociationSetEnd
+        Name="Tickets"
+        EntitySet="Tickets" />
+    </AssociationSet>
+    <QueryOperation
+      Name="Laptops_Single"
+      ReturnType="Laptop">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Laptops" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Laptops_SingleOrDefault"
+      ReturnType="Laptop">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Laptops" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="RCCHelpDeskInventoryDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Laptops">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Laptops" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="Serial"
+          Nullable="False"
+          Type="varchar"
+          Property="Laptop/Properties[Serial]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="CPU"
+          Nullable="True"
+          Type="varchar"
+          Property="Laptop/Properties[CPU]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="RAM"
+          Nullable="True"
+          Type="varchar"
+          Property="Laptop/Properties[RAM]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="HDD"
+          Nullable="True"
+          Type="varchar"
+          Property="Laptop/Properties[HDD]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="ComputerName"
+          Nullable="True"
+          Type="varchar"
+          Property="Laptop/Properties[ComputerName]" />
+        <SsdlProperty
+          Name="ShipDate"
+          Nullable="True"
+          Type="datetime"
+          Property="Laptop/Properties[ShipDate]" />
+        <SsdlProperty
+          Name="WarrantyExp"
+          Nullable="True"
+          Type="datetime"
+          Property="Laptop/Properties[WarrantyExp]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Brand"
+          Nullable="True"
+          Type="varchar"
+          Property="Laptop/Properties[Brand]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Model"
+          Nullable="True"
+          Type="varchar"
+          Property="Laptop/Properties[Model]" />
+        <SsdlProperty
+          Name="LastVerified"
+          Nullable="True"
+          Type="datetime"
+          Property="Laptop/Properties[LastVerified]" />
+        <SsdlProperty
+          Name="Recycled"
+          Nullable="True"
+          Type="bit"
+          Property="Laptop/Properties[Recycled]" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="EndUser"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="EndUser" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="OperatingSystem"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="OperatingSystem" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Tickets_Laptop">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Tickets_Laptop" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Laptop]/Members[Laptops]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Laptop]/Members[Tickets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Laptop_Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

@@ -6,8 +6,8 @@ myapp.Home.created = function (screen) {
     // Write code here.
 
     screen.getViewTechOnlyScreens().then(function success() {
-        screen.ScreenName = "RCC Help Desk Ticketing & Inventory System";
-        screen.details.displayName = screen.ScreenName;
+        screen.details.displayName = "RCC Help Desk Ticketing & Inventory System";
+        screen.ScreenName = screen.details.displayName;
         screen.findContentItem("ShowBrowseTickets").isVisible = true;
         screen.findContentItem("Inventory").isVisible = true;
         screen.findContentItem("Users").isVisible = true;
@@ -15,9 +15,10 @@ myapp.Home.created = function (screen) {
         screen.findContentItem("SubmitTicket").isVisible = false;
         screen.findContentItem("ShowBrowseMyTickets").isVisible = false;
         screen.findContentItem("ShowBrowseOpenTickets").isVisible = true;
+        screen.findContentItem("ShowBrowseKB").isVisible = true;
     }, function error() {
-        screen.ScreenName = "RCC Help Desk Ticketing System";
-        screen.details.displayName = screen.ScreenName;
+        screen.details.displayName = "RCC Help Desk Ticketing System";
+        screen.ScreenName = screen.details.displayName;
         screen.findContentItem("ShowBrowseTickets").isVisible = false;
         screen.findContentItem("Inventory").isVisible = false;
         screen.findContentItem("Users").isVisible = false;
@@ -25,6 +26,7 @@ myapp.Home.created = function (screen) {
         screen.findContentItem("SubmitTicket").isVisible = true;
         screen.findContentItem("ShowBrowseMyTickets").isVisible = true;
         screen.findContentItem("ShowBrowseOpenTickets").isVisible = false;
+        screen.findContentItem("ShowBrowseKB").isVisible = true;
     });
 
     screen.getCanAddDevice().then(function success() {
@@ -61,6 +63,30 @@ myapp.Home.created = function (screen) {
         screen.findContentItem("ShowAddEditDeptHead").isVisible = true;
     }, function error() {
         screen.findContentItem("ShowAddEditDeptHead").isVisible = false;
+    });
+
+    screen.getCanAddHelpFile().then(function success() {
+        screen.findContentItem("ShowBrowseHelpFiles").isVisible = true;
+    }, function error() {
+        screen.findContentItem("ShowBrowseHelpFiles").isVisible = false;
+    });
+
+    screen.getCanAddLocation().then(function success() {
+        screen.findContentItem("ShowAddEditLocation").isVisible = true;
+    }, function error() {
+        screen.findContentItem("ShowAddEditLocation").isVisible = false;
+    });
+
+    screen.getCanAddKnowledgeBase().then(function success() {
+        screen.findContentItem("ShowAddEditKBItem").isVisible = true;
+    }, function error() {
+        screen.findContentItem("ShowAddEditKBItem").isVisible = false;
+    });
+
+    screen.getCanAddOS().then(function success() {
+        screen.findContentItem("ShowAddEditOperatingSystem").isVisible = true;
+    }, function error() {
+        screen.findContentItem("ShowAddEditOperatingSystem").isVisible = false;
     });
 };
 
@@ -118,13 +144,6 @@ myapp.Home.SubmitTicket_execute = function (screen) {
     });
 };
 
-myapp.Home.HelpFile_Body_postRender = function (element, contentItem) {
-    // Write code here.
-    contentItem.dataBind("screen.HelpFile.Body", function (value) {
-        element.innerHTML = value;
-    });
-};
-
 myapp.Home.ShowAddEditDesktop_Tap_execute = function (screen) {
     // Write code here.
     myapp.showAddEditDesktop(null, {
@@ -153,15 +172,6 @@ myapp.Home.ShowAddEditLaptop_Tap_execute = function (screen) {
     });
 };
 
-myapp.Home.ShowHelp_Tap_execute = function (screen) {
-    // Write code here.
-    $(window).on("popupcreate", function (e) {
-        $(e.target).popup({
-            positionTo: "window"
-        });
-    });
-    screen.showPopup("Help");
-};
 myapp.Home.ShowAddEditPrinter_Tap_execute = function (screen) {
     // Write code here.
     myapp.showAddEditPrinter(null, {
@@ -237,7 +247,7 @@ myapp.Home.Tickets_postRender = function (element, contentItem) {
                 myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs.addNew();
                 myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
             });
-    }); 
+    });
 };
 myapp.Home.ShowAddEditDepartment_Tap_execute = function (screen) {
     // Write code here.
@@ -261,6 +271,40 @@ myapp.Home.ShowAddEditDeptHead_Tap_execute = function (screen) {
         afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
                 myapp.showViewDeptHead(addEditScreen.DeptHead);
+            }
+        }
+    });
+};
+
+myapp.Home.ShowHelp_Tap_execute = function (screen) {
+    // Write code here.
+    screen.getHelpFile().then(function (helpfile) {
+        myapp.showHelpDialog(helpfile);
+    });
+};
+
+myapp.Home.ShowAddEditKBItem_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditKBItem(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.KnowledgeBase = new myapp.KnowledgeBase();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewKBItem(addEditScreen.KnowledgeBase);
+            }
+        }
+    });
+};
+myapp.Home.ShowAddEditLocation_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditLocation(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.Location = new myapp.Location();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewLocation(addEditScreen.Location);
             }
         }
     });

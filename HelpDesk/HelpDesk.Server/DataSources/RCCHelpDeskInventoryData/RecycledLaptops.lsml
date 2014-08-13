@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <QueryOperation
+      Name="RecycledLaptops"
+      ReturnType="Laptop*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="And">
+            <BinaryExpression.Left>
+              <BinaryExpression
+                NodeType="Or">
+                <BinaryExpression.Left>
+                  <BinaryExpression
+                    NodeType="Or">
+                    <BinaryExpression.Left>
+                      <BinaryExpression
+                        NodeType="Or">
+                        <BinaryExpression.Left>
+                          <BinaryExpression
+                            NodeType="Or">
+                            <BinaryExpression.Left>
+                              <BinaryExpression
+                                NodeType="Or">
+                                <BinaryExpression.Left>
+                                  <BinaryExpression
+                                    NodeType="Or">
+                                    <BinaryExpression.Left>
+                                      <BinaryExpression
+                                        NodeType="Or">
+                                        <BinaryExpression.Left>
+                                          <BinaryExpression
+                                            NodeType="Or">
+                                            <BinaryExpression.Left>
+                                              <BinaryExpression
+                                                NodeType="Or">
+                                                <BinaryExpression.Left>
+                                                  <BinaryExpression
+                                                    NodeType="Contains">
+                                                    <BinaryExpression.Left>
+                                                      <ChainExpression>
+                                                        <MemberExpression
+                                                          Member="Brand" />
+                                                      </ChainExpression>
+                                                    </BinaryExpression.Left>
+                                                    <BinaryExpression.Right>
+                                                      <ParameterExpression
+                                                        Parameter="SearchText" />
+                                                    </BinaryExpression.Right>
+                                                  </BinaryExpression>
+                                                </BinaryExpression.Left>
+                                                <BinaryExpression.Right>
+                                                  <BinaryExpression
+                                                    NodeType="Contains">
+                                                    <BinaryExpression.Left>
+                                                      <ChainExpression>
+                                                        <MemberExpression
+                                                          Member="ComputerName" />
+                                                      </ChainExpression>
+                                                    </BinaryExpression.Left>
+                                                    <BinaryExpression.Right>
+                                                      <ParameterExpression
+                                                        Parameter="SearchText" />
+                                                    </BinaryExpression.Right>
+                                                  </BinaryExpression>
+                                                </BinaryExpression.Right>
+                                              </BinaryExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <BinaryExpression
+                                                NodeType="Contains">
+                                                <BinaryExpression.Left>
+                                                  <ChainExpression>
+                                                    <MemberExpression
+                                                      Member="EndUser1" />
+                                                    <MemberExpression
+                                                      Member="Department" />
+                                                    <MemberExpression
+                                                      Member="DeptName" />
+                                                  </ChainExpression>
+                                                </BinaryExpression.Left>
+                                                <BinaryExpression.Right>
+                                                  <ParameterExpression
+                                                    Parameter="SearchText" />
+                                                </BinaryExpression.Right>
+                                              </BinaryExpression>
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <BinaryExpression
+                                            NodeType="Contains">
+                                            <BinaryExpression.Left>
+                                              <ChainExpression>
+                                                <MemberExpression
+                                                  Member="EndUser1" />
+                                                <MemberExpression
+                                                  Member="UserFirstName" />
+                                              </ChainExpression>
+                                            </BinaryExpression.Left>
+                                            <BinaryExpression.Right>
+                                              <ParameterExpression
+                                                Parameter="SearchText" />
+                                            </BinaryExpression.Right>
+                                          </BinaryExpression>
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <BinaryExpression
+                                        NodeType="Contains">
+                                        <BinaryExpression.Left>
+                                          <ChainExpression>
+                                            <MemberExpression
+                                              Member="EndUser1" />
+                                            <MemberExpression
+                                              Member="UserLastName" />
+                                          </ChainExpression>
+                                        </BinaryExpression.Left>
+                                        <BinaryExpression.Right>
+                                          <ParameterExpression
+                                            Parameter="SearchText" />
+                                        </BinaryExpression.Right>
+                                      </BinaryExpression>
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <BinaryExpression
+                                    NodeType="Contains">
+                                    <BinaryExpression.Left>
+                                      <ChainExpression>
+                                        <MemberExpression
+                                          Member="EndUser1" />
+                                        <MemberExpression
+                                          Member="UserName" />
+                                      </ChainExpression>
+                                    </BinaryExpression.Left>
+                                    <BinaryExpression.Right>
+                                      <ParameterExpression
+                                        Parameter="SearchText" />
+                                    </BinaryExpression.Right>
+                                  </BinaryExpression>
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <BinaryExpression
+                                NodeType="Contains">
+                                <BinaryExpression.Left>
+                                  <ChainExpression>
+                                    <MemberExpression
+                                      Member="Model" />
+                                  </ChainExpression>
+                                </BinaryExpression.Left>
+                                <BinaryExpression.Right>
+                                  <ParameterExpression
+                                    Parameter="SearchText" />
+                                </BinaryExpression.Right>
+                              </BinaryExpression>
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <BinaryExpression
+                            NodeType="Contains">
+                            <BinaryExpression.Left>
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="OperatingSystem1" />
+                                <MemberExpression
+                                  Member="OSName" />
+                              </ChainExpression>
+                            </BinaryExpression.Left>
+                            <BinaryExpression.Right>
+                              <ParameterExpression
+                                Parameter="SearchText" />
+                            </BinaryExpression.Right>
+                          </BinaryExpression>
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <BinaryExpression
+                        NodeType="Contains">
+                        <BinaryExpression.Left>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="OperatingSystem1" />
+                            <MemberExpression
+                              Member="OSPlatform" />
+                          </ChainExpression>
+                        </BinaryExpression.Left>
+                        <BinaryExpression.Right>
+                          <ParameterExpression
+                            Parameter="SearchText" />
+                        </BinaryExpression.Right>
+                      </BinaryExpression>
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <BinaryExpression
+                    NodeType="Contains">
+                    <BinaryExpression.Left>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Serial" />
+                      </ChainExpression>
+                    </BinaryExpression.Left>
+                    <BinaryExpression.Right>
+                      <ParameterExpression
+                        Parameter="SearchText" />
+                    </BinaryExpression.Right>
+                  </BinaryExpression>
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <BinaryExpression
+                NodeType="Equal">
+                <BinaryExpression.Left>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="Recycled" />
+                  </ChainExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <ConstantExpression
+                    Value="True"
+                    ResultType=":Boolean?" />
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Laptops" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="SearchText"
+        IsOptional="True"
+        ParameterType=":String?" />
+      <QueryOperation.SortCriteria>
+        <SortCriterion>
+          <ChainExpression>
+            <MemberExpression
+              Member="ComputerName" />
+          </ChainExpression>
+        </SortCriterion>
+        <SortCriterion>
+          <ChainExpression>
+            <MemberExpression
+              Member="Serial" />
+          </ChainExpression>
+        </SortCriterion>
+      </QueryOperation.SortCriteria>
+    </QueryOperation>
+  </EntityContainer>
+</ServiceApplication>

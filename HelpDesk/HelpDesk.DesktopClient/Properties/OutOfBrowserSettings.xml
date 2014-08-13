@@ -1,0 +1,12 @@
+﻿<OutOfBrowserSettings ShortName="HelpDesk" EnableGPUAcceleration="False" ShowInstallMenuItem="False">
+  <OutOfBrowserSettings.Blurb>HelpDesk</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="HelpDesk" Top="0" Left="0" WindowStartupLocation="Manual" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.SecuritySettings>
+    <SecuritySettings ElevatedPermissions="Required" />
+  </OutOfBrowserSettings.SecuritySettings>
+  <OutOfBrowserSettings.Icons>
+    <Icon Size="32,32">Resources/user-logo.png</Icon>
+  </OutOfBrowserSettings.Icons>
+</OutOfBrowserSettings>

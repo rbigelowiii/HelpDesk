@@ -10,6 +10,13 @@
         Target="ServiceInterface:Location" />
       <SummaryProperty
         Property="Location/Properties[LocationName]" />
+      <DefaultScreen
+        Value="ViewLocation">
+        <DefaultScreen.Attributes>
+          <ScreenParameterMapping
+            ScreenParameter="ViewLocation/Properties[Location]" />
+        </DefaultScreen.Attributes>
+      </DefaultScreen>
     </EntityType.Attributes>
   </EntityType>
 </Application>

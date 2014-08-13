@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application
+  Name="LightSwitchApplication.HelpDesk.DesktopClient" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <Application.Attributes>
+    <Partial />
+  </Application.Attributes>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Department" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:DeptHead" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Desktop" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:EndUser" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:HelpFile" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:KnowledgeBase" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Laptop" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Location" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:OperatingSystem" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:OutBoundEmail" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Printer" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:RolePermission" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Tablet" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Tech" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:TicketComment" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Ticket" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Proxy
+        Target="ServiceInterface:RCCHelpDeskInventoryData" />
+    </EntityContainer.Attributes>
+  </EntityContainer>
+  <Association
+    Name="FKUserDept">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKUserDept" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKDeptHead">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKDeptHead" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FK_Tickets_Desktop">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FK_Tickets_Desktop" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FK_Tickets_EndUser">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FK_Tickets_EndUser" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKDeptHeadUserName">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKDeptHeadUserName" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKDesktopEndUser">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKDesktopEndUser" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKEndUser_Tablet">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKEndUser_Tablet" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKLaptopEndUser">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKLaptopEndUser" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKTechUserName">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKTechUserName" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKTicketCommenter">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKTicketCommenter" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FK_Tickets_KnowledgeBase">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FK_Tickets_KnowledgeBase" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FK_Tickets_Laptop">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FK_Tickets_Laptop" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKDesktopLocation">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKDesktopLocation" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKPrinterLocation">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKPrinterLocation" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKDesktopOS">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKDesktopOS" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKLaptopOS">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKLaptopOS" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FKTabletOS">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FKTabletOS" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FK_Tickets_Printer">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FK_Tickets_Printer" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FK_Tickets_Tablet">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FK_Tickets_Tablet" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="FK_Tickets_Tech">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:FK_Tickets_Tech" />
+    </Association.Attributes>
+  </Association>
+  <Association
+    Name="Ticket_TicketComment">
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:Ticket_TicketComment" />
+    </Association.Attributes>
+  </Association>
+</Application>

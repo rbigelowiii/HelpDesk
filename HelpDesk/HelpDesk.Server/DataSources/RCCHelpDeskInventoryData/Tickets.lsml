@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Ticket">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        IsReadOnly="True"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Hidden />
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="DateSubmitted"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="7"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Status"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <SupportedValue
+            Value="Open" />
+          <SupportedValue
+            Value="Assigned" />
+          <SupportedValue
+            Value="Resolved" />
+          <SupportedValue
+            Value="Waiting" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Category"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <SupportedValue
+            Value="Hardware" />
+          <SupportedValue
+            Value="Software" />
+          <SupportedValue
+            Value="Internet" />
+          <SupportedValue
+            Value="Phone" />
+          <SupportedValue
+            Value="ID/AccessControl" />
+          <SupportedValue
+            Value="SecurityCamera" />
+          <SupportedValue
+            Value="Other" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Priority"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+          <SupportedValue
+            Value="Low" />
+          <SupportedValue
+            Value="Normal" />
+          <SupportedValue
+            Value="High" />
+          <SupportedValue
+            Value="Urgent" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastChange"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="7"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        IsReadOnly="True"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <Hidden />
+          <UseForConcurrency />
+          <Required />
+          <MaxLength
+            IsFixedLength="True"
+            Value="8" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Desktop"
+        Association="FK_Tickets_Desktop"
+        FromEnd="Tickets"
+        ToEnd="Desktops" />
+      <NavigationProperty
+        Name="EndUser"
+        Association="FK_Tickets_EndUser"
+        FromEnd="Tickets"
+        ToEnd="EndUsers" />
+      <NavigationProperty
+        Name="KnowledgeBase"
+        Association="FK_Tickets_KnowledgeBase"
+        FromEnd="Tickets"
+        ToEnd="KnowledgeBase" />
+      <NavigationProperty
+        Name="Laptop"
+        Association="FK_Tickets_Laptop"
+        FromEnd="Tickets"
+        ToEnd="Laptops" />
+      <NavigationProperty
+        Name="Printer"
+        Association="FK_Tickets_Printer"
+        FromEnd="Tickets"
+        ToEnd="Printers" />
+      <NavigationProperty
+        Name="Tablet"
+        Association="FK_Tickets_Tablet"
+        FromEnd="Tickets"
+        ToEnd="Tablets" />
+      <NavigationProperty
+        Name="Tech"
+        Association="FK_Tickets_Tech"
+        FromEnd="Tickets"
+        ToEnd="Techs" />
+      <NavigationProperty
+        Name="TicketComments"
+        Association="Ticket_TicketComment"
+        FromEnd="Tickets"
+        ToEnd="TicketComments" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="Ticket_TicketComment">
+    <AssociationEnd
+      Name="Tickets"
+      Multiplicity="One"
+      EntityType="Ticket">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Cascade" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="TicketComments"
+      Multiplicity="Many"
+      EntityType="TicketComment" />
+  </Association>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Tickets"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Ticket" />
+    <AssociationSet
+      Name="Ticket_TicketComment"
+      Association="Ticket_TicketComment">
+      <AssociationSetEnd
+        Name="Tickets"
+        EntitySet="Tickets" />
+      <AssociationSetEnd
+        Name="TicketComments"
+        EntitySet="TicketComments" />
+    </AssociationSet>
+    <QueryOperation
+      Name="Tickets_Single"
+      ReturnType="Ticket">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Tickets" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Tickets_SingleOrDefault"
+      ReturnType="Ticket">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Tickets" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType="Microsoft.LightSwitch:Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="RCCHelpDeskInventoryDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Tickets">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Tickets" />
+        <SsdlProperty
+          Name="Id"
+          Nullable="False"
+          StoreGeneratedPattern="Identity"
+          Type="int"
+          Property="Ticket/Properties[Id]" />
+        <SsdlProperty
+          Name="RowVersion"
+          Nullable="False"
+          StoreGeneratedPattern="Computed"
+          Type="timestamp"
+          Property="Ticket/Properties[RowVersion]" />
+        <SsdlProperty
+          Name="DateSubmitted"
+          Nullable="True"
+          Type="datetime2"
+          Property="Ticket/Properties[DateSubmitted]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Status"
+          Nullable="False"
+          Type="nvarchar"
+          Property="Ticket/Properties[Status]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Category"
+          Nullable="False"
+          Type="nvarchar"
+          Property="Ticket/Properties[Category]" />
+        <SsdlProperty
+          MaxLength="255"
+          Name="Priority"
+          Nullable="False"
+          Type="nvarchar"
+          Property="Ticket/Properties[Priority]" />
+        <SsdlProperty
+          Name="LastChange"
+          Nullable="True"
+          Type="datetime2"
+          Property="Ticket/Properties[LastChange]" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="Desktop_Serial"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Desktop_Serial" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="EndUser_UserName"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="EndUser_UserName" />
+        <SsdlForeignKeyProperty
+          Name="KBArticle"
+          Nullable="True"
+          Type="int"
+          PropertyName="KBArticle" />
+        <SsdlForeignKeyProperty
+          MaxLength="50"
+          Name="Laptop_Serial"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Laptop_Serial" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="Printer_Serial"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Printer_Serial" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="Tablet_Serial"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Tablet_Serial" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="Tech_UserName"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Tech_UserName" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="Ticket_TicketComment">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Ticket_TicketComment" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[Ticket_TicketComment]/Members[Tickets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[Ticket_TicketComment]/Members[TicketComments]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Ticket_TicketComment" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

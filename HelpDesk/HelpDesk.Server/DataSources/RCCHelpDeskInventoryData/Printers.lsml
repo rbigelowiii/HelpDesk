@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Printer">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Serial"
+        PropertyType=":String">
+        <KeyProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="EquipID"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="PrintServer"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ShareName"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="TonerCart"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="WallPort"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Brand"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Model"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastVerified"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Recycled"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Tickets"
+        Association="FK_Tickets_Printer"
+        FromEnd="Printers"
+        ToEnd="Tickets" />
+      <NavigationProperty
+        Name="Location"
+        Association="FKPrinterLocation"
+        FromEnd="Printers"
+        ToEnd="Locations" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_Tickets_Printer">
+    <AssociationEnd
+      Name="Printers"
+      EntityType="Printer">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Tickets"
+      Multiplicity="Many"
+      EntityType="Ticket" />
+  </Association>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Printers"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Printer" />
+    <AssociationSet
+      Name="FK_Tickets_Printer"
+      Association="FK_Tickets_Printer">
+      <AssociationSetEnd
+        Name="Printers"
+        EntitySet="Printers" />
+      <AssociationSetEnd
+        Name="Tickets"
+        EntitySet="Tickets" />
+    </AssociationSet>
+    <QueryOperation
+      Name="Printers_Single"
+      ReturnType="Printer">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Printers" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Printers_SingleOrDefault"
+      ReturnType="Printer">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Printers" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="RCCHelpDeskInventoryDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Printers">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Printers" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Serial"
+          Nullable="False"
+          Type="varchar"
+          Property="Printer/Properties[Serial]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="EquipID"
+          Nullable="True"
+          Type="varchar"
+          Property="Printer/Properties[EquipID]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="PrintServer"
+          Nullable="True"
+          Type="varchar"
+          Property="Printer/Properties[PrintServer]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="ShareName"
+          Nullable="True"
+          Type="varchar"
+          Property="Printer/Properties[ShareName]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="TonerCart"
+          Nullable="True"
+          Type="varchar"
+          Property="Printer/Properties[TonerCart]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="WallPort"
+          Nullable="True"
+          Type="varchar"
+          Property="Printer/Properties[WallPort]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Brand"
+          Nullable="True"
+          Type="varchar"
+          Property="Printer/Properties[Brand]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Model"
+          Nullable="True"
+          Type="varchar"
+          Property="Printer/Properties[Model]" />
+        <SsdlProperty
+          Name="LastVerified"
+          Nullable="True"
+          Type="datetime"
+          Property="Printer/Properties[LastVerified]" />
+        <SsdlProperty
+          Name="Recycled"
+          Nullable="True"
+          Type="bit"
+          Property="Printer/Properties[Recycled]" />
+        <SsdlForeignKeyProperty
+          MaxLength="3"
+          Name="Campus"
+          Nullable="True"
+          Type="char"
+          PropertyName="Campus" />
+        <SsdlForeignKeyProperty
+          MaxLength="5"
+          Name="Building"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Building" />
+        <SsdlForeignKeyProperty
+          MaxLength="5"
+          Name="Room"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Room" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Tickets_Printer">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Tickets_Printer" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Printer]/Members[Printers]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Printer]/Members[Tickets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Printer_Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>
