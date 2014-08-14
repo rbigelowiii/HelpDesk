@@ -88,6 +88,12 @@ myapp.Home.created = function (screen) {
     }, function error() {
         screen.findContentItem("ShowAddEditOperatingSystem").isVisible = false;
     });
+
+    screen.getSecurityAdmin().then(function success() {
+        screen.findContentItem("SecurityAdministration").isVisible = true;
+    }, function error() {
+        screen.findContentItem("SecurityAdministration").isVisible = false;
+    });
 };
 
 myapp.Home.EnterTicket_execute = function (screen) {
@@ -308,4 +314,9 @@ myapp.Home.ShowAddEditLocation_Tap_execute = function (screen) {
             }
         }
     });
+};
+myapp.Home.SecurityAdministration_postRender = function (element, contentItem) {
+    // Write code here.
+    //element.outerHTML = '<a href="http://triton-rwc1:83/Tickets/desktopclient" target="_blank"></a>';
+    $(element).find("div").wrap("<a href='http://triton-rwc1:83/Tickets/desktopclient' target='_blank'></a>")
 };

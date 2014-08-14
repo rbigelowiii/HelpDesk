@@ -64,7 +64,7 @@
               Name="SearchDeptHeads"
               Kind="Collection"
               DataType="CollectionView$DeptHead"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:List">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="SearchDeptHeads" />

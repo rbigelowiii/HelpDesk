@@ -28,7 +28,7 @@
               Name="HelpFiles"
               Kind="Collection"
               DataType="CollectionView$HelpFile"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:List">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="HelpFiles" />
@@ -188,7 +188,7 @@
     <Screen.Properties>
       <ScreenCollectionProperty
         Name="HelpFiles"
-        PageSize="45"
+        PageSize="15"
         PropertyType="CollectionView$HelpFile">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition

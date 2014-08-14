@@ -100,155 +100,133 @@
         Target="ServiceInterface:Ticket" />
     </EntityType.Attributes>
   </EntityType>
-  <EntityContainer
-    Name="RCCHelpDeskInventoryData">
+  <EntityContainer>
     <EntityContainer.Attributes>
       <Proxy
         Target="ServiceInterface:RCCHelpDeskInventoryData" />
     </EntityContainer.Attributes>
   </EntityContainer>
-  <Association
-    Name="FKUserDept">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKUserDept" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKDeptHead">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKDeptHead" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FK_Tickets_Desktop">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FK_Tickets_Desktop" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FK_Tickets_EndUser">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FK_Tickets_EndUser" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKDeptHeadUserName">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKDeptHeadUserName" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKDesktopEndUser">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKDesktopEndUser" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKEndUser_Tablet">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKEndUser_Tablet" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKLaptopEndUser">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKLaptopEndUser" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKTechUserName">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKTechUserName" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKTicketCommenter">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKTicketCommenter" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FK_Tickets_KnowledgeBase">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FK_Tickets_KnowledgeBase" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FK_Tickets_Laptop">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FK_Tickets_Laptop" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKDesktopLocation">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKDesktopLocation" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKPrinterLocation">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKPrinterLocation" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKDesktopOS">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKDesktopOS" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKLaptopOS">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKLaptopOS" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FKTabletOS">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FKTabletOS" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FK_Tickets_Printer">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FK_Tickets_Printer" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FK_Tickets_Tablet">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FK_Tickets_Tablet" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="FK_Tickets_Tech">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:FK_Tickets_Tech" />
     </Association.Attributes>
   </Association>
-  <Association
-    Name="Ticket_TicketComment">
+  <Association>
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:Ticket_TicketComment" />

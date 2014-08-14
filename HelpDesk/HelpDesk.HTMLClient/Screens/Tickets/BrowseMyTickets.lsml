@@ -64,7 +64,7 @@
               Name="MyTickets"
               Kind="Collection"
               DataType="CollectionView$Ticket"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:List">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="MyTickets" />
@@ -398,7 +398,7 @@
     <Screen.Properties>
       <ScreenCollectionProperty
         Name="MyTickets"
-        PageSize="45"
+        PageSize="15"
         PropertyType="CollectionView$Ticket">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition

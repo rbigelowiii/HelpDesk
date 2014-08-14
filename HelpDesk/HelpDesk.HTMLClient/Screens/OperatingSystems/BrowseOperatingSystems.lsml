@@ -68,7 +68,7 @@
               Name="SearchOS"
               Kind="Collection"
               DataType="CollectionView$OperatingSystem"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:List">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="SearchOS" />
@@ -278,7 +278,7 @@
     <Screen.Properties>
       <ScreenCollectionProperty
         Name="SearchOS"
-        PageSize="45"
+        PageSize="15"
         PropertyType="CollectionView$OperatingSystem">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition

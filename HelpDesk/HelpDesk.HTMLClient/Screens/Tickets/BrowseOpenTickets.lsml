@@ -26,7 +26,7 @@
               Name="OpenTickets"
               Kind="Collection"
               DataType="CollectionView$Ticket"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:Table">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="OpenTickets" />
@@ -150,18 +150,6 @@
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[AttachedLabelPosition]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="LeftAligned"
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
                   Name="Tech"
@@ -185,18 +173,6 @@
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                   </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[AttachedLabelPosition]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="LeftAligned"
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -218,6 +194,16 @@
                     <ChainExpression>
                       <CallExpression
                         Target="BrowseOpenTickets/Methods[OpenTickets_ItemTap]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="True"
+                        ResultType=":Boolean" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ControlPropertySource>
@@ -301,7 +287,7 @@
     <Screen.Properties>
       <ScreenCollectionProperty
         Name="OpenTickets"
-        PageSize="45"
+        PageSize="15"
         PropertyType="CollectionView$Ticket">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition

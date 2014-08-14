@@ -64,7 +64,7 @@
               Name="RecycledLaptops"
               Kind="Collection"
               DataType="CollectionView$Laptop"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:Table">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="RecycledLaptops" />
@@ -105,35 +105,30 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="Group"
-                  Kind="Group"
-                  View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
-                  <ContentItem
-                    Name="Brand"
-                    Kind="Value"
-                    DataType=":String?">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="Laptop/Properties[Brand]" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem
-                    Name="Model"
-                    Kind="Value"
-                    DataType=":String?">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="Laptop/Properties[Model]" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
+                  Name="Brand"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Laptop/Properties[Brand]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="Model"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Laptop/Properties[Model]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
                   Name="Serial"
@@ -180,6 +175,16 @@
                     <ChainExpression>
                       <CallExpression
                         Target="BrowseRecycledLaptops/Methods[RecycledLaptops_ItemTap]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootCollectionControl/Properties[ShowHeader]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="True"
+                        ResultType=":Boolean" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ControlPropertySource>
@@ -265,7 +270,7 @@
     <Screen.Properties>
       <ScreenCollectionProperty
         Name="RecycledLaptops"
-        PageSize="45"
+        PageSize="15"
         PropertyType="CollectionView$Laptop">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition

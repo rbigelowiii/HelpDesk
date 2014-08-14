@@ -68,7 +68,7 @@
               Name="SearchDepartments"
               Kind="Collection"
               DataType="CollectionView$Department"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:List">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="SearchDepartments" />

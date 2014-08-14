@@ -68,7 +68,7 @@
               Name="SearchKB"
               Kind="Collection"
               DataType="CollectionView$KnowledgeBase"
-              View="Microsoft.LightSwitch.MobileWeb:TileList">
+              View="Microsoft.LightSwitch.MobileWeb:List">
               <ContentItem.Attributes>
                 <DisplayName
                   Value="SearchKB" />
@@ -228,7 +228,7 @@
     <Screen.Properties>
       <ScreenCollectionProperty
         Name="SearchKB"
-        PageSize="45"
+        PageSize="15"
         PropertyType="CollectionView$KnowledgeBase">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition

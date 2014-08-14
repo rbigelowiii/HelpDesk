@@ -375,6 +375,16 @@ namespace LightSwitchApplication
         {
             entity.EndUser = DataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(this.Application.User.Name.Split(new string[] { "\\" }, System.StringSplitOptions.None)[1]);
             entity.UserName = entity.EndUser.UserName;
+        }
+
+        partial void SecurityAdmin_PreprocessQuery(ref IQueryable<Tech> query)
+        {
+            query = (from c in query where 0 == 1 select c);
+        }
+
+        partial void SecurityAdmin_CanExecute(ref bool result)
+        {
+            result = this.Application.User.HasPermission(Permissions.SecurityAdministration);
         }         
     }
 }

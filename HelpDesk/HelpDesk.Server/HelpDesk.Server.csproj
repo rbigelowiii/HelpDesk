@@ -385,6 +385,9 @@
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\RecycledTablets.lsml">
       <DependentUpon>Tablets.lsml</DependentUpon>
     </LightSwitchModel>
+    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\SecurityAdmin.lsml">
+      <DependentUpon>Techs.lsml</DependentUpon>
+    </LightSwitchModel>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
