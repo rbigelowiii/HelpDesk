@@ -331,32 +331,6 @@
       <ScreenProperty
         Name="SearchText"
         PropertyType=":String?" />
-      <ScreenCollectionProperty
-        Name="CanAddDept"
-        PageSize="45"
-        PropertyType="CollectionView$Department">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanAddDeptQuery"
-            ReturnType="Department*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanAddDept]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="BrowseDepartments/Properties[CanAddDept]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>

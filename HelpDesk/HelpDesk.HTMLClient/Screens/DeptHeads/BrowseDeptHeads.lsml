@@ -279,32 +279,6 @@
       <ScreenProperty
         Name="SearchText"
         PropertyType=":String?" />
-      <ScreenCollectionProperty
-        Name="CanAddDeptHead"
-        PageSize="45"
-        PropertyType="CollectionView$DeptHead">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanAddDeptHeadQuery"
-            ReturnType="DeptHead*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanAddDeptHead]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="BrowseDeptHeads/Properties[CanAddDeptHead]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>

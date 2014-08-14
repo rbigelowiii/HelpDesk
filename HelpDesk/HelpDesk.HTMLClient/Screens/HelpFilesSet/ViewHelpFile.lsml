@@ -151,32 +151,6 @@
           <IsParameter />
         </ScreenProperty.Attributes>
       </ScreenProperty>
-      <ScreenCollectionProperty
-        Name="CanUpdateHelpFile"
-        PageSize="45"
-        PropertyType="CollectionView$HelpFile">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanUpdateHelpFileQuery"
-            ReturnType="HelpFile*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanUpdateHelpFile]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ViewHelpFile/Properties[CanUpdateHelpFile]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>

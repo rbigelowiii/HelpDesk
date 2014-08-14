@@ -108,7 +108,7 @@
                 Kind="Command">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Edit" />
+                    Value="Edit Location" />
                 </ContentItem.Attributes>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
@@ -641,32 +641,6 @@
           <ChainExpression>
             <CallExpression
               Target="ViewLocation/Properties[Printers]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        Name="CanUpdateLocation"
-        PageSize="45"
-        PropertyType="CollectionView$Location">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanUpdateLocationQuery"
-            ReturnType="Location*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanUpdateLocation]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ViewLocation/Properties[CanUpdateLocation]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>

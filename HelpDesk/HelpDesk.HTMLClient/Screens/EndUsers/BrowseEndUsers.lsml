@@ -397,32 +397,6 @@
       <ScreenProperty
         Name="SearchText"
         PropertyType=":String?" />
-      <ScreenCollectionProperty
-        Name="CanAddEndUser"
-        PageSize="45"
-        PropertyType="CollectionView$EndUser">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanAddEndUserQuery"
-            ReturnType="EndUser*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanAddEndUser]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="BrowseEndUsers/Properties[CanAddEndUser]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>

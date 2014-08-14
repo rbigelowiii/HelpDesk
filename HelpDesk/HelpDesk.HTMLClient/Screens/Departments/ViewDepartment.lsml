@@ -537,32 +537,6 @@
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        Name="CanUpdateDept"
-        PageSize="45"
-        PropertyType="CollectionView$Department">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanUpdateDeptQuery"
-            ReturnType="Department*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanUpdateDept]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ViewDepartment/Properties[CanUpdateDept]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
       <ScreenProperty
         Name="DeptHeadLabel"
         PropertyType=":String?" />

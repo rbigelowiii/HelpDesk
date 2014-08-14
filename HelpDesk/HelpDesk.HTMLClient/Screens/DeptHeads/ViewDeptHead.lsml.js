@@ -18,9 +18,5 @@ myapp.ViewDeptHead.Departments1_ItemTap_execute = function (screen) {
 };
 myapp.ViewDeptHead.created = function (screen) {
     // Write code here.
-    screen.getCanUpdateDeptHead().then(function success() {
-        screen.findContentItem("EditDeptHead").isVisible = true;
-    }, function error() {
-        screen.findContentItem("EditDeptHead").isVisible = false;
-    });
+    screen.findContentItem("EditDeptHead").isVisible = myapp.permissions["LightSwitchApplicationUpdateDeptHead"];
 };

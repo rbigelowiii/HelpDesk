@@ -15,9 +15,5 @@ myapp.ViewHelpFile.Body_postRender = function (element, contentItem) {
 
 myapp.ViewHelpFile.created = function (screen) {
     // Write code here.
-    screen.getCanUpdateHelpFile().then(function success() {
-        screen.findContentItem("EditHelpFile").isVisible = true;
-    }, function error() {
-        screen.findContentItem("EditHelpFile").isVisible = false;
-    });
+    screen.findContentItem("EditHelpFile").isVisible = myapp.permissions["LightSwitchApplication:UpdateHelpFile"];
 };

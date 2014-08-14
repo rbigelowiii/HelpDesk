@@ -10,17 +10,34 @@
       <Partial />
     </EntityContainer.Attributes>
     <QueryOperation
-      Name="CanUpdateTicket"
-      ReturnType="Ticket*">
+      Name="HelpFile"
+      ReturnType="HelpFile">
       <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree />
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="ScreenName" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="ScreenName" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
       </QueryOperation.FilterExpression>
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="Tickets" />
+            Member="HelpFiles" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ScreenName"
+        ParameterType=":String?" />
     </QueryOperation>
   </EntityContainer>
 </ServiceApplication>

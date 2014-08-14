@@ -44,24 +44,12 @@ myapp.ViewDesktop.DateSubmitted_postRender = function (element, contentItem) {
 };
 myapp.ViewDesktop.created = function (screen) {
     // Write code here.
-    screen.getCanUpdateDevice().then(function success() {
-        screen.findContentItem("EditDesktop").isVisible = true;
-    }, function error() {
-        screen.findContentItem("EditDesktop").isVisible = false;
-    });
+    screen.findContentItem("EditDesktop").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
 
-    screen.getCanDelDevice().then(function success() {
-        screen.findContentItem("Delete").isVisible = true;
-    }, function error() {
-        screen.findContentItem("Delete").isVisible = false;
-    });
-
+    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplicationDeleteDevice"];
+    
     if (!screen.Desktop.Recycled) {
-        screen.getCanRecycleDevice().then(function success() {
-            screen.findContentItem("Recycle").isVisible = true;
-        }, function error() {
-            screen.findContentItem("Recycle").isVisible = false;
-        });
+        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
     }
 
     if (screen.Desktop.Brand.indexOf("Dell") != -1) {

@@ -263,32 +263,6 @@
       <ScreenProperty
         Name="SearchText"
         PropertyType=":String?" />
-      <ScreenCollectionProperty
-        Name="CanAddKnowledgeBase"
-        PageSize="45"
-        PropertyType="CollectionView$KnowledgeBase">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanAddKnowledgeBaseQuery"
-            ReturnType="KnowledgeBase*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanAddKnowledgeBase]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="BrowseKB/Properties[CanAddKnowledgeBase]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>

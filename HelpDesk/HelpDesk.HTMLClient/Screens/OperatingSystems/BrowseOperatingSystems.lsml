@@ -318,32 +318,6 @@
             Value="SearchText" />
         </ScreenProperty.Attributes>
       </ScreenProperty>
-      <ScreenCollectionProperty
-        Name="CanAddOS"
-        PageSize="45"
-        PropertyType="CollectionView$OperatingSystem">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanAddOSQuery"
-            ReturnType="OperatingSystem*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanAddOS]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="BrowseOperatingSystems/Properties[CanAddOS]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>

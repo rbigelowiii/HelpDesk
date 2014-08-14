@@ -43,9 +43,5 @@ myapp.BrowseDeptHeads.AddDeptHead_Tap_execute = function (screen) {
 };
 myapp.BrowseDeptHeads.created = function (screen) {
     // Write code here.
-    screen.getCanAddDeptHead().then(function success() {
-        screen.findContentItem("AddDeptHead").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AddDeptHead").isVisible = false;
-    });
+    screen.findContentItem("AddDeptHead").isVisible = myapp.permissions["LightSwitchApplicationAddDeptHead"];
 };

@@ -35,11 +35,7 @@ myapp.BrowseTechs.AddTech_Tap_execute = function (screen) {
 };
 myapp.BrowseTechs.created = function (screen) {
     // Write code here.
-    screen.getCanAddTech().then(function succcess() {
-        screen.findContentItem("AddTech").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AddTech").isVisible = false;
-    });
+    screen.findContentItem("AddTech").isVisible = myapp.permissions["LightSwitchApplication:AddTech"];
 };
 myapp.BrowseTechs.SearchTechs_ItemTap_execute = function (screen) {
     // Write code here.

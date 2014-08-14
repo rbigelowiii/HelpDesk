@@ -11,13 +11,13 @@ myapp.ViewDepartment.Details_postRender = function (element, contentItem) {
 
 myapp.ViewDepartment.created = function (screen) {
     // Write code here.
-    screen.getCanUpdateDept().then(function success() {
+    if(myapp.permissions["LightSwitchApplication:UpdateDepartment"]) {
         screen.findContentItem("EditDepartment").isVisible = true;
         screen.findContentItem("ShowAddEditEndUser").isVisible = true;
-    }, function error() {
+    }else{
         screen.findContentItem("EditDepartment").isVisible = false;
         screen.findContentItem("ShowAddEditEndUser").isVisible = false;
-    });
+    }
     screen.DeptHeadLabel = "Department Head";
 };
 myapp.ViewDepartment.EndUsers1_ItemTap_execute = function (screen) {

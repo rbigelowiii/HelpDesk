@@ -22,11 +22,7 @@ myapp.BrowseDesktops.SearchText_postRender = function (element, contentItem) {
 };
 myapp.BrowseDesktops.created = function (screen) {
     // Write code here.
-    screen.getCanAddDevice().then(function success() {
-        screen.findContentItem("AddDesktop").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AddDesktop").isVisible = false;
-    });
+    screen.findContentItem("AddDesktop").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
 };
 myapp.BrowseDesktops.AddDesktop_Tap_execute = function (screen) {
     // Write code here.

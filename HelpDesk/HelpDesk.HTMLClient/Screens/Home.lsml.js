@@ -4,95 +4,64 @@
 
 myapp.Home.created = function (screen) {
     // Write code here.
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
 
-    screen.getViewTechOnlyScreens().then(function success() {
-        screen.details.displayName = "RCC Help Desk Ticketing & Inventory System";
-        screen.ScreenName = screen.details.displayName;
-        screen.findContentItem("ShowBrowseTickets").isVisible = true;
-        screen.findContentItem("Inventory").isVisible = true;
-        screen.findContentItem("Users").isVisible = true;
-        screen.findContentItem("EnterTicket").isVisible = true;
-        screen.findContentItem("SubmitTicket").isVisible = false;
-        screen.findContentItem("ShowBrowseMyTickets").isVisible = false;
-        screen.findContentItem("ShowBrowseOpenTickets").isVisible = true;
-        screen.findContentItem("ShowBrowseKB").isVisible = true;
-    }, function error() {
-        screen.details.displayName = "RCC Help Desk Ticketing System";
-        screen.ScreenName = screen.details.displayName;
-        screen.findContentItem("ShowBrowseTickets").isVisible = false;
-        screen.findContentItem("Inventory").isVisible = false;
-        screen.findContentItem("Users").isVisible = false;
-        screen.findContentItem("EnterTicket").isVisible = false;
-        screen.findContentItem("SubmitTicket").isVisible = true;
-        screen.findContentItem("ShowBrowseMyTickets").isVisible = true;
-        screen.findContentItem("ShowBrowseOpenTickets").isVisible = false;
-        screen.findContentItem("ShowBrowseKB").isVisible = true;
-    });
+        if (myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"]) {
+            screen.details.displayName = "RCC Help Desk Ticketing & Inventory System";
+            screen.ScreenName = screen.details.displayName;
+            screen.findContentItem("ShowBrowseTickets").isVisible = true;
+            screen.findContentItem("Inventory").isVisible = true;
+            screen.findContentItem("Users").isVisible = true;
+            screen.findContentItem("EnterTicket").isVisible = true;
+            screen.findContentItem("SubmitTicket").isVisible = false;
+            screen.findContentItem("ShowBrowseMyTickets").isVisible = false;
+            screen.findContentItem("ShowBrowseOpenTickets").isVisible = true;
+            screen.findContentItem("ShowBrowseKB").isVisible = true;
+        } else {
+            screen.details.displayName = "RCC Help Desk Ticketing System";
+            screen.ScreenName = screen.details.displayName;
+            screen.findContentItem("ShowBrowseTickets").isVisible = false;
+            screen.findContentItem("Inventory").isVisible = false;
+            screen.findContentItem("Users").isVisible = false;
+            screen.findContentItem("EnterTicket").isVisible = false;
+            screen.findContentItem("SubmitTicket").isVisible = true;
+            screen.findContentItem("ShowBrowseMyTickets").isVisible = true;
+            screen.findContentItem("ShowBrowseOpenTickets").isVisible = false;
+            screen.findContentItem("ShowBrowseKB").isVisible = true;
+        }
 
-    screen.getCanAddDevice().then(function success() {
-        screen.findContentItem("ShowAddEditDesktop").isVisible = true;
-        screen.findContentItem("ShowAddEditLaptop").isVisible = true;
-        screen.findContentItem("ShowAddEditPrinter").isVisible = true;
-        screen.findContentItem("ShowAddEditTablet").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditDesktop").isVisible = false;
-        screen.findContentItem("ShowAddEditLaptop").isVisible = false;
-        screen.findContentItem("ShowAddEditPrinter").isVisible = false;
-        screen.findContentItem("ShowAddEditTablet").isVisible = false;
-    });
+        if (myapp.permissions["LightSwitchApplication:AddDevice"]) {
 
-    screen.getCanAddEndUser().then(function success() {
-        screen.findContentItem("ShowAddEditEndUser").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditEndUser").isVisible = false;
-    });
+            screen.findContentItem("ShowAddEditDesktop").isVisible = true;
+            screen.findContentItem("ShowAddEditLaptop").isVisible = true;
+            screen.findContentItem("ShowAddEditPrinter").isVisible = true;
+            screen.findContentItem("ShowAddEditTablet").isVisible = true;
+        } else {
+            screen.findContentItem("ShowAddEditDesktop").isVisible = false;
+            screen.findContentItem("ShowAddEditLaptop").isVisible = false;
+            screen.findContentItem("ShowAddEditPrinter").isVisible = false;
+            screen.findContentItem("ShowAddEditTablet").isVisible = false;
+        }
 
-    screen.getCanAddTech().then(function success() {
-        screen.findContentItem("ShowAddEditTech").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditTech").isVisible = false;
-    });
-    
-    screen.getCanAddDept().then(function success() {
-        screen.findContentItem("ShowAddEditDepartment").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditDepartment").isVisible = false;
-    });
+        screen.findContentItem("ShowAddEditEndUser").isVisible = myapp.permissions["LightSwitchApplication:AddEndUser"];
 
-    screen.getCanAddDeptHead().then(function success() {
-        screen.findContentItem("ShowAddEditDeptHead").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditDeptHead").isVisible = false;
-    });
+        screen.findContentItem("ShowAddEditTech").isVisible = myapp.permissions["LightSwitchApplication:AddTech"];
+        
+        screen.findContentItem("ShowAddEditDepartment").isVisible = myapp.permissions["LightSwitchApplication:AddDepartment"];
+        
+        screen.findContentItem("ShowAddEditDeptHead").isVisible = myapp.permissions["LightSwitchApplication:AddDeptHead"];
 
-    screen.getCanAddHelpFile().then(function success() {
-        screen.findContentItem("ShowBrowseHelpFiles").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowBrowseHelpFiles").isVisible = false;
-    });
-
-    screen.getCanAddLocation().then(function success() {
-        screen.findContentItem("ShowAddEditLocation").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditLocation").isVisible = false;
-    });
-
-    screen.getCanAddKnowledgeBase().then(function success() {
-        screen.findContentItem("ShowAddEditKBItem").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditKBItem").isVisible = false;
-    });
-
-    screen.getCanAddOS().then(function success() {
-        screen.findContentItem("ShowAddEditOperatingSystem").isVisible = true;
-    }, function error() {
-        screen.findContentItem("ShowAddEditOperatingSystem").isVisible = false;
-    });
-
-    screen.getSecurityAdmin().then(function success() {
-        screen.findContentItem("SecurityAdministration").isVisible = true;
-    }, function error() {
-        screen.findContentItem("SecurityAdministration").isVisible = false;
+        screen.findContentItem("ShowBrowseHelpFiles").isVisible = myapp.permissions["LightSwitchApplication:AddHelpFile"];
+        
+        screen.findContentItem("ShowAddEditLocation").isVisible = myapp.permissions["LightSwitchApplication:AddLocation"];
+        
+        screen.findContentItem("ShowAddEditKBItem").isVisible = myapp.permissions["LightSwitchApplication:AddKnowledgeBase"];
+        
+        screen.findContentItem("ShowAddEditOperatingSystem").isVisible = myapp.permissions["LightSwitchApplication:AddOS"];
+        
+        screen.findContentItem("SecurityAdministration").isVisible = myapp.permissions["Microsoft.LightSwitch.Security:SecurityAdministration"];
     });
 };
 

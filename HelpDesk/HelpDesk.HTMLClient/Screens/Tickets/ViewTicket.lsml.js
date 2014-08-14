@@ -20,29 +20,13 @@ myapp.ViewTicket.DateSubmitted_postRender = function (element, contentItem) {
 
 myapp.ViewTicket.created = function (screen) {
     // Write code here.
-    screen.getCanUpdateTicket().then(function success() {
-        screen.findContentItem("EditTicket").isVisible = true;
-    }, function error() {
-        screen.findContentItem("EditTicket").isVisible = false;
-    });
+    screen.findContentItem("EditTicket").isVisible = myapp.permissions["LightSwitchApplication:UpdateTicket"];
 
-    screen.getCanDelTicket().then(function success() {
-        screen.findContentItem("DeleteTicket").isVisible = true;
-    }, function error() {
-        screen.findContentItem("DeleteTicket").isVisible = false;
-    });
+    screen.findContentItem("DeleteTicket").isVisible = myapp.permissions["LightSwitchApplication:DeleteTicket"];
 
-    screen.getCanAssignTicket().then(function success() {
-        screen.findContentItem("AssignTicket").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AssignTicket").isVisible = false;
-    });
+    screen.findContentItem("AssignTicket").isVisible = myapp.permissions["LightSwitchApplication:AssignTicket"];
 
-    screen.getCanCloseTicket().then(function success() {
-        screen.findContentItem("CloseTicket").isVisible = true;
-    }, function error() {
-        screen.findContentItem("CloseTicket").isVisible = false;
-    });
+    screen.findContentItem("CloseTicket").isVisible = myapp.permissions["LightSwitchApplication:UpdateTicket"];
 
 };
 

@@ -151,32 +151,6 @@
           <IsParameter />
         </ScreenProperty.Attributes>
       </ScreenProperty>
-      <ScreenCollectionProperty
-        Name="CanUpdateKnowledgeBase"
-        PageSize="45"
-        PropertyType="CollectionView$KnowledgeBase">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="CanUpdateKnowledgeBaseQuery"
-            ReturnType="KnowledgeBase*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="RCCHelpDeskInventoryData/Members[CanUpdateKnowledgeBase]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ViewKBItem/Properties[CanUpdateKnowledgeBase]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
   </Screen>
   <Application.Methods>
