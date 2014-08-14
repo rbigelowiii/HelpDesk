@@ -9,6 +9,10 @@
       <Configuration>Release</Configuration>
       <Platform>AnyCPU</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|AnyCPU">
+      <Configuration>Test</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
     <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
