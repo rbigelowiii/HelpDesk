@@ -10,7 +10,7 @@
       <SaveChangesTo
         EntityContainer="RCCHelpDeskInventoryData" />
       <DisplayName
-        Value="HelpFilesSet" />
+        Value="Help Files" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem

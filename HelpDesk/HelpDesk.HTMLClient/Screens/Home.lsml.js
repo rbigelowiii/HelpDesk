@@ -81,7 +81,7 @@ myapp.Home.EnterTicket_execute = function (screen) {
         }, afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
                 var newTicket = addEditScreen.Ticket;
-                myapp.showViewTicket(newTicket);
+                myapp.showViewTicket(newTicket,"BrowseOpenTickets");
             }
         }
     });
@@ -113,7 +113,7 @@ myapp.Home.SubmitTicket_execute = function (screen) {
             });
         }, afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
-                myapp.showViewTicket(addEditScreen.Ticket);
+                myapp.showViewTicket(addEditScreen.Ticket, "BrowseMyTickets");
             }
         }
     });
@@ -286,6 +286,5 @@ myapp.Home.ShowAddEditLocation_Tap_execute = function (screen) {
 };
 myapp.Home.SecurityAdministration_postRender = function (element, contentItem) {
     // Write code here.
-    //element.outerHTML = '<a href="http://triton-rwc1:83/Tickets/desktopclient" target="_blank"></a>';
-    $(element).find("div").wrap("<a href='http://triton-rwc1:83/Tickets/desktopclient' target='_blank'></a>")
+    $(element).find("div").wrap("<a href='http://triton-rwc1:83/Tickets/desktopclient' target='_blank'></a>");
 };

@@ -45,3 +45,7 @@ myapp.BrowseDesktops.SearchDesktops_ItemTap_execute = function (screen) {
         }
     });
 };
+myapp.BrowseDesktops.ExportToExcel_execute = function (screen) {
+    // Write code here.
+    
+};

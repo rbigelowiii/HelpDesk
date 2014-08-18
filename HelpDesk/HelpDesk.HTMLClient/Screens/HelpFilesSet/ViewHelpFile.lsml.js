@@ -1,6 +1,6 @@
 ﻿/// <reference path="~/GeneratedArtifacts/viewModel.js" />
 
-myapp.ViewHelpFiles.Details_postRender = function (element, contentItem) {
+myapp.ViewHelpFile.Details_postRender = function (element, contentItem) {
     // Write code here.
     var name = contentItem.screen.HelpFile.details.getModel()[':@SummaryProperty'].property.name;
     contentItem.dataBind("screen.HelpFile." + name, function (value) {
@@ -16,4 +16,12 @@ myapp.ViewHelpFile.Body_postRender = function (element, contentItem) {
 myapp.ViewHelpFile.created = function (screen) {
     // Write code here.
     screen.findContentItem("EditHelpFile").isVisible = myapp.permissions["LightSwitchApplication:UpdateHelpFile"];
+};
+myapp.ViewHelpFile.EditHelpFile_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditHelpFile(screen.HelpFile, {
+        afterClosed: function () {
+            myapp.showViewHelpFile(screen.HelpFile);
+        }
+    });
 };

@@ -74,15 +74,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <CallExpression
-                          Target="!module/Methods[showAddEditHelpFile]">
-                          <ArgumentExpression
-                            Parameter="HelpFile">
-                            <ChainExpression>
-                              <MemberExpression
-                                Member="ViewHelpFile/Properties[HelpFile]" />
-                            </ChainExpression>
-                          </ArgumentExpression>
-                        </CallExpression>
+                          Target="ViewHelpFile/Methods[EditHelpFile_Tap]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
@@ -92,7 +84,7 @@
                       <ChainExpression>
                         <ConstantExpression
                           Value="msls-edit"
-                          ResultType="Microsoft.LightSwitch:String" />
+                          ResultType=":String" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
@@ -142,6 +134,8 @@
           Name="dialogName"
           ParameterType=":String" />
       </ScreenMethod>
+      <ScreenMethod
+        Name="EditHelpFile_Tap" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
