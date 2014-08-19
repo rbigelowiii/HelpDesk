@@ -57,6 +57,7 @@
     <script type="text/javascript" src="Scripts/moment.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            msls.application.options.disableUrlScreenParameters = true;
             msls._run()
             .then(null, function failure(error) {
                 alert(error);

@@ -101,260 +101,8 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MinWidth]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="200"
-                          ResultType=":Double" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MaxWidth]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="400"
-                          ResultType=":Double" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="right"
-                Kind="Group">
-                <ContentItem
-                  Name="Desktop"
-                  IsHidden="True"
-                  Kind="Details"
-                  DataType="Desktop">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Ticket/Properties[Desktop]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RowTemplate"
-                    Kind="Details"
-                    DataType="Desktop">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <CallExpression
-                            Target="!module/Methods[showViewDesktop]">
-                            <ArgumentExpression
-                              Parameter="Desktop">
-                              <ChainExpression>
-                                <MemberExpression
-                                  Member="ViewTicket/Properties[Ticket]" />
-                                <MemberExpression
-                                  Member="Desktop" />
-                              </ChainExpression>
-                            </ArgumentExpression>
-                          </CallExpression>
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="Laptop"
-                  IsHidden="True"
-                  Kind="Details"
-                  DataType="Laptop">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Ticket/Properties[Laptop]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RowTemplate3"
-                    Kind="Details"
-                    DataType="Laptop">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <CallExpression
-                            Target="!module/Methods[showViewLaptop]">
-                            <ArgumentExpression
-                              Parameter="Laptop">
-                              <ChainExpression>
-                                <MemberExpression
-                                  Member="ViewTicket/Properties[Ticket]" />
-                                <MemberExpression
-                                  Member="Laptop" />
-                              </ChainExpression>
-                            </ArgumentExpression>
-                          </CallExpression>
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="Printer"
-                  IsHidden="True"
-                  Kind="Details"
-                  DataType="Printer">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Ticket/Properties[Printer]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RowTemplate4"
-                    Kind="Details"
-                    DataType="Printer">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <CallExpression
-                            Target="!module/Methods[showViewPrinter]">
-                            <ArgumentExpression
-                              Parameter="Printer">
-                              <ChainExpression>
-                                <MemberExpression
-                                  Member="ViewTicket/Properties[Ticket]" />
-                                <MemberExpression
-                                  Member="Printer" />
-                              </ChainExpression>
-                            </ArgumentExpression>
-                          </CallExpression>
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="Tablet"
-                  IsHidden="True"
-                  Kind="Details"
-                  DataType="Tablet">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Ticket/Properties[Tablet]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RowTemplate5"
-                    Kind="Details"
-                    DataType="Tablet">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <CallExpression
-                            Target="!module/Methods[showViewTablet]">
-                            <ArgumentExpression
-                              Parameter="Tablet">
-                              <ChainExpression>
-                                <MemberExpression
-                                  Member="ViewTicket/Properties[Ticket]" />
-                                <MemberExpression
-                                  Member="Tablet" />
-                              </ChainExpression>
-                            </ArgumentExpression>
-                          </CallExpression>
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="Tech"
-                  IsHidden="True"
-                  Kind="Details"
-                  DataType="Tech">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Ticket/Properties[Tech]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="RowTemplate6"
-                    Kind="Details"
-                    DataType="Tech">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <CallExpression
-                            Target="!module/Methods[showViewTech]">
-                            <ArgumentExpression
-                              Parameter="Tech">
-                              <ChainExpression>
-                                <MemberExpression
-                                  Member="ViewTicket/Properties[Ticket]" />
-                                <MemberExpression
-                                  Member="Tech" />
-                              </ChainExpression>
-                            </ArgumentExpression>
-                          </CallExpression>
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
                 <ContentItem
                   Name="EndUser"
-                  IsHidden="True"
                   Kind="Details"
                   DataType="EndUser">
                   <ContentItem.DataSource>
@@ -399,7 +147,6 @@
                 </ContentItem>
                 <ContentItem
                   Name="KnowledgeBase"
-                  IsHidden="True"
                   Kind="Details"
                   DataType="KnowledgeBase">
                   <ContentItem.DataSource>
@@ -434,6 +181,252 @@
                                   Member="ViewTicket/Properties[Ticket]" />
                                 <MemberExpression
                                   Member="KnowledgeBase" />
+                              </ChainExpression>
+                            </ArgumentExpression>
+                          </CallExpression>
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MinWidth]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="200"
+                          ResultType=":Double" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[MaxWidth]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="400"
+                          ResultType=":Double" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                Name="right"
+                Kind="Group">
+                <ContentItem
+                  Name="Desktop"
+                  Kind="Details"
+                  DataType="Desktop">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Ticket/Properties[Desktop]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RowTemplate"
+                    Kind="Details"
+                    DataType="Desktop">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression
+                            Target="!module/Methods[showViewDesktop]">
+                            <ArgumentExpression
+                              Parameter="Desktop">
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="ViewTicket/Properties[Ticket]" />
+                                <MemberExpression
+                                  Member="Desktop" />
+                              </ChainExpression>
+                            </ArgumentExpression>
+                          </CallExpression>
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  Name="Laptop"
+                  Kind="Details"
+                  DataType="Laptop">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Ticket/Properties[Laptop]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RowTemplate3"
+                    Kind="Details"
+                    DataType="Laptop">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression
+                            Target="!module/Methods[showViewLaptop]">
+                            <ArgumentExpression
+                              Parameter="Laptop">
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="ViewTicket/Properties[Ticket]" />
+                                <MemberExpression
+                                  Member="Laptop" />
+                              </ChainExpression>
+                            </ArgumentExpression>
+                          </CallExpression>
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  Name="Printer"
+                  Kind="Details"
+                  DataType="Printer">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Ticket/Properties[Printer]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RowTemplate4"
+                    Kind="Details"
+                    DataType="Printer">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression
+                            Target="!module/Methods[showViewPrinter]">
+                            <ArgumentExpression
+                              Parameter="Printer">
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="ViewTicket/Properties[Ticket]" />
+                                <MemberExpression
+                                  Member="Printer" />
+                              </ChainExpression>
+                            </ArgumentExpression>
+                          </CallExpression>
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  Name="Tablet"
+                  Kind="Details"
+                  DataType="Tablet">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Ticket/Properties[Tablet]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RowTemplate5"
+                    Kind="Details"
+                    DataType="Tablet">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression
+                            Target="!module/Methods[showViewTablet]">
+                            <ArgumentExpression
+                              Parameter="Tablet">
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="ViewTicket/Properties[Ticket]" />
+                                <MemberExpression
+                                  Member="Tablet" />
+                              </ChainExpression>
+                            </ArgumentExpression>
+                          </CallExpression>
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  Name="Tech"
+                  Kind="Details"
+                  DataType="Tech">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Ticket/Properties[Tech]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="RowTemplate6"
+                    Kind="Details"
+                    DataType="Tech">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression
+                            Target="!module/Methods[showViewTech]">
+                            <ArgumentExpression
+                              Parameter="Tech">
+                              <ChainExpression>
+                                <MemberExpression
+                                  Member="ViewTicket/Properties[Ticket]" />
+                                <MemberExpression
+                                  Member="Tech" />
                               </ChainExpression>
                             </ArgumentExpression>
                           </CallExpression>
@@ -590,16 +583,6 @@
                         <ConstantExpression
                           Value="FitToContent"
                           ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Height]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="50"
-                          ResultType=":Double" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>

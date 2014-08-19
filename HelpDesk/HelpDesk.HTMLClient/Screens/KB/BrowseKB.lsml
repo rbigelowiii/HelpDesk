@@ -10,7 +10,7 @@
       <SaveChangesTo
         EntityContainer="RCCHelpDeskInventoryData" />
       <DisplayName
-        Value="Knowledge Base" />
+        Value="KB" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -169,7 +169,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <ConstantExpression
-                          Value="msls-document"
+                          Value="msls-add"
                           ResultType=":String" />
                       </ChainExpression>
                     </ScreenExpressionTree>

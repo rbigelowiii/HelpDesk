@@ -22,65 +22,12 @@ myapp.ViewTicket.created = function (screen) {
     // Write code here.
     screen.findContentItem("EditTicket").isVisible = myapp.permissions["LightSwitchApplication:UpdateTicket"];
 
-    screen.getCanDelTicket().then(function success() {
-        screen.findContentItem("DeleteTicket").isVisible = true;
-    }, function error() {
-        screen.findContentItem("DeleteTicket").isVisible = false;
-    });
+    screen.findContentItem("DeleteTicket").isVisible = myapp.permissions["LightSwitchApplication:DeleteTicket"];
 
-    screen.getCanAssignTicket().then(function success() {
-        screen.findContentItem("AssignTicket").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AssignTicket").isVisible = false;
-    });
+    screen.findContentItem("AssignTicket").isVisible = myapp.permissions["LightSwitchApplication:AssignTicket"];
 
-    screen.getCanCloseTicket().then(function success() {
-        screen.findContentItem("CloseTicket").isVisible = true;
-    }, function error() {
-        screen.findContentItem("CloseTicket").isVisible = false;
-    });
+    screen.findContentItem("CloseTicket").isVisible = myapp.permissions["LightSwitchApplication:UpdateTicket"];
 
-    });
-
-    if (screen.Ticket.EndUser) {
-        screen.findContentItem("EndUser").isVisible = true;
-    } else {
-        screen.findContentItem("EndUser").isVisible = false;
-    }
-
-    if (screen.Ticket.KnowledgeBase) {
-        screen.findContentItem("KnowledgeBase").isVisible = true;
-    } else {
-        screen.findContentItem("KnowledgeBase").isVisible = false;
-    }
-    if (screen.Ticket.Desktop) {
-        screen.findContentItem("Desktop").isVisible = true;
-    } else {
-        screen.findContentItem("Desktop").isVisible = false;
-    }
-    if (screen.Ticket.Laptop) {
-        screen.findContentItem("Laptop").isVisible = true;
-    } else {
-        screen.findContentItem("Laptop").isVisible = false;
-    }
-    if (screen.Ticket.Printer) {
-        screen.findContentItem("Printer").isVisible = true;
-    } else {
-        screen.findContentItem("Printer").isVisible = false;
-    }
-    if (screen.Ticket.Tablet) {
-        screen.findContentItem("Tablet").isVisible = true;
-    } else {
-        screen.findContentItem("Tablet").isVisible = false;
-    }
-    if (screen.Ticket.Tech) {
-        screen.findContentItem("Tech").isVisible = true;
-    } else {
-        screen.findContentItem("Tech").isVisible = false;
-    }
-    if (screen.CallingScreen == "") {
-        screen.CallingScreen = "Home";
-    }
 };
 
 myapp.ViewTicket.Comments_postRender = function (element, contentItem) {
@@ -114,7 +61,6 @@ myapp.ViewTicket.AssignTicket_execute = function (screen) {
 myapp.ViewTicket.TechAssigned_execute = function (screen) {
     // Write code here.
     screen.Ticket.Tech = screen.Techs.selectedItem;
-    screen.Ticket.Status = "Assigned";
     screen.details.dataWorkspace.RCCHelpDeskInventoryData.saveChanges().then(function () {
         screen.closePopup("SelectTech");
         myapp.showScreen(screen.CallingScreen);
@@ -147,32 +93,4 @@ myapp.ViewTicket.ShowAddEditTicketComment_Tap_execute = function (screen) {
             myapp.showViewTicket(screen.Ticket, screen.CallingScreen);
         }
     });
-};
-myapp.ViewTicket.EndUser_postRender = function (element, contentItem) {
-    // Write code here.
-    $(element).find("div").css("color", "blue");
-};
-myapp.ViewTicket.KnowledgeBase_postRender = function (element, contentItem) {
-    // Write code here.
-    $(element).find("div").css("color", "blue");
-};
-myapp.ViewTicket.Desktop_postRender = function (element, contentItem) {
-    // Write code here.
-    $(element).find("div").css("color", "blue");
-};
-myapp.ViewTicket.Laptop_postRender = function (element, contentItem) {
-    // Write code here.
-    $(element).find("div").css("color", "blue");
-};
-myapp.ViewTicket.Printer_postRender = function (element, contentItem) {
-    // Write code here.
-    $(element).find("div").css("color", "blue");
-};
-myapp.ViewTicket.Tablet_postRender = function (element, contentItem) {
-    // Write code here.
-    $(element).find("div").css("color", "blue");
-};
-myapp.ViewTicket.Tech_postRender = function (element, contentItem) {
-    // Write code here.
-    $(element).find("div").css("color", "blue");
 };

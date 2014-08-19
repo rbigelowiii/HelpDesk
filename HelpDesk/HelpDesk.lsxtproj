@@ -22,7 +22,7 @@
     <ApplicationServerType>IIS</ApplicationServerType>
     <AuthenticationType>Windows</AuthenticationType>
     <ApplicationName>HelpDesk</ApplicationName>
-    <AssemblyVersion>4.0.24.0</AssemblyVersion>
+    <AssemblyVersion>4.0.25.0</AssemblyVersion>
     <ServiceDefinitionFile>ServiceDefinition.csdef</ServiceDefinitionFile>
     <ServiceConfigurationFile>ServiceConfiguration.cscfg</ServiceConfigurationFile>
     <SqlExpressInstanceName>(LocalDB)\v11.0</SqlExpressInstanceName>
@@ -66,10 +66,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release</OutputPath>
     <UseDesignTimeFeatures>false</UseDesignTimeFeatures>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Test' ">
-    <UseDesignTimeFeatures>false</UseDesignTimeFeatures>
-    <OutputPath>bin\Test\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <ServiceDefinition Include="ServiceDefinition.csdef">
