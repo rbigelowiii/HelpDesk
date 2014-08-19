@@ -22,7 +22,7 @@
     <ApplicationServerType>IIS</ApplicationServerType>
     <AuthenticationType>Windows</AuthenticationType>
     <ApplicationName>HelpDesk</ApplicationName>
-    <AssemblyVersion>4.0.35.0</AssemblyVersion>
+    <AssemblyVersion>4.0.24.0</AssemblyVersion>
     <ServiceDefinitionFile>ServiceDefinition.csdef</ServiceDefinitionFile>
     <ServiceConfigurationFile>ServiceConfiguration.cscfg</ServiceConfigurationFile>
     <SqlExpressInstanceName>(LocalDB)\v11.0</SqlExpressInstanceName>
