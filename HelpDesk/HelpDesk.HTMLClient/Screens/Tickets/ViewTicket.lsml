@@ -705,7 +705,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <ConstantExpression
-                          Value="msls-decline"
+                          Value="msls-accept"
                           ResultType=":String" />
                       </ChainExpression>
                     </ScreenExpressionTree>

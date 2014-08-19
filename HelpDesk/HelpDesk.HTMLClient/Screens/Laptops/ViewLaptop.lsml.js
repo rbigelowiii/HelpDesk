@@ -49,13 +49,24 @@ myapp.ViewLaptop.DateSubmitted_postRender = function (element, contentItem) {
 };
 myapp.ViewLaptop.created = function (screen) {
     // Write code here.
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
-
+    screen.getCanDelDevice().then(function success() {
+        screen.findContentItem("Delete").isVisible = true;
+    }, function error() {
+        screen.findContentItem("Delete").isVisible = false;
+    });
     if (!screen.Laptop.Recycled) {
-        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
+        screen.getCanRecycleDevice().then(function success() {
+            screen.findContentItem("Recycle").isVisible = true;
+        }, function error() {
+            screen.findContentItem("Recycle").isVisible = false;
+        });
     }
 
-    screen.findContentItem("EditLaptop").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
+    screen.getCanUpdateDevice().then(function success() {
+        screen.findContentItem("EditLaptop").isVisible = true;
+    }, function error() {
+        screen.findContentItem("EditLaptop").isVisible = false;
+    });
 
     if (screen.Laptop.Brand.indexOf("Dell") != -1) {
         screen.findContentItem("SupportURL").isVisible = true;

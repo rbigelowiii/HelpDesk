@@ -43,5 +43,9 @@ myapp.BrowseKB.SearchKB_ItemTap_execute = function (screen) {
 };
 myapp.BrowseKB.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddKBItem").isVisible = myapp.permissions["LightSwitchApplication:AddKnowledgeBase"];
+    screen.getCanAddKnowledgeBase().then(function success() {
+        screen.findContentItem("AddKBItem").isVisible = true;
+    }, function error() {
+        screen.findContentItem("AddKBItem").isVisible = false;
+    });
 };

@@ -2,7 +2,11 @@
 
 myapp.BrowseLocations.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddLocation").isVisible = myapp.permissions["LightSwitchApplication:AddLocation"];
+    screen.getCanAddLocation().then(function success() {
+        screen.findContentItem("AddLocation").isVisible = true;
+    }, function error() {
+        screen.findContentItem("AddLocation").isVisible = false;
+    });
 };
 myapp.BrowseLocations.SearchText_postRender = function (element, contentItem) {
     // Write code here.

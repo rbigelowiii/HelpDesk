@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
     <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
     <NoWarn>1522</NoWarn>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -94,13 +98,20 @@
     <Reference Include="System.Data">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.3.0.2\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization">
       <ProjectCritical>True</ProjectCritical>
     </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml">
       <ProjectCritical>True</ProjectCritical>
@@ -212,6 +223,10 @@
     <Compile Include="GetUserName.ashx.cs">
       <DependentUpon>GetUserName.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Perms\UserPermissionsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +235,7 @@
     </LightSwitchModel>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\Departments.lsml" />
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\DeptHeads.lsml" />
@@ -238,108 +254,6 @@
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\TicketComments.lsml" />
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\Tickets.lsml" />
     <LightSwitchModel Include="Properties\DataSources\RCCHelpDeskInventoryData.lsml" />
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\ViewTechOnlyScreens.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddDept.lsml">
-      <DependentUpon>Departments.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateDept.lsml">
-      <DependentUpon>Departments.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDelDept.lsml">
-      <DependentUpon>Departments.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddDeptHead.lsml">
-      <DependentUpon>DeptHeads.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDelDeptHead.lsml">
-      <DependentUpon>DeptHeads.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateDeptHead.lsml">
-      <DependentUpon>DeptHeads.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddEndUser.lsml">
-      <DependentUpon>EndUsers.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddDevice.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateDevice.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDelDevice.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateEndUser.lsml">
-      <DependentUpon>EndUsers.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDelEndUser.lsml">
-      <DependentUpon>EndUsers.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddHelpFile.lsml">
-      <DependentUpon>HelpFiles.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateHelpFile.lsml">
-      <DependentUpon>HelpFiles.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDeleteHelpFile.lsml">
-      <DependentUpon>HelpFiles.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddKnowledgeBase.lsml">
-      <DependentUpon>KnowledgeBases.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateKnowledgeBase.lsml">
-      <DependentUpon>KnowledgeBases.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDeleteKnowledgeBase.lsml">
-      <DependentUpon>KnowledgeBases.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddLocation.lsml">
-      <DependentUpon>Locations.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateLocation.lsml">
-      <DependentUpon>Locations.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDeleteLocation.lsml">
-      <DependentUpon>Locations.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddOS.lsml">
-      <DependentUpon>OperatingSystems.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateOS.lsml">
-      <DependentUpon>OperatingSystems.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDeleteOS.lsml">
-      <DependentUpon>OperatingSystems.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAddTech.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateTech.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDelTech.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateComment.lsml">
-      <DependentUpon>TicketComments.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDelComment.lsml">
-      <DependentUpon>TicketComments.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanAssignTicket.lsml">
-      <DependentUpon>Tickets.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanCloseTicket.lsml">
-      <DependentUpon>Tickets.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanUpdateTicket.lsml">
-      <DependentUpon>Tickets.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanDelTicket.lsml">
-      <DependentUpon>Tickets.lsml</DependentUpon>
-    </LightSwitchModel>
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\SearchDepartments.lsml">
       <DependentUpon>Departments.lsml</DependentUpon>
     </LightSwitchModel>
@@ -386,23 +300,17 @@
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\HelpFile.lsml">
       <DependentUpon>HelpFiles.lsml</DependentUpon>
     </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\RecycledDesktops.lsml">
-      <DependentUpon>Desktops.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\CanRecycleDevice.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
-    </LightSwitchModel>
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\RecycledLaptops.lsml">
       <DependentUpon>Laptops.lsml</DependentUpon>
-    </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\RecycledPrinters.lsml">
-      <DependentUpon>Printers.lsml</DependentUpon>
     </LightSwitchModel>
     <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\RecycledTablets.lsml">
       <DependentUpon>Tablets.lsml</DependentUpon>
     </LightSwitchModel>
-    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\SecurityAdmin.lsml">
-      <DependentUpon>Techs.lsml</DependentUpon>
+    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\RecycledDesktops.lsml">
+      <DependentUpon>Desktops.lsml</DependentUpon>
+    </LightSwitchModel>
+    <LightSwitchModel Include="DataSources\RCCHelpDeskInventoryData\RecycledPrinters.lsml">
+      <DependentUpon>Printers.lsml</DependentUpon>
     </LightSwitchModel>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

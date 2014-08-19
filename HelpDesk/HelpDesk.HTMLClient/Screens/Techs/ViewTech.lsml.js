@@ -11,7 +11,11 @@ myapp.ViewTech.Details_postRender = function (element, contentItem) {
 
 myapp.ViewTech.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditTech").isVisible = myapp.permissions["LightSwitchApplication:UpdateTech"];
+    screen.getCanUpdateTech().then(function success() {
+        screen.findContentItem("EditTech").isVisible = true;
+    }, function error() {
+        screen.findContentItem("EditTech").isVisible = false;
+    });
 };
 myapp.ViewTech.Delete_execute = function (screen) {
     // Write code here.

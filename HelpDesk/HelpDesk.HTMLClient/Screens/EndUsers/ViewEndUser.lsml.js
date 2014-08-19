@@ -20,19 +20,27 @@ myapp.ViewEndUser.DateSubmitted_postRender = function (element, contentItem) {
 
 myapp.ViewEndUser.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditEndUser").isVisible = myapp.permissions["LightSwitchApplication:UpdateEndUser"];
+    screen.getCanUpdateEndUser().then(function success() {
+        screen.findContentItem("EditEndUser").isVisible = true;
+    }, function error() {
+        screen.findContentItem("EditEndUser").isVisible = false;
+    });
 
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteEndUser"];
+    screen.getCanDelEndUser().then(function success() {
+        screen.findContentItem("Delete").isVisible = true;
+    }, function error() {
+        screen.findContentItem("Delete").isVisible = false;
+    });
 
-    if (myapp.permissions["LightSwitchApplication:AddDevice"]) {
+    screen.getCanAddDevice().then(function success() {
         screen.findContentItem("ShowAddEditDesktop").isVisible = true;
         screen.findContentItem("ShowAddEditLaptop").isVisible = true;
         screen.findContentItem("ShowAddEditTablet").isVisible = true;
-    } else {
+    }, function error() {
         screen.findContentItem("ShowAddEditDesktop").isVisible = false;
         screen.findContentItem("ShowAddEditLaptop").isVisible = false;
         screen.findContentItem("ShowAddEditTablet").isVisible = false;
-    }
+    });
 };
 myapp.ViewEndUser.Delete_execute = function (screen) {
     // Write code here.

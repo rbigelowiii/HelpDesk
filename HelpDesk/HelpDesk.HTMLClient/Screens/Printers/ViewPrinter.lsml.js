@@ -38,14 +38,24 @@ function CallGetUserName(operation) {
 
 myapp.ViewPrinter.created = function (screen) {
     // Write code here.
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
-
+    screen.getCanDelDevice().then(function success() {
+        screen.findContentItem("Delete").isVisible = true;
+    }, function error() {
+        screen.findContentItem("Delete").isVisible = false;
+    });
     if (!screen.Printer.Recycled) {
-        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
+        screen.getCanRecycleDevice().then(function success() {
+            screen.findContentItem("Recycle").isVisible = true;
+        }, function error() {
+            screen.findContentItem("Recycle").isVisible = false;
+        });
     }
 
-    screen.findContentItem("EditPrinter").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
-    
+    screen.getCanUpdateDevice().then(function success() {
+        screen.findContentItem("EditPrinter").isVisible = true;
+    }, function error() {
+        screen.findContentItem("EditPrinter").isVisible = false;
+    });
 };
 myapp.ViewPrinter.Recycle_execute = function (screen) {
     // Write code here.
