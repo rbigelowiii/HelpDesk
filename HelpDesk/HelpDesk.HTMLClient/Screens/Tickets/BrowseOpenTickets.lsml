@@ -9,6 +9,8 @@
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="RCCHelpDeskInventoryData" />
+      <DisplayName
+        Value="Open Tickets" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -29,7 +31,7 @@
               View="Microsoft.LightSwitch.MobileWeb:Table">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="OpenTickets" />
+                  Value=" " />
               </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>

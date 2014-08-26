@@ -22,11 +22,7 @@ myapp.BrowseLaptops.SearchText_postRender = function (element, contentItem) {
 };
 myapp.BrowseLaptops.created = function (screen) {
     // Write code here.
-    screen.getCanAddDevice().then(function success() {
-        screen.findContentItem("AddLaptop").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AddLaptop").isVisible = false;
-    });
+    screen.findContentItem("AddLaptop").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
 };
 myapp.BrowseLaptops.AddLaptop_Tap_execute = function (screen) {
     // Write code here.

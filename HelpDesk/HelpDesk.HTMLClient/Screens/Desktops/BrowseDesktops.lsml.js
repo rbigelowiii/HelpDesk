@@ -20,11 +20,15 @@ myapp.BrowseDesktops.SearchText_postRender = function (element, contentItem) {
         });
     };
 };
-myapp.BrowseDesktops.created = function (screen) {
+myapp.BrowseDesktops.SearchDesktops_ItemTap_execute = function (screen) {
     // Write code here.
-    screen.findContentItem("AddDesktop").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+    myapp.showViewDesktop(screen.SearchDesktops.selectedItem, {
+        afterClosed: function () {
+            screen.SearchDesktops.load();
+        }
+    });
 };
-myapp.BrowseDesktops.AddDesktop_Tap_execute = function (screen) {
+myapp.BrowseDesktops.ShowAddEditDesktop_Tap_execute = function (screen) {
     // Write code here.
     myapp.showAddEditDesktop(null, {
         beforeShown: function (addEditScreen) {
@@ -37,11 +41,7 @@ myapp.BrowseDesktops.AddDesktop_Tap_execute = function (screen) {
         }
     });
 };
-myapp.BrowseDesktops.SearchDesktops_ItemTap_execute = function (screen) {
+myapp.BrowseDesktops.ShowAddEditDesktop_Tap_canExecute = function (screen) {
     // Write code here.
-    myapp.showViewDesktop(screen.SearchDesktops.selectedItem, {
-        afterClosed: function () {
-            screen.SearchDesktops.load();
-        }
-    });
+    return myapp.permissions["LightSwitchApplication:AddDevice"];
 };

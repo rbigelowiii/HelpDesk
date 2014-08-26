@@ -185,9 +185,6 @@
     <Content Include="Screens\TicketComments\ViewTicketComment.lsml.js">
       <DependentUpon>ViewTicketComment.lsml</DependentUpon>
     </Content>
-    <Content Include="Screens\Tickets\AddEditTicket.lsml.js">
-      <DependentUpon>AddEditTicket.lsml</DependentUpon>
-    </Content>
     <Content Include="Screens\Tickets\BrowseMyTickets.lsml.js">
       <DependentUpon>BrowseMyTickets.lsml</DependentUpon>
     </Content>
@@ -304,10 +301,10 @@
     <LightSwitchModel Include="Screens\Techs\ViewTech.lsml" />
     <LightSwitchModel Include="Screens\TicketComments\AddEditTicketComment.lsml" />
     <LightSwitchModel Include="Screens\TicketComments\ViewTicketComment.lsml" />
-    <LightSwitchModel Include="Screens\Tickets\AddEditTicket.lsml" />
     <LightSwitchModel Include="Screens\Tickets\BrowseMyTickets.lsml" />
     <LightSwitchModel Include="Screens\Tickets\BrowseOpenTickets.lsml" />
     <LightSwitchModel Include="Screens\Tickets\BrowseTickets.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\EnterTicket.lsml" />
     <LightSwitchModel Include="Screens\Tickets\ViewTicket.lsml" />
   </ItemGroup>
   <ItemGroup>

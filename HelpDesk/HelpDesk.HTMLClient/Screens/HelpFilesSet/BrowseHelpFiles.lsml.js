@@ -23,9 +23,5 @@ myapp.BrowseHelpFiles.HelpFiles_ItemTap_execute = function (screen) {
 };
 myapp.BrowseHelpFiles.created = function (screen) {
     // Write code here.
-    screen.getCanAddHelpFile().then(function success() {
-        screen.findContentItem("AddHelpFile").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AddHelpFile").isVisible = false;
-    });
+    screen.findContentItem("AddHelpFile").isVisible = myapp.permissions["LightSwitchApplication:AddHelpFile"];
 };

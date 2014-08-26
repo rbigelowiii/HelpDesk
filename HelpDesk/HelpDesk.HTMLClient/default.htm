@@ -10,7 +10,7 @@
     <meta name="msapplication-TileColor" content="#0072c6" />
     <link rel="icon" href="Content/Images/user-logo.ico" type="image/x-icon" />
 
-    <title>HelpDesk</title>
+    <title>Help Desk</title>
 
     <script type="text/javascript">
         // Work around viewport sizing issue in IE 10 on Windows Phone 8
@@ -56,13 +56,19 @@
     <script type="text/javascript" src="Scripts/jHtmlArea-0.8.min.js"></script>
     <script type="text/javascript" src="Scripts/moment.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            msls.application.options.disableUrlScreenParameters = true;
+    $(document).ready(function () {
+        var supported = $.mobile.gradeA();
+        if (!supported) {
+            $(".ui-icon-loading").hide();
+            $(".ui-bottom-load").append('<div class="msls-header">This browser is not supported. Please upgrade to a more recent, <a href="http://jquerymobile.com/gbs/">supported</a/div>');
+        } else {
             msls._run()
-            .then(null, function failure(error) {
-                alert(error);
-            });
-        });
+           .then(null, function failure(error) {
+               alert(error);
+           });
+        }
+    });
     </script>
+
 </body>
 </html>

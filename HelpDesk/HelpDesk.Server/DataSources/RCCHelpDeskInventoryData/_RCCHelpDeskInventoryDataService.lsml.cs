@@ -8,7 +8,7 @@ namespace LightSwitchApplication
 {
     public partial class RCCHelpDeskInventoryDataService
     {
-        
+
         partial void MyTickets_PreprocessQuery(string SearchText, string Category, string Priority, string Status, DateTime? BeginDate, DateTime? EndDate, ref IQueryable<Ticket> query)
         {
             String currentUserName = this.Application.User.Name.Split(new string[] { "\\" }, System.StringSplitOptions.None)[1];

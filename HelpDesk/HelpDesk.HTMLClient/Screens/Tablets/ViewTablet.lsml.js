@@ -75,24 +75,12 @@ myapp.ViewTablet.DateSubmitted_postRender = function (element, contentItem) {
 };
 myapp.ViewTablet.created = function (screen) {
     // Write code here.
-    screen.getCanUpdateDevice().then(function success() {
-        screen.findContentItem("EditTablet").isVisible = true;
-    }, function error() {
-        screen.findContentItem("EditTablet").isVisible = false;
-    });
+    screen.findContentItem("EditTablet").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
 
     if (!screen.Tablet.Recycled) {
-        screen.getCanRecycleDevice().then(function success() {
-            screen.findContentItem("Recycle").isVisible = true;
-        }, function error() {
-            screen.findContentItem("Recycle").isVisible = false;
-        });
+        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
     }
 
-    screen.getCanDelDevice().then(function success() {
-        screen.findContentItem("Delete").isVisible = true;
-    }, function error() {
-        screen.findContentItem("Delete").isVisible = false;
-    });
+    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
 
 };

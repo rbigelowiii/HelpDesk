@@ -23,11 +23,8 @@ myapp.BrowseDepartments.SearchDepartments_ItemTap_execute = function (screen) {
 };
 myapp.BrowseDepartments.created = function (screen) {
     // Write code here.
-    screen.getCanAddDept().then(function success() {
-        screen.findContentItem("AddDepartment").isVisible = true;
-    }, function error() {
-        screen.findContentItem("AddDepartment").isVisible = false;
-    });
+    screen.findContentItem("AddDepartment").isVisible = myapp.permissions["LightSwitchApplication:AddDepartment"];
+    
 };
 myapp.BrowseDepartments.SearchText_postRender = function (element, contentItem) {
     // Write code here.

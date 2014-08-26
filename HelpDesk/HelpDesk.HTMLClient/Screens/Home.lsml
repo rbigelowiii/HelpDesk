@@ -256,6 +256,16 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootCommand/Properties[Icon]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="msls-question"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
                 </ContentItem.PropertySources>
               </ContentItem>
             </ContentItem.CommandItems>
@@ -263,11 +273,12 @@
           <ContentItem
             Name="Inventory"
             IsHidden="True"
-            Kind="Group">
+            Kind="Group"
+            View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
             <ContentItem
               Name="left"
               Kind="Group"
-              View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+              View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
               <ContentItem
                 Name="ShowBrowseDesktops"
                 Kind="Command">
@@ -325,11 +336,23 @@
                   </ControlPropertySource>
                 </ContentItem.PropertySources>
               </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[WidthSizingMode]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="FitToContent"
+                        ResultType=":String" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
               Name="right"
               Kind="Group"
-              View="Microsoft.LightSwitch.MobileWeb:ColumnsLayout">
+              View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
               <ContentItem
                 Name="ShowBrowseTablets"
                 Kind="Command">
@@ -387,6 +410,18 @@
                   </ControlPropertySource>
                 </ContentItem.PropertySources>
               </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[WidthSizingMode]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        Value="FitToContent"
+                        ResultType=":String" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
@@ -569,6 +604,82 @@
             Name="Users"
             IsHidden="True"
             Kind="Group">
+            <ContentItem
+              Name="ShowBrowseEndUsers"
+              Kind="Command">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="End Users" />
+              </ContentItem.Attributes>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="!module/Methods[showBrowseEndUsers]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
+              Name="ShowBrowseTechs"
+              Kind="Command">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Techs" />
+              </ContentItem.Attributes>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="!module/Methods[showBrowseTechs]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
+              Name="ShowBrowseDepartments"
+              Kind="Command">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Departments" />
+              </ContentItem.Attributes>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="!module/Methods[showBrowseDepartments]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
+              Name="ShowBrowseDeptHeads"
+              Kind="Command">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Dept Heads" />
+              </ContentItem.Attributes>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="!module/Methods[showBrowseDeptHeads]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
             <ContentItem.CommandItems>
               <ContentItem
                 Name="ShowAddEditEndUser"
@@ -804,7 +915,7 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="RCCHelpDeskInventoryData/Members[HelpFile]">
+              Target="RCCHelpDeskInventoryData/Members[HelpFiles_SingleOrDefault]">
               <ArgumentExpression
                 Parameter="ScreenName">
                 <ChainExpression>

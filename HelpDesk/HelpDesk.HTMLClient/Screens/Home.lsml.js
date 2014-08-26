@@ -4,64 +4,22 @@
 
 myapp.Home.created = function (screen) {
     // Write code here.
+    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
+        myapp.currentUser = PromiseResult;
+    });
+
+    
     $.getJSON("../Perms/UserPermissions/", function (data) {
         myapp.permissions = data;
     }).then(function () {
+        screen.findContentItem("Inventory").isVisible = myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"];
+        screen.findContentItem("Users").isVisible = myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"];
 
         if (myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"]) {
             screen.details.displayName = "RCC Help Desk Ticketing & Inventory System";
-            screen.ScreenName = screen.details.displayName;
-            screen.findContentItem("ShowBrowseTickets").isVisible = true;
-            screen.findContentItem("Inventory").isVisible = true;
-            screen.findContentItem("Users").isVisible = true;
-            screen.findContentItem("EnterTicket").isVisible = true;
-            screen.findContentItem("SubmitTicket").isVisible = false;
-            screen.findContentItem("ShowBrowseMyTickets").isVisible = false;
-            screen.findContentItem("ShowBrowseOpenTickets").isVisible = true;
-            screen.findContentItem("ShowBrowseKB").isVisible = true;
-        } else {
-            screen.details.displayName = "RCC Help Desk Ticketing System";
-            screen.ScreenName = screen.details.displayName;
-            screen.findContentItem("ShowBrowseTickets").isVisible = false;
-            screen.findContentItem("Inventory").isVisible = false;
-            screen.findContentItem("Users").isVisible = false;
-            screen.findContentItem("EnterTicket").isVisible = false;
-            screen.findContentItem("SubmitTicket").isVisible = true;
-            screen.findContentItem("ShowBrowseMyTickets").isVisible = true;
-            screen.findContentItem("ShowBrowseOpenTickets").isVisible = false;
-            screen.findContentItem("ShowBrowseKB").isVisible = true;
         }
 
-        if (myapp.permissions["LightSwitchApplication:AddDevice"]) {
-
-            screen.findContentItem("ShowAddEditDesktop").isVisible = true;
-            screen.findContentItem("ShowAddEditLaptop").isVisible = true;
-            screen.findContentItem("ShowAddEditPrinter").isVisible = true;
-            screen.findContentItem("ShowAddEditTablet").isVisible = true;
-        } else {
-            screen.findContentItem("ShowAddEditDesktop").isVisible = false;
-            screen.findContentItem("ShowAddEditLaptop").isVisible = false;
-            screen.findContentItem("ShowAddEditPrinter").isVisible = false;
-            screen.findContentItem("ShowAddEditTablet").isVisible = false;
-        }
-
-        screen.findContentItem("ShowAddEditEndUser").isVisible = myapp.permissions["LightSwitchApplication:AddEndUser"];
-
-        screen.findContentItem("ShowAddEditTech").isVisible = myapp.permissions["LightSwitchApplication:AddTech"];
-        
-        screen.findContentItem("ShowAddEditDepartment").isVisible = myapp.permissions["LightSwitchApplication:AddDepartment"];
-        
-        screen.findContentItem("ShowAddEditDeptHead").isVisible = myapp.permissions["LightSwitchApplication:AddDeptHead"];
-
-        screen.findContentItem("ShowBrowseHelpFiles").isVisible = myapp.permissions["LightSwitchApplication:AddHelpFile"];
-        
-        screen.findContentItem("ShowAddEditLocation").isVisible = myapp.permissions["LightSwitchApplication:AddLocation"];
-        
-        screen.findContentItem("ShowAddEditKBItem").isVisible = myapp.permissions["LightSwitchApplication:AddKnowledgeBase"];
-        
-        screen.findContentItem("ShowAddEditOperatingSystem").isVisible = myapp.permissions["LightSwitchApplication:AddOS"];
-        
-        screen.findContentItem("SecurityAdministration").isVisible = myapp.permissions["Microsoft.LightSwitch.Security:SecurityAdministration"];
+        screen.ScreenName = screen.details.displayName;
     });
 };
 
@@ -71,13 +29,11 @@ myapp.Home.EnterTicket_execute = function (screen) {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;
-            msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs_SingleOrDefault(PromiseResult)
+            activeDataWorkspace.RCCHelpDeskInventoryData.Techs_SingleOrDefault(myapp.currentUser)
                     .execute()
                     .then(function (result) {
                         newTicket.Tech = result.results[0];
                     });
-            });
         }, afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
                 var newTicket = addEditScreen.Ticket;
@@ -104,13 +60,11 @@ myapp.Home.SubmitTicket_execute = function (screen) {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;
-            msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(PromiseResult)
+            myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(myapp.currentUser)
                     .execute()
                     .then(function (result) {
                         newTicket.EndUser = result.results[0];
                     });
-            });
         }, afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
                 myapp.showViewTicket(addEditScreen.Ticket);
@@ -201,8 +155,8 @@ myapp.Home.ShowAddEditTech_Tap_execute = function (screen) {
 };
 myapp.Home.Tickets_postRender = function (element, contentItem) {
     // Write code here.
-    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-        myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(PromiseResult)
+    
+    myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(myapp.currentUser)
             .execute()
             .then(function (result) {
                 $(element).closest("[data-role='page']").find(
@@ -212,18 +166,16 @@ myapp.Home.Tickets_postRender = function (element, contentItem) {
                 myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers.addNew();
                 myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
             });
-    });
 
-    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-        myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs_SingleOrDefault(PromiseResult)
+    myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs_SingleOrDefault(myapp.currentUser)
             .execute()
-            .then(function (result) {
+            .then(function () {
             }, function () {
                 myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs.addNew();
                 myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
             });
-    });
 };
+
 myapp.Home.ShowAddEditDepartment_Tap_execute = function (screen) {
     // Write code here.
     myapp.showAddEditDepartment(null, {
@@ -286,6 +238,93 @@ myapp.Home.ShowAddEditLocation_Tap_execute = function (screen) {
 };
 myapp.Home.SecurityAdministration_postRender = function (element, contentItem) {
     // Write code here.
-    //element.outerHTML = '<a href="http://triton-rwc1:83/Tickets/desktopclient" target="_blank"></a>';
     $(element).find("div").wrap("<a href='http://triton-rwc1:83/Tickets/desktopclient' target='_blank'></a>")
+};
+myapp.Home.ShowBrowseTickets_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showBrowseTickets();
+};
+myapp.Home.ShowBrowseOpenTickets_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showBrowseOpenTickets();
+};
+myapp.Home.ShowBrowseHelpFiles_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showBrowseHelpFiles();
+};
+myapp.Home.SecurityAdministration_execute = function (screen) {
+    // Write code here.
+
+};
+myapp.Home.EnterTicket_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"];
+};
+myapp.Home.SecurityAdministration_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["Microsoft.LightSwitch.Security:SecurityAdministration"];
+};
+myapp.Home.ShowAddEditDepartment_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddDepartment"];
+};
+myapp.Home.ShowAddEditDeptHead_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddDeptHead"];
+};
+myapp.Home.ShowAddEditDesktop_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddDevice"];
+};
+myapp.Home.ShowAddEditEndUser_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddEndUser"];
+};
+myapp.Home.ShowAddEditKBItem_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddKnowledgeBase"];
+};
+myapp.Home.ShowAddEditLaptop_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddDevice"];
+};
+myapp.Home.ShowAddEditLocation_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddLocation"];
+};
+myapp.Home.ShowAddEditOperatingSystem_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddOS"];
+};
+myapp.Home.ShowAddEditPrinter_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddDevice"];
+};
+myapp.Home.ShowAddEditTablet_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddDevice"];
+};
+myapp.Home.ShowAddEditTech_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddTech"];
+};
+myapp.Home.ShowBrowseHelpFiles_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:AddHelpFile"];
+};
+myapp.Home.ShowBrowseMyTickets_Tap_canExecute = function (screen) {
+    // Write code here.
+    return !myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"];
+};
+myapp.Home.ShowBrowseOpenTickets_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"];
+};
+myapp.Home.ShowBrowseTickets_Tap_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"];
+};
+myapp.Home.SubmitTicket_canExecute = function (screen) {
+    // Write code here.
+    return !myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"];
 };

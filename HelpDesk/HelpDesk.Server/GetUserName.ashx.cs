@@ -18,8 +18,7 @@ namespace LightSwitchApplication
             using (var serverContext = ServerApplicationContext.CreateContext())
             {
                 context.Response.ContentType = "text/plain";
-                context.Response.Write(ServerApplicationContext.Current.Application.User.Name.Split(new string[] { "\\" }, System.StringSplitOptions.None)[1]);
-                //context.Response.Write("RBigelow");
+                context.Response.Write(serverContext.Application.User.Name.Split(new string[] { "\\" }, System.StringSplitOptions.None)[1]);
             }
         }
 

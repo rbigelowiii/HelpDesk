@@ -255,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screens\" />
+    <Folder Include="UserCode\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <_ClientBuildFile Include="default.htm">
