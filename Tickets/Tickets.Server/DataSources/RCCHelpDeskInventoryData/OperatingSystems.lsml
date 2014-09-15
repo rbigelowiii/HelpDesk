@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="OperatingSystem">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="OSName"
+        PropertyType=":String">
+        <KeyProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="OSPlatform"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="OSVersion"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="x64OS"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Desktops"
+        Association="FKDesktopOS"
+        FromEnd="OperatingSystems"
+        ToEnd="Desktops" />
+      <NavigationProperty
+        Name="Laptops"
+        Association="FKLaptopOS"
+        FromEnd="OperatingSystems"
+        ToEnd="Laptops" />
+      <NavigationProperty
+        Name="Tablets"
+        Association="FKTabletOS"
+        FromEnd="OperatingSystems"
+        ToEnd="Tablets" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FKDesktopOS">
+    <AssociationEnd
+      Name="OperatingSystems"
+      EntityType="OperatingSystem">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Desktops"
+      Multiplicity="Many"
+      EntityType="Desktop" />
+  </Association>
+  <Association
+    Name="FKLaptopOS">
+    <AssociationEnd
+      Name="OperatingSystems"
+      EntityType="OperatingSystem">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Laptops"
+      Multiplicity="Many"
+      EntityType="Laptop" />
+  </Association>
+  <Association
+    Name="FKTabletOS">
+    <AssociationEnd
+      Name="OperatingSystems"
+      EntityType="OperatingSystem">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Tablets"
+      Multiplicity="Many"
+      EntityType="Tablet" />
+  </Association>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="OperatingSystems"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="OperatingSystem" />
+    <AssociationSet
+      Name="FKDesktopOS"
+      Association="FKDesktopOS">
+      <AssociationSetEnd
+        Name="OperatingSystems"
+        EntitySet="OperatingSystems" />
+      <AssociationSetEnd
+        Name="Desktops"
+        EntitySet="Desktops" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FKLaptopOS"
+      Association="FKLaptopOS">
+      <AssociationSetEnd
+        Name="OperatingSystems"
+        EntitySet="OperatingSystems" />
+      <AssociationSetEnd
+        Name="Laptops"
+        EntitySet="Laptops" />
+    </AssociationSet>
+    <AssociationSet
+      Name="FKTabletOS"
+      Association="FKTabletOS">
+      <AssociationSetEnd
+        Name="OperatingSystems"
+        EntitySet="OperatingSystems" />
+      <AssociationSetEnd
+        Name="Tablets"
+        EntitySet="Tablets" />
+    </AssociationSet>
+    <QueryOperation
+      Name="OperatingSystems_Single"
+      ReturnType="OperatingSystem">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="OSName" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="OSName" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="OperatingSystems" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="OSName"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'OSName' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="OperatingSystems_SingleOrDefault"
+      ReturnType="OperatingSystem">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="OSName" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="OSName" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="OperatingSystems" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="OSName"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'OSName' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="RCCHelpDeskInventoryDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="OperatingSystems">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="OperatingSystems" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="OSName"
+          Nullable="False"
+          Type="varchar"
+          Property="OperatingSystem/Properties[OSName]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="OSPlatform"
+          Nullable="True"
+          Type="varchar"
+          Property="OperatingSystem/Properties[OSPlatform]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="OSVersion"
+          Nullable="True"
+          Type="varchar"
+          Property="OperatingSystem/Properties[OSVersion]" />
+        <SsdlProperty
+          Name="x64OS"
+          Nullable="True"
+          Type="bit"
+          Property="OperatingSystem/Properties[x64OS]" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FKDesktopOS">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FKDesktopOS" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FKDesktopOS]/Members[OperatingSystems]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="OSName" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FKDesktopOS]/Members[Desktops]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="OperatingSystem" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FKLaptopOS">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FKLaptopOS" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FKLaptopOS]/Members[OperatingSystems]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="OSName" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FKLaptopOS]/Members[Laptops]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="OperatingSystem" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="FKTabletOS">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FKTabletOS" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FKTabletOS]/Members[OperatingSystems]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="OSName" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FKTabletOS]/Members[Tablets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="OperatingSystem" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
+    <UseDesignTimeFeatures>true</UseDesignTimeFeatures>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7cfa1060-9467-42e0-9b0b-1ea223bd1507}</ProjectGuid>
+    <LightSwitchVersion>v4.5</LightSwitchVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.props" />
+  <PropertyGroup>
+    <!--TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion-->
+    <LightSwitchProjectTypeV45>Client</LightSwitchProjectTypeV45>
+    <LightSwitchProjectSubType>JScript</LightSwitchProjectSubType>
+    <ProjectTypeGuids>{8BB0C5E8-0616-4F60-8E55-A43933E57E9C};{262852c6-cd72-467d-83fe-5eeb1973a190}</ProjectTypeGuids>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <SupportedCultures>en-US</SupportedCultures>
+    <DefaultPlatform>AnyCPU</DefaultPlatform>
+    <ClientProjectName>HTMLClient</ClientProjectName>
+    <ServerProjectReference>..\Tickets.Server\Tickets.Server.csproj</ServerProjectReference>
+    <LightSwitchDisplayName>HTMLClient</LightSwitchDisplayName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\dark-theme-2.5.1.css" />
+    <Content Include="Content\dotnetlore-ls-blue.min.css" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\icons-18-black.png" />
+    <Content Include="Content\Images\icons-18-white.png" />
+    <Content Include="Content\Images\icons-36-black.png" />
+    <Content Include="Content\Images\icons-36-white.png" />
+    <Content Include="Content\Images\msls-black-icons-18.png" />
+    <Content Include="Content\Images\msls-black-icons-36.png" />
+    <Content Include="Content\Images\msls-loader-dark.gif" />
+    <Content Include="Content\Images\msls-loader-light.gif" />
+    <Content Include="Content\Images\msls-white-icons-18.png" />
+    <Content Include="Content\Images\msls-white-icons-36.png" />
+    <Content Include="Content\Images\msls-blue-icons-36.png" />
+    <Content Include="Content\Images\Roy.jpg" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.ColorPickerMenu.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.Editor.css" />
+    <Content Include="Content\jHtmlArea\jHtmlArea.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
+    <Content Include="Content\jHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
+    <Content Include="Content\jquery.mobile-1.3.0.css" />
+    <Content Include="Content\jquery.mobile-1.3.0.min.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.0.css" />
+    <Content Include="Content\jquery.mobile.structure-1.3.0.min.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.0.css" />
+    <Content Include="Content\jquery.mobile.theme-1.3.0.min.css" />
+    <Content Include="Content\light-theme-2.5.1.css" />
+    <Content Include="Content\msls-2.5.1.css" />
+    <Content Include="Content\msls-2.5.1.min.css" />
+    <Content Include="Content\msls-dark-2.5.1.css" />
+    <Content Include="Content\msls-light-2.5.1.css" />
+    <Content Include="default.htm" />
+    <Content Include="Content\user-customization.css" />
+    <Content Include="Content\Images\user-logo.png" />
+    <Content Include="Content\Images\user-logo.ico" />
+    <Content Include="Content\Images\user-logo-144.png" />
+    <Content Include="Content\Images\user-splash-screen.png" />
+    <Content Include="Content\Web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Screens\Departments\BrowseDepartments.lsml.js">
+      <DependentUpon>BrowseDepartments.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Departments\ViewDepartment.lsml.js">
+      <DependentUpon>ViewDepartment.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\DeptHeads\BrowseDeptHeads.lsml.js">
+      <DependentUpon>BrowseDeptHeads.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\DeptHeads\ViewDeptHead.lsml.js">
+      <DependentUpon>ViewDeptHead.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Desktops\BrowseDesktops.lsml.js">
+      <DependentUpon>BrowseDesktops.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Desktops\BrowseRecycledDesktops.lsml.js">
+      <DependentUpon>BrowseRecycledDesktops.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Desktops\ViewDesktop.lsml.js">
+      <DependentUpon>ViewDesktop.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\EndUsers\BrowseEndUsers.lsml.js">
+      <DependentUpon>BrowseEndUsers.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\EndUsers\ViewEndUser.lsml.js">
+      <DependentUpon>ViewEndUser.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\HelpFiles\AddEditHelpFile.lsml.js">
+      <DependentUpon>AddEditHelpFile.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\HelpFiles\BrowseHelpFiles.lsml.js">
+      <DependentUpon>BrowseHelpFiles.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\HelpFiles\HelpDialog.lsml.js">
+      <DependentUpon>HelpDialog.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\HelpFiles\ViewHelpFile.lsml.js">
+      <DependentUpon>ViewHelpFile.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Home.lsml.js">
+      <DependentUpon>Home.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\KB\AddEditKBItem.lsml.js">
+      <DependentUpon>AddEditKBItem.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\KB\BrowseKB.lsml.js">
+      <DependentUpon>BrowseKB.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\KB\ViewKBItem.lsml.js">
+      <DependentUpon>ViewKBItem.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Laptops\BrowseLaptops.lsml.js">
+      <DependentUpon>BrowseLaptops.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Laptops\BrowseRecycledLaptops.lsml.js">
+      <DependentUpon>BrowseRecycledLaptops.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Laptops\ViewLaptop.lsml.js">
+      <DependentUpon>ViewLaptop.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Locations\BrowseLocations.lsml.js">
+      <DependentUpon>BrowseLocations.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Locations\ViewLocation.lsml.js">
+      <DependentUpon>ViewLocation.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\OperatingSystems\BrowseOperatingSystems.lsml.js">
+      <DependentUpon>BrowseOperatingSystems.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\OperatingSystems\ViewOperatingSystem.lsml.js">
+      <DependentUpon>ViewOperatingSystem.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Printers\BrowsePrinters.lsml.js">
+      <DependentUpon>BrowsePrinters.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Printers\BrowseRecycledPrinters.lsml.js">
+      <DependentUpon>BrowseRecycledPrinters.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Printers\ViewPrinter.lsml.js">
+      <DependentUpon>ViewPrinter.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tablets\BrowseRecycledTablets.lsml.js">
+      <DependentUpon>BrowseRecycledTablets.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tablets\BrowseTablets.lsml.js">
+      <DependentUpon>BrowseTablets.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tablets\ViewTablet.lsml.js">
+      <DependentUpon>ViewTablet.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Techs\BrowseTechs.lsml.js">
+      <DependentUpon>BrowseTechs.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Techs\ViewTech.lsml.js">
+      <DependentUpon>ViewTech.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\TicketComments\AddEditTicketComment.lsml.js">
+      <DependentUpon>AddEditTicketComment.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\TicketComments\ViewTicketComment.lsml.js">
+      <DependentUpon>ViewTicketComment.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tickets\AddTicket.lsml.js">
+      <DependentUpon>AddTicket.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tickets\BrowseMyTickets.lsml.js">
+      <DependentUpon>BrowseMyTickets.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tickets\BrowseOpenTickets.lsml.js">
+      <DependentUpon>BrowseOpenTickets.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tickets\BrowseTickets.lsml.js">
+      <DependentUpon>BrowseTickets.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tickets\EditTicket.lsml.js">
+      <DependentUpon>EditTicket.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tickets\SubmitTicket.lsml.js">
+      <DependentUpon>SubmitTicket.lsml</DependentUpon>
+    </Content>
+    <Content Include="Screens\Tickets\ViewTicket.lsml.js">
+      <DependentUpon>ViewTicket.lsml</DependentUpon>
+    </Content>
+    <Content Include="Scripts\datajs-1.1.3.js" />
+    <Content Include="Scripts\datajs-1.1.3.min.js" />
+    <Content Include="Scripts\jHtmlArea-0.8.js" />
+    <Content Include="Scripts\jHtmlArea-0.8.min.js" />
+    <Content Include="Scripts\jHtmlArea.ColorPickerMenu-0.8.js" />
+    <Content Include="Scripts\jHtmlArea.ColorPickerMenu-0.8.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.0-vsdoc.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.0.js" />
+    <Content Include="Scripts\jquery.mobile-1.3.0.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\msls.js" />
+    <Content Include="Scripts\msls-2.5.1-vsdoc.js" />
+    <Content Include="Scripts\msls-2.5.1.js" />
+    <Content Include="Scripts\msls-2.5.1.min.js" />
+    <Content Include="Scripts\winjs-1.0.js" />
+    <Content Include="Scripts\winjs-1.0.min.js" />
+    <Content Include="UserCode\Desktop.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\Ticket.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+    <Content Include="UserCode\TicketComment.lsml.js">
+      <DependentUpon>
+      </DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceMetadataReference Include="..\Tickets.Server\Tickets.Server.csproj">
+      <Visible>false</Visible>
+    </ServiceMetadataReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LightSwitchModel Include="Properties\Client.lsml">
+      <ProjectCritical>true</ProjectCritical>
+    </LightSwitchModel>
+    <LightSwitchModel Include="Properties\Proxies.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Departments.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\DeptHeads.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Desktops.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\EndUsers.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\HelpFiles.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\KnowledgeBases.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Laptops.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Locations.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\OperatingSystems.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Printers.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Tablets.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Techs.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\TicketComments.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Tickets.lsml" />
+    <LightSwitchModel Include="Screens\Departments\AddEditDepartment.lsml" />
+    <LightSwitchModel Include="Screens\Departments\BrowseDepartments.lsml" />
+    <LightSwitchModel Include="Screens\Departments\ViewDepartment.lsml" />
+    <LightSwitchModel Include="Screens\DeptHeads\AddEditDeptHead.lsml" />
+    <LightSwitchModel Include="Screens\DeptHeads\BrowseDeptHeads.lsml" />
+    <LightSwitchModel Include="Screens\DeptHeads\ViewDeptHead.lsml" />
+    <LightSwitchModel Include="Screens\Desktops\AddEditDesktop.lsml" />
+    <LightSwitchModel Include="Screens\Desktops\BrowseDesktops.lsml" />
+    <LightSwitchModel Include="Screens\Desktops\BrowseRecycledDesktops.lsml" />
+    <LightSwitchModel Include="Screens\Desktops\ViewDesktop.lsml" />
+    <LightSwitchModel Include="Screens\EndUsers\AddEditEndUser.lsml" />
+    <LightSwitchModel Include="Screens\EndUsers\BrowseEndUsers.lsml" />
+    <LightSwitchModel Include="Screens\EndUsers\ViewEndUser.lsml" />
+    <LightSwitchModel Include="Screens\HelpFiles\AddEditHelpFile.lsml" />
+    <LightSwitchModel Include="Screens\HelpFiles\BrowseHelpFiles.lsml" />
+    <LightSwitchModel Include="Screens\HelpFiles\HelpDialog.lsml" />
+    <LightSwitchModel Include="Screens\HelpFiles\ViewHelpFile.lsml" />
+    <LightSwitchModel Include="Screens\Home.lsml" />
+    <LightSwitchModel Include="Screens\KB\AddEditKBItem.lsml" />
+    <LightSwitchModel Include="Screens\KB\BrowseKB.lsml" />
+    <LightSwitchModel Include="Screens\KB\ViewKBItem.lsml" />
+    <LightSwitchModel Include="Screens\Laptops\AddEditLaptop.lsml" />
+    <LightSwitchModel Include="Screens\Laptops\BrowseLaptops.lsml" />
+    <LightSwitchModel Include="Screens\Laptops\BrowseRecycledLaptops.lsml" />
+    <LightSwitchModel Include="Screens\Laptops\ViewLaptop.lsml" />
+    <LightSwitchModel Include="Screens\Locations\AddEditLocation.lsml" />
+    <LightSwitchModel Include="Screens\Locations\BrowseLocations.lsml" />
+    <LightSwitchModel Include="Screens\Locations\ViewLocation.lsml" />
+    <LightSwitchModel Include="Screens\OperatingSystems\AddEditOperatingSystem.lsml" />
+    <LightSwitchModel Include="Screens\OperatingSystems\BrowseOperatingSystems.lsml" />
+    <LightSwitchModel Include="Screens\OperatingSystems\ViewOperatingSystem.lsml" />
+    <LightSwitchModel Include="Screens\Printers\AddEditPrinter.lsml" />
+    <LightSwitchModel Include="Screens\Printers\BrowsePrinters.lsml" />
+    <LightSwitchModel Include="Screens\Printers\BrowseRecycledPrinters.lsml" />
+    <LightSwitchModel Include="Screens\Printers\ViewPrinter.lsml" />
+    <LightSwitchModel Include="Screens\Tablets\AddEditTablet.lsml" />
+    <LightSwitchModel Include="Screens\Tablets\BrowseRecycledTablets.lsml" />
+    <LightSwitchModel Include="Screens\Tablets\BrowseTablets.lsml" />
+    <LightSwitchModel Include="Screens\Tablets\ViewTablet.lsml" />
+    <LightSwitchModel Include="Screens\Techs\AddEditTech.lsml" />
+    <LightSwitchModel Include="Screens\Techs\BrowseTechs.lsml" />
+    <LightSwitchModel Include="Screens\Techs\ViewTech.lsml" />
+    <LightSwitchModel Include="Screens\TicketComments\AddEditTicketComment.lsml" />
+    <LightSwitchModel Include="Screens\TicketComments\ViewTicketComment.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\AddTicket.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\BrowseMyTickets.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\BrowseOpenTickets.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\BrowseTickets.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\EditTicket.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\SubmitTicket.lsml" />
+    <LightSwitchModel Include="Screens\Tickets\ViewTicket.lsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ClientBuildFile Include="GeneratedArtifacts\model.json">
+      <SubFolder>Content\Resources\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\data.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\viewModel.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\usercode.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+    <_ClientBuildFile Include="GeneratedArtifacts\resources.js">
+      <SubFolder>Scripts\Generated</SubFolder>
+    </_ClientBuildFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\MobileClient\Microsoft.LightSwitch.MobileClient.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\v4.5\Microsoft.LightSwitch.Build.Tasks.targets" />
+  <!-- Redefine the targets to be empty -->
+  <Target Name="GetXapOutputFile" />
+  <PropertyGroup>
+    <AppxPackage>false</AppxPackage>
+    <AppxGeneratePriEnabled>false</AppxGeneratePriEnabled>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

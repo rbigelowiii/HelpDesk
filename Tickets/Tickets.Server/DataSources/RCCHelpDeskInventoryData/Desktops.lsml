@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Desktop">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Serial"
+        PropertyType=":String">
+        <KeyProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="CPU"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="50" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RAM"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="HDD"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="WallPort"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="10" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ComputerName"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ShipDate"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="WarrantyExp"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Brand"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Model"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+          <AnsiConstraint />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastVerified"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <DateTimeConstraint
+            Precision="3"
+            PreserveSeconds="True" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Recycled"
+        PropertyType=":Boolean?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Tickets"
+        Association="FK_Tickets_Desktop"
+        FromEnd="Desktops"
+        ToEnd="Tickets" />
+      <NavigationProperty
+        Name="EndUser1"
+        Association="FKDesktopEndUser"
+        FromEnd="Desktops"
+        ToEnd="EndUsers" />
+      <NavigationProperty
+        Name="Location"
+        Association="FKDesktopLocation"
+        FromEnd="Desktops"
+        ToEnd="Locations" />
+      <NavigationProperty
+        Name="OperatingSystem1"
+        Association="FKDesktopOS"
+        FromEnd="Desktops"
+        ToEnd="OperatingSystems" />
+      <EntityProperty
+        Name="LocationName"
+        IsReadOnly="True"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Computed />
+          <NotSearchable />
+          <NotSortable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="FK_Tickets_Desktop">
+    <AssociationEnd
+      Name="Desktops"
+      EntityType="Desktop">
+      <AssociationEnd.Attributes>
+        <DeleteRule />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Tickets"
+      Multiplicity="Many"
+      EntityType="Ticket" />
+  </Association>
+  <EntityContainer
+    Name="RCCHelpDeskInventoryData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Desktops"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Desktop" />
+    <AssociationSet
+      Name="FK_Tickets_Desktop"
+      Association="FK_Tickets_Desktop">
+      <AssociationSetEnd
+        Name="Desktops"
+        EntitySet="Desktops" />
+      <AssociationSetEnd
+        Name="Tickets"
+        EntitySet="Tickets" />
+    </AssociationSet>
+    <QueryOperation
+      Name="Desktops_Single"
+      ReturnType="Desktop">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Desktops" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Desktops_SingleOrDefault"
+      ReturnType="Desktop">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Serial" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Serial" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Desktops" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Serial"
+        ParameterType="Microsoft.LightSwitch:String?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Serial' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  </EntityContainer>
+  <DataService
+    Name="RCCHelpDeskInventoryDataDataService">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Desktops">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet
+          Schema="dbo"
+          Table="Desktops" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Serial"
+          Nullable="False"
+          Type="varchar"
+          Property="Desktop/Properties[Serial]" />
+        <SsdlProperty
+          MaxLength="50"
+          Name="CPU"
+          Nullable="True"
+          Type="varchar"
+          Property="Desktop/Properties[CPU]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="RAM"
+          Nullable="True"
+          Type="varchar"
+          Property="Desktop/Properties[RAM]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="HDD"
+          Nullable="True"
+          Type="varchar"
+          Property="Desktop/Properties[HDD]" />
+        <SsdlProperty
+          MaxLength="10"
+          Name="WallPort"
+          Nullable="True"
+          Type="varchar"
+          Property="Desktop/Properties[WallPort]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="ComputerName"
+          Nullable="True"
+          Type="varchar"
+          Property="Desktop/Properties[ComputerName]" />
+        <SsdlProperty
+          Name="ShipDate"
+          Nullable="True"
+          Type="datetime"
+          Property="Desktop/Properties[ShipDate]" />
+        <SsdlProperty
+          Name="WarrantyExp"
+          Nullable="True"
+          Type="datetime"
+          Property="Desktop/Properties[WarrantyExp]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Brand"
+          Nullable="True"
+          Type="varchar"
+          Property="Desktop/Properties[Brand]" />
+        <SsdlProperty
+          MaxLength="20"
+          Name="Model"
+          Nullable="True"
+          Type="varchar"
+          Property="Desktop/Properties[Model]" />
+        <SsdlProperty
+          Name="LastVerified"
+          Nullable="True"
+          Type="datetime"
+          Property="Desktop/Properties[LastVerified]" />
+        <SsdlProperty
+          Name="Recycled"
+          Nullable="True"
+          Type="bit"
+          Property="Desktop/Properties[Recycled]" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="EndUser"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="EndUser" />
+        <SsdlForeignKeyProperty
+          MaxLength="3"
+          Name="Campus"
+          Nullable="True"
+          Type="char"
+          PropertyName="Campus" />
+        <SsdlForeignKeyProperty
+          MaxLength="5"
+          Name="Building"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Building" />
+        <SsdlForeignKeyProperty
+          MaxLength="5"
+          Name="Room"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="Room" />
+        <SsdlForeignKeyProperty
+          MaxLength="20"
+          Name="OperatingSystem"
+          Nullable="True"
+          Type="varchar"
+          PropertyName="OperatingSystem" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="FK_Tickets_Desktop">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="FK_Tickets_Desktop" />
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Desktop]/Members[Desktops]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="RCCHelpDeskInventoryData/Members[FK_Tickets_Desktop]/Members[Tickets]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Desktop_Serial" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>
