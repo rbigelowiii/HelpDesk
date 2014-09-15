@@ -28,7 +28,9 @@ myapp.AddEditTicketComment.Comments_postRender = function (element, contentItem)
 };
 myapp.AddEditTicketComment.beforeApplyChanges = function (screen) {
     // Write code here.
-    screen.TicketComment.Comments = $("textarea").htmlarea("html");
+    screen.TicketComment.Comments = $("textarea").htmlarea("html")
+        .replace("&nbsp;", "&#160;")
+        .replace("<br>", "<br/>");
 };
 myapp.AddEditTicketComment.Details_postRender = function (element, contentItem) {
     // Write code here.
