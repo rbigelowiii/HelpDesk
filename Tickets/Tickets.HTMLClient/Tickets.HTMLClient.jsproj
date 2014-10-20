@@ -86,6 +86,9 @@
     <Content Include="Screens\DeptHeads\ViewDeptHead.lsml.js">
       <DependentUpon>ViewDeptHead.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\Desktops\AddEditDesktop.lsml.js">
+      <DependentUpon>AddEditDesktop.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\Desktops\BrowseDesktops.lsml.js">
       <DependentUpon>BrowseDesktops.lsml</DependentUpon>
     </Content>

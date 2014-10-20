@@ -22,7 +22,7 @@
     <ApplicationServerType>IIS</ApplicationServerType>
     <AuthenticationType>Windows</AuthenticationType>
     <ApplicationName>RCC Help Desk Ticketing Administration</ApplicationName>
-    <AssemblyVersion>4.4.15.0</AssemblyVersion>
+    <AssemblyVersion>4.4.22.0</AssemblyVersion>
     <ServiceDefinitionFile>ServiceDefinition.csdef</ServiceDefinitionFile>
     <ServiceConfigurationFile>ServiceConfiguration.cscfg</ServiceConfigurationFile>
     <SqlExpressInstanceName>(LocalDB)\v11.0</SqlExpressInstanceName>

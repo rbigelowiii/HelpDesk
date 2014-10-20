@@ -226,6 +226,9 @@
     <Compile Include="DataSources\RCCHelpDeskInventoryData\Desktop.lsml.cs">
       <DependentUpon>Desktops.lsml</DependentUpon>
     </Compile>
+    <Compile Include="DataSources\RCCHelpDeskInventoryData\Printer.lsml.cs">
+      <DependentUpon>Printers.lsml</DependentUpon>
+    </Compile>
     <Compile Include="DataSources\RCCHelpDeskInventoryData\_RCCHelpDeskInventoryDataService.lsml.cs" />
     <Compile Include="Reports\ExportToWordController.cs" />
     <Compile Include="GetUserName.ashx.cs">

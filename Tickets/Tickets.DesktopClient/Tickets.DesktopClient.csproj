@@ -233,6 +233,9 @@
     <Compile Include="..\Tickets.Server\DataSources\RCCHelpDeskInventoryData\Desktop.lsml.cs">
       <Link>UserCode\Shared\Desktop.lsml.cs</Link>
     </Compile>
+    <Compile Include="..\Tickets.Server\DataSources\RCCHelpDeskInventoryData\Printer.lsml.cs">
+      <Link>UserCode\Shared\Printer.lsml.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +248,7 @@
     <LightSwitchModel Include="Properties\Proxies.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Locations.lsml" />
     <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Desktops.lsml" />
+    <LightSwitchModel Include="Properties\RCCHelpDeskInventoryData\Printers.lsml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screens\" />
