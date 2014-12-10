@@ -21,5 +21,9 @@ myapp.ViewKBItem.ArticleText_postRender = function (element, contentItem) {
 
 myapp.ViewKBItem.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditKBItem").isVisible = myapp.permissions["LightSwitchApplication:UpdateKnowledgeBase"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditKBItem").isVisible = myapp.permissions["LightSwitchApplication:UpdateKnowledgeBase"];
+    });
 };

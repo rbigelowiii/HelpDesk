@@ -17,14 +17,18 @@ myapp.ViewDepartment.Details_postRender = function (element, contentItem) {
 
 myapp.ViewDepartment.created = function (screen) {
     // Write code here.
-    if(myapp.permissions["LightSwitchApplication:UpdateDepartment"]) {
-        screen.findContentItem("EditDepartment").isVisible = true;
-        screen.findContentItem("ShowAddEditEndUser").isVisible = true;
-    }else{
-        screen.findContentItem("EditDepartment").isVisible = false;
-        screen.findContentItem("ShowAddEditEndUser").isVisible = false;
-    }
-    screen.DeptHeadLabel = "Department Head";
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        if (myapp.permissions["LightSwitchApplication:UpdateDepartment"]) {
+            screen.findContentItem("EditDepartment").isVisible = true;
+            screen.findContentItem("ShowAddEditEndUser").isVisible = true;
+        } else {
+            screen.findContentItem("EditDepartment").isVisible = false;
+            screen.findContentItem("ShowAddEditEndUser").isVisible = false;
+        }
+        screen.DeptHeadLabel = "Department Head";
+    });
 };
 myapp.ViewDepartment.EndUsers1_ItemTap_execute = function (screen) {
     // Write code here.

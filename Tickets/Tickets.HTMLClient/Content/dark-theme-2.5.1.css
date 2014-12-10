@@ -252,8 +252,8 @@ a.ui-link-inherit {
 /* Interaction cues
 -----------------------------------------------------------------------------------------------------------*/
 .ui-disabled {
-	filter: Alpha(Opacity=30);
-	opacity: .3;
+	filter: Alpha(Opacity=100);
+	opacity: 1;
 	zoom: 1;
 }
 .ui-disabled,

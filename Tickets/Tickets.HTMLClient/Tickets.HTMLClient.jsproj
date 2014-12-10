@@ -86,6 +86,9 @@
     <Content Include="Screens\DeptHeads\ViewDeptHead.lsml.js">
       <DependentUpon>ViewDeptHead.lsml</DependentUpon>
     </Content>
+    <Content Include="Screens\Desktops\AddDesktopShipment.lsml.js">
+      <DependentUpon>AddDesktopShipment.lsml</DependentUpon>
+    </Content>
     <Content Include="Screens\Desktops\AddEditDesktop.lsml.js">
       <DependentUpon>AddEditDesktop.lsml</DependentUpon>
     </Content>
@@ -265,6 +268,7 @@
     <LightSwitchModel Include="Screens\DeptHeads\AddEditDeptHead.lsml" />
     <LightSwitchModel Include="Screens\DeptHeads\BrowseDeptHeads.lsml" />
     <LightSwitchModel Include="Screens\DeptHeads\ViewDeptHead.lsml" />
+    <LightSwitchModel Include="Screens\Desktops\AddDesktopShipment.lsml" />
     <LightSwitchModel Include="Screens\Desktops\AddEditDesktop.lsml" />
     <LightSwitchModel Include="Screens\Desktops\BrowseDesktops.lsml" />
     <LightSwitchModel Include="Screens\Desktops\BrowseRecycledDesktops.lsml" />

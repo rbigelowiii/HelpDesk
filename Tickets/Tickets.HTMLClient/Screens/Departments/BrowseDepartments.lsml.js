@@ -23,8 +23,12 @@ myapp.BrowseDepartments.SearchDepartments_ItemTap_execute = function (screen) {
 };
 myapp.BrowseDepartments.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddDepartment").isVisible = myapp.permissions["LightSwitchApplication:AddDepartment"];
-    screen.ScreenName = screen.details.displayName;
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddDepartment").isVisible = myapp.permissions["LightSwitchApplication:AddDepartment"];
+        screen.ScreenName = screen.details.displayName;
+    });
 };
 myapp.BrowseDepartments.SearchText_postRender = function (element, contentItem) {
     // Write code here.

@@ -22,7 +22,11 @@ myapp.BrowseEndUsers.SearchText_postRender = function (element, contentItem) {
 };
 myapp.BrowseEndUsers.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddEndUser").isVisible = myapp.permissions["LightSwitchApplication:AddEndUser"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddEndUser").isVisible = myapp.permissions["LightSwitchApplication:AddEndUser"];
+    });
 };
 myapp.BrowseEndUsers.AddEndUser_Tap_execute = function (screen) {
     // Write code here.

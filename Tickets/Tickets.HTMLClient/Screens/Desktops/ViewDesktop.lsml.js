@@ -49,18 +49,34 @@ myapp.ViewDesktop.DateSubmitted_postRender = function (element, contentItem) {
 };
 myapp.ViewDesktop.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditDesktop").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditDesktop").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
 
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplicationDeleteDevice"];
-    
-    if (!screen.Desktop.Recycled) {
-        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
-    }
+        screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplicationDeleteDevice"];
+
+        if (!screen.Desktop.Recycled) {
+            screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
+        }
+    });
 
     if (screen.Desktop.Brand.indexOf("Dell") != -1) {
         screen.findContentItem("SupportURL").isVisible = true;
         screen.SupportURL = "http://www.dell.com/support/my-support/us/en/04/product-support/servicetag/" + screen.Desktop.Serial;
     }
+    screen.Brand = true;
+    screen.ComputerName = true;
+    screen.CPU = true;
+    screen.EndUser = true;
+    screen.HDD = true;
+    screen.Location = true;
+    screen.Model = true;
+    screen.OS = true;
+    screen.RAM = true;
+    screen.Serial = true;
+    screen.ShipDate = true;
+    screen.WarrantyExp = true;
 };
 myapp.ViewDesktop.Recycle_execute = function (screen) {
     // Write code here.
@@ -78,7 +94,7 @@ myapp.ViewDesktop.Delete_execute = function (screen) {
 };
 myapp.ViewDesktop.ShowAddEditTicket_Tap_execute = function (screen) {
     // Write code here.
-    myapp.showAddEditTicket(null, {
+    myapp.showAddTicket(null, {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;
@@ -113,4 +129,35 @@ function CallGetUserName(operation) {
 myapp.ViewDesktop.SupportURL_postRender = function (element, contentItem) {
     // Write code here.
     element.innerHTML = '<a href="' + contentItem.screen.SupportURL + '" target="_blank">' + contentItem.screen.SupportURL + '</a>';
+};
+myapp.ViewDesktop.DetailReport_canExecute = function (screen) {
+    // Write code here.
+    return myapp.permissions["LightSwitchApplication:GenerateReport"];
+};
+myapp.ViewDesktop.DetailReport_execute = function (screen) {
+    // Write code here.
+    screen.showPopup("ReportFields");
+};
+myapp.ViewDesktop.PopupName_postRender = function (element, contentItem) {
+    // Write code here.
+    element.textContent = "Select Fields to include in report";
+};
+myapp.ViewDesktop.GenerateReport_execute = function (screen) {
+    // Write code here.
+    var fieldList = "";
+    if (screen.Brand) { fieldList = fieldList.concat("&fields=Brand"); }
+    if (screen.ComputerName) { fieldList = fieldList.concat("&fields=ComputerName"); }
+    if (screen.CPU) { fieldList = fieldList.concat("&fields=CPU"); }
+    if (screen.EndUser) { fieldList = fieldList.concat("&fields=EndUser1"); }
+    if (screen.HDD) { fieldList = fieldList.concat("&fields=HDD"); }
+    if (screen.Location) { fieldList = fieldList.concat("&fields=LocationName"); }
+    if (screen.Model) { fieldList = fieldList.concat("&fields=Model"); }
+    if (screen.OS) { fieldList = fieldList.concat("&fields=OperatingSystem1"); }
+    if (screen.RAM) { fieldList = fieldList.concat("&fields=RAM"); }
+    if (screen.Serial) { fieldList = fieldList.concat("&fields=Serial"); }
+    if (screen.ShipDate) { fieldList = fieldList.concat("&fields=ShipDate"); }
+    if (screen.WarrantyExp) { fieldList = fieldList.concat("&fields=WarrantyExp"); }
+
+    window.open("..//reports/ExportToWord/Desktops/" + screen.Desktop.Serial + "?" + fieldList);
+    screen.closePopup();
 };

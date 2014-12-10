@@ -22,7 +22,11 @@ myapp.BrowseTablets.SearchText_postRender = function (element, contentItem) {
 };
 myapp.BrowseTablets.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddTablet").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddTablet").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+    });
 };
 myapp.BrowseTablets.AddTablet_Tap_execute = function (screen) {
     // Write code here.

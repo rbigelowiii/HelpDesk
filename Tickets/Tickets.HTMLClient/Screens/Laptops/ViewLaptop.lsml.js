@@ -55,13 +55,17 @@ myapp.ViewLaptop.DateSubmitted_postRender = function (element, contentItem) {
 };
 myapp.ViewLaptop.created = function (screen) {
     // Write code here.
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
 
-    if (!screen.Laptop.Recycled) {
-        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
-    }
+        if (!screen.Laptop.Recycled) {
+            screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
+        }
 
-    screen.findContentItem("EditLaptop").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
+        screen.findContentItem("EditLaptop").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
+    });
 
     if (screen.Laptop.Brand.indexOf("Dell") != -1) {
         screen.findContentItem("SupportURL").isVisible = true;
@@ -82,7 +86,7 @@ function CallGetUserName(operation) {
 
 myapp.ViewLaptop.ShowAddEditTicket_Tap_execute = function (screen) {
     // Write code here.
-    myapp.showAddEditTicket(null, {
+    myapp.showAddTicket(null, {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;

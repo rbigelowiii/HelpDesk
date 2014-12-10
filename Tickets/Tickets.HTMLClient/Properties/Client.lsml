@@ -246,4 +246,10 @@
         Target="ServiceInterface:ViewTechOnlyScreens" />
     </Permission.Attributes>
   </Permission>
+  <Permission>
+    <Permission.Attributes>
+      <Proxy
+        Target="ServiceInterface:GenerateReport" />
+    </Permission.Attributes>
+  </Permission>
 </Application>

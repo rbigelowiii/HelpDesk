@@ -2,7 +2,11 @@
 
 myapp.BrowseOperatingSystems.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddOperatingSystem").isVisible = myapp.permissions["LightSwitchApplication:AddOS"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddOperatingSystem").isVisible = myapp.permissions["LightSwitchApplication:AddOS"];
+    });
 };
 
 myapp.BrowseOperatingSystems.SearchText_postRender = function (element, contentItem) {

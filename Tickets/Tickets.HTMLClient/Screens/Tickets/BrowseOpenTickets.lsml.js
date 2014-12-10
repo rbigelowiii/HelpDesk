@@ -50,10 +50,3 @@ myapp.BrowseOpenTickets.TicketList_postRender = function (element, contentItem) 
                 parent.history.back();
             });
 };
-myapp.BrowseOpenTickets.DateSubmitted_postRender = function (element, contentItem) {
-    // Write code here.
-    var d = new Date();
-    if (contentItem.data.LastChange < (d - 14)) {
-        $(element).closest("tr").addClass("hilight");
-    } 
-};

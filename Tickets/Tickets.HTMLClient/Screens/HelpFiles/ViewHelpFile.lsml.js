@@ -12,7 +12,7 @@ myapp.ViewHelpFile.Details_postRender = function (element, contentItem) {
         function () {
             parent.history.back();
         });
-}
+};
 
 myapp.ViewHelpFile.Body_postRender = function (element, contentItem) {
     // Write code here.
@@ -21,8 +21,13 @@ myapp.ViewHelpFile.Body_postRender = function (element, contentItem) {
 
 myapp.ViewHelpFile.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditHelpFile").isVisible = myapp.permissions["LightSwitchApplication:UpdateHelpFile"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditHelpFile").isVisible = myapp.permissions["LightSwitchApplication:UpdateHelpFile"];
+    });
 };
+
 myapp.ViewHelpFile.EditHelpFile_Tap_execute = function (screen) {
     // Write code here.
     myapp.showAddEditHelpFile(screen.HelpFile, {

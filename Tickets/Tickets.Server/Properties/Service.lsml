@@ -103,4 +103,6 @@
     Name="UpdateTicket" />
   <Permission
     Name="ViewTechOnlyScreens" />
+  <Permission
+    Name="GenerateReport" />
 </ServiceApplication>

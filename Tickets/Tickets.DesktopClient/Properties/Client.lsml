@@ -246,6 +246,12 @@
         Target="ServiceInterface:LightSwitchServiceApplicationGroup" />
     </GlobalAttributeGroup.Attributes>
   </GlobalAttributeGroup>
+  <Permission>
+    <Permission.Attributes>
+      <Proxy
+        Target="ServiceInterface:GenerateReport" />
+    </Permission.Attributes>
+  </Permission>
   <Application.NavigationItems>
     <ApplicationNavigationGroup
       Name="Administration"

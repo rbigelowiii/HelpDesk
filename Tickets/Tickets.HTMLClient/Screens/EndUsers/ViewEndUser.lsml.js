@@ -26,19 +26,23 @@ myapp.ViewEndUser.DateSubmitted_postRender = function (element, contentItem) {
 
 myapp.ViewEndUser.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditEndUser").isVisible = myapp.permissions["LightSwitchApplication:UpdateEndUser"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditEndUser").isVisible = myapp.permissions["LightSwitchApplication:UpdateEndUser"];
 
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteEndUser"];
+        screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteEndUser"];
 
-    if (myapp.permissions["LightSwitchApplication:AddDevice"]) {
-        screen.findContentItem("ShowAddEditDesktop").isVisible = true;
-        screen.findContentItem("ShowAddEditLaptop").isVisible = true;
-        screen.findContentItem("ShowAddEditTablet").isVisible = true;
-    } else {
-        screen.findContentItem("ShowAddEditDesktop").isVisible = false;
-        screen.findContentItem("ShowAddEditLaptop").isVisible = false;
-        screen.findContentItem("ShowAddEditTablet").isVisible = false;
-    }
+        if (myapp.permissions["LightSwitchApplication:AddDevice"]) {
+            screen.findContentItem("ShowAddEditDesktop").isVisible = true;
+            screen.findContentItem("ShowAddEditLaptop").isVisible = true;
+            screen.findContentItem("ShowAddEditTablet").isVisible = true;
+        } else {
+            screen.findContentItem("ShowAddEditDesktop").isVisible = false;
+            screen.findContentItem("ShowAddEditLaptop").isVisible = false;
+            screen.findContentItem("ShowAddEditTablet").isVisible = false;
+        }
+    });
 };
 myapp.ViewEndUser.Delete_execute = function (screen) {
     // Write code here.
@@ -49,7 +53,7 @@ myapp.ViewEndUser.Delete_execute = function (screen) {
 };
 myapp.ViewEndUser.ShowAddEditTicket_Tap_execute = function (screen) {
     // Write code here.
-    myapp.showAddEditTicket(null, {
+    myapp.showAddTicket(null, {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;

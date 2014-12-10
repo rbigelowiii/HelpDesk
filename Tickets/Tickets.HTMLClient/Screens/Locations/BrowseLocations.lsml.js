@@ -2,7 +2,11 @@
 
 myapp.BrowseLocations.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddLocation").isVisible = myapp.permissions["LightSwitchApplication:AddLocation"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddLocation").isVisible = myapp.permissions["LightSwitchApplication:AddLocation"];
+    });
 };
 myapp.BrowseLocations.SearchText_postRender = function (element, contentItem) {
     // Write code here.

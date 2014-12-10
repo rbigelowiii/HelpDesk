@@ -32,7 +32,7 @@ myapp.ViewTablet.Recycle_execute = function (screen) {
 };
 myapp.ViewTablet.ShowAddEditTicket_Tap_execute = function (screen) {
     // Write code here.
-    myapp.showAddEditTicket(null, {
+    myapp.showAddTicket(null, {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;
@@ -81,12 +81,16 @@ myapp.ViewTablet.DateSubmitted_postRender = function (element, contentItem) {
 };
 myapp.ViewTablet.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditTablet").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditTablet").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
 
-    if (!screen.Tablet.Recycled) {
-        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
-    }
+        if (!screen.Tablet.Recycled) {
+            screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
+        }
 
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
+        screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
+    });
 
 };

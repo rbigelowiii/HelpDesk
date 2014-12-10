@@ -35,7 +35,11 @@ myapp.BrowsePrinters.SearchText_postRender = function (element, contentItem) {
 };
 myapp.BrowsePrinters.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddPrinter").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddPrinter").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+    });
 };
 myapp.BrowsePrinters.SearchPrinters_ItemTap_execute = function (screen) {
     // Write code here.

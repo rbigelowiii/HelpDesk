@@ -43,7 +43,11 @@ myapp.BrowseDeptHeads.AddDeptHead_Tap_execute = function (screen) {
 };
 myapp.BrowseDeptHeads.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddDeptHead").isVisible = myapp.permissions["LightSwitchApplicationAddDeptHead"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddDeptHead").isVisible = myapp.permissions["LightSwitchApplicationAddDeptHead"];
+    });
 };
 myapp.BrowseDeptHeads.DeptHeadList_postRender = function (element, contentItem) {
     // Write code here.

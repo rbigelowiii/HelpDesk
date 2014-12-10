@@ -36,7 +36,7 @@ namespace LightSwitchApplication
             entity.EndUser = DataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(this.Application.User.Name.Split(new string[] { "\\" }, System.StringSplitOptions.None)[1]);
             entity.UserName = entity.EndUser.UserName;   
         }
-
+        /*
         static bool RedirectionCallback(string url)
         {
             return true;
@@ -252,7 +252,7 @@ namespace LightSwitchApplication
         {
             this.SendCommentNotification(entity);
         }
-
+        */
         partial void Tickets_Updating(Ticket entity)
         {
             entity.LastChange = DateTime.Now;

@@ -23,7 +23,11 @@ myapp.BrowseHelpFiles.HelpFiles_ItemTap_execute = function (screen) {
 };
 myapp.BrowseHelpFiles.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddHelpFile").isVisible = myapp.permissions["LightSwitchApplication:AddHelpFile"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddHelpFile").isVisible = myapp.permissions["LightSwitchApplication:AddHelpFile"];
+    });
 };
 myapp.BrowseHelpFiles.HelpFilesList_postRender = function (element, contentItem) {
     // Write code here.

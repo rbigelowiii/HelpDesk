@@ -37,3 +37,9 @@ myapp.BrowseRecycledTablets.TabletList_postRender = function (element, contentIt
                 parent.history.back();
             });
 };
+myapp.BrowseRecycledTablets.created = function (screen) {
+    // Write code here.
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    });
+};

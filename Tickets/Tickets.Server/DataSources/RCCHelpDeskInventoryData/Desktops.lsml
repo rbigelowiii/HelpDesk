@@ -78,6 +78,8 @@
             Precision="3"
             PreserveSeconds="True" />
           <NotSearchable />
+          <StringValueFormat
+            Value="d" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
@@ -88,6 +90,8 @@
             Precision="3"
             PreserveSeconds="True" />
           <NotSearchable />
+          <StringValueFormat
+            Value="d" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty

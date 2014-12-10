@@ -44,13 +44,17 @@ function CallGetUserName(operation) {
 
 myapp.ViewPrinter.created = function (screen) {
     // Write code here.
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteDevice"];
 
-    if (!screen.Printer.Recycled) {
-        screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
-    }
+        if (!screen.Printer.Recycled) {
+            screen.findContentItem("Recycle").isVisible = myapp.permissions["LightSwitchApplication:RecycleDevice"];
+        }
 
-    screen.findContentItem("EditPrinter").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
+        screen.findContentItem("EditPrinter").isVisible = myapp.permissions["LightSwitchApplication:UpdateDevice"];
+    });
     
 };
 myapp.ViewPrinter.Recycle_execute = function (screen) {
@@ -62,7 +66,7 @@ myapp.ViewPrinter.Recycle_execute = function (screen) {
 };
 myapp.ViewPrinter.ShowAddEditTicket_Tap_execute = function (screen) {
     // Write code here.
-    myapp.showAddEditTicket(null, {
+    myapp.showAddTicket(null, {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;

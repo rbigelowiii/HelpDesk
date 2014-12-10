@@ -7,7 +7,6 @@ myapp.Home.created = function (screen) {
     $.getJSON("../Perms/UserPermissions/", function (data) {
         myapp.permissions = data;
     }).then(function () {
-
         if (myapp.permissions["LightSwitchApplication:ViewTechOnlyScreens"]) {
             screen.details.displayName = "RCC Help Desk Ticketing & Inventory System";
             screen.ScreenName = screen.details.displayName;
@@ -35,7 +34,6 @@ myapp.Home.created = function (screen) {
             screen.findContentItem("ShowBrowseOpenTickets").isVisible = false;
             screen.findContentItem("ShowBrowseKB").isVisible = true;
         }
-
         if (myapp.permissions["LightSwitchApplication:AddDevice"]) {
 
             screen.findContentItem("ShowAddEditDesktop").isVisible = true;
@@ -75,13 +73,7 @@ myapp.Home.EnterTicket_execute = function (screen) {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;
-            msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs_SingleOrDefault(PromiseResult)
-                    .execute()
-                    .then(function (result) {
-                        newTicket.Tech = result.results[0];
-                    });
-            });
+            newTicket.Tech = myapp.currentTech;
         }, afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
                 var newTicket = addEditScreen.Ticket;
@@ -108,13 +100,7 @@ myapp.Home.SubmitTicket_execute = function (screen) {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;
-            msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(PromiseResult)
-                    .execute()
-                    .then(function (result) {
-                        newTicket.EndUser = result.results[0];
-                    });
-            });
+            newTicket.EndUser = myapp.currentUser;
         }, afterClosed: function (addEditScreen, navigationAction) {
             if (navigationAction === msls.NavigateBackAction.commit) {
                 myapp.showViewTicket(addEditScreen.Ticket, "BrowseMyTickets");
@@ -205,28 +191,37 @@ myapp.Home.ShowAddEditTech_Tap_execute = function (screen) {
 };
 myapp.Home.Tickets_postRender = function (element, contentItem) {
     // Write code here.
-    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-        myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers_SingleOrDefault(PromiseResult)
-            .execute()
-            .then(function (result) {
-                $(element).closest("[data-role='page']").find(
-                    ".msls-title-area").append(
-                    "<div style='color:dimgray;font-size:15px;'>Welcome, " + result.results[0].UserFirstName + " " + result.results[0].UserLastName + "</div>");
-            }, function () {
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers.addNew();
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
-            });
-    });
-
-    msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
-        myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs_SingleOrDefault(PromiseResult)
-            .execute()
-            .then(function (result) {
-            }, function () {
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs.addNew();
-                myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
-            });
-    });
+    if (myapp.currentUser) {
+        $(element).closest("[data-role='page']").find(
+                        ".msls-title-area").append(
+                        "<div style='color:dimgray;font-size:15px;'>Welcome, " +
+                        myapp.currentUserFirstName + " " + myapp.currentUserLastName + "</div>");
+    } else {
+        msls.promiseOperation(CallGetUserName).then(function PromiseSuccess(PromiseResult) {
+            myapp.activeDataWorkspace.RCCHelpDeskInventoryData.SearchTechs(PromiseResult)
+                .execute()
+                .then(function (result) {
+                    myapp.currentTech = result.results[0];
+                }, function () {
+                    myapp.activeDataWorkspace.RCCHelpDeskInventoryData.Techs.addNew();
+                    myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
+                });
+            myapp.activeDataWorkspace.RCCHelpDeskInventoryData.SearchEndUsers(PromiseResult)
+                .execute()
+                .then(function (result) {
+                    myapp.currentUser = result.results[0];
+                    myapp.currentUserFirstName = result.results[0].UserFirstName;
+                    myapp.currentUserLastName = result.results[0].UserLastName;
+                    $(element).closest("[data-role='page']").find(
+                                    ".msls-title-area").append(
+                                    "<div style='color:dimgray;font-size:15px;'>Welcome, " +
+                                    myapp.currentUserFirstName + " " + myapp.currentUserLastName + "</div>");
+                }, function () {
+                    myapp.activeDataWorkspace.RCCHelpDeskInventoryData.EndUsers.addNew();
+                    myapp.activeDataWorkspace.RCCHelpDeskInventoryData.saveChanges();
+                });
+        });
+    }
 };
 
 myapp.Home.ShowAddEditDepartment_Tap_execute = function (screen) {
@@ -297,5 +292,28 @@ myapp.Home.ShowHelpDialog_Tap_execute = function (screen) {
     // Write code here.
     screen.getHelpFile().then(function () {
         myapp.showHelpDialog(screen.HelpFile);
+    });
+};
+myapp.Home.ShowAddEditOperatingSystem_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddEditOperatingSystem(null, {
+        beforeShown: function (addEditScreen) {
+            addEditScreen.OperatingSystem = new myapp.OperatingSystem();
+        },
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showViewOperatingSystem(addEditScreen.OperatingSystem);
+            }
+        }
+    });
+};
+myapp.Home.ShowAddDesktopShipment_Tap_execute = function (screen) {
+    // Write code here.
+    myapp.showAddDesktopShipment({
+        afterClosed: function (addEditScreen, navigationAction) {
+            if (navigationAction === msls.NavigateBackAction.commit) {
+                myapp.showBrowseDesktops();
+            }
+        }
     });
 };

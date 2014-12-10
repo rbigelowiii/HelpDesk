@@ -49,18 +49,6 @@
   <EntityType>
     <EntityType.Attributes>
       <Proxy
-        Target="ServiceInterface:Printer" />
-    </EntityType.Attributes>
-  </EntityType>
-  <EntityType>
-    <EntityType.Attributes>
-      <Proxy
-        Target="ServiceInterface:Tablet" />
-    </EntityType.Attributes>
-  </EntityType>
-  <EntityType>
-    <EntityType.Attributes>
-      <Proxy
         Target="ServiceInterface:Tech" />
     </EntityType.Attributes>
   </EntityType>
@@ -202,6 +190,12 @@
         Target="ServiceInterface:Ticket_TicketComment" />
     </Association.Attributes>
   </Association>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Tablet" />
+    </EntityType.Attributes>
+  </EntityType>
   <EntityType>
     <EntityType.Attributes>
       <Proxy

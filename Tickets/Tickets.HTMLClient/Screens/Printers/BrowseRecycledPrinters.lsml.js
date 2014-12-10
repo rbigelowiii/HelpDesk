@@ -37,3 +37,9 @@ myapp.BrowseRecycledPrinters.PrinterList_postRender = function (element, content
                 parent.history.back();
             });
 };
+myapp.BrowseRecycledPrinters.created = function (screen) {
+    // Write code here.
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    });
+};

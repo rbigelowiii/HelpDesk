@@ -12,6 +12,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using LightSwitchApplication.Implementation;
+using System.Text.RegularExpressions;
 
 namespace LightSwitchApplication
 {
@@ -86,7 +87,7 @@ namespace LightSwitchApplication
                 {
                     case "Desktops":
                     case "desktops":
-                        queryable = ctx.DataWorkspace.RCCHelpDeskInventoryData.SearchDesktops(query).Include("Location");
+                        queryable = ctx.DataWorkspace.RCCHelpDeskInventoryData.SearchDesktops(query);
                         break;
                     case "Laptops":
                     case "laptops":
@@ -152,7 +153,7 @@ namespace LightSwitchApplication
                         {
                             if (fieldsToDisplay.Contains(heading.Name))
                             {
-                                row[heading.Name] = heading.GetValue(element) == null ? System.DBNull.Value : 
+                                row[heading.Name] = heading.GetValue(element) == null ? System.DBNull.Value :
                                     heading.GetValue(element);
                             }
                         }
@@ -224,7 +225,7 @@ namespace LightSwitchApplication
         private MemoryStream CreateSummaryWordDoc(string entityName, DataTable dataTable)
         {
             MemoryStream s = new MemoryStream();
-
+            DateTime newDate;
             //Create word document
             using (WordprocessingDocument wordDocument =
                 WordprocessingDocument.Create(s, WordprocessingDocumentType.Document, true))
@@ -232,6 +233,22 @@ namespace LightSwitchApplication
 
                 wordDocument.AddMainDocumentPart();
                 wordDocument.MainDocumentPart.Document = new Document(new Body());
+                DocumentSettingsPart settingsPart = wordDocument.MainDocumentPart.DocumentSettingsPart;
+                if (settingsPart == null)
+                    settingsPart = wordDocument.MainDocumentPart.AddNewPart<DocumentSettingsPart>();
+                settingsPart.Settings = new Settings(
+                  new Compatibility(
+                    new CompatibilitySetting()
+                    {
+                        Name = new EnumValue<CompatSettingNameValues>
+                                (CompatSettingNameValues.CompatibilityMode),
+                        Val = new StringValue("15"),
+                        Uri = new StringValue
+                                ("http://schemas.microsoft.com/office/word")
+                    }
+                ));
+                settingsPart.Settings.Save();
+
                 Body body = wordDocument.MainDocumentPart.Document.Body;
 
                 // Get the Styles part for this document.
@@ -272,18 +289,21 @@ namespace LightSwitchApplication
                                             column.ToString() == "OperatingSystem1" ? "Operating System" :
                                             column.ToString() == "ComputerName" ? "Computer Name" :
                                             column.ToString() == "EndUser1" ? "End User" :
+                                            column.ToString() == "WarrantyExp" ? "Warranty Expire" :
+                                            column.ToString() == "ShipDate" ? "Ship Date" :
                                             column.ToString())))));
                 }
                 table.Append(headingRow);
 
-                //Add text for each event.
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     TableRow row = new TableRow();
                     foreach (var cell in dataRow.ItemArray)
                     {
                         row.Append(new TableCell(new Paragraph(
-                            new Run(new Text(cell.ToString())))));
+                            new Run(new Text(DateTime.TryParse(cell.ToString(), out newDate) ?
+                                newDate.ToShortDateString() :
+                                cell.ToString())))));
                     }
                     table.Append(row);
                 }
@@ -299,6 +319,7 @@ namespace LightSwitchApplication
         private MemoryStream CreateDetailedWordDoc(string title, Dictionary<string, object> entityData)
         {
             MemoryStream s = new MemoryStream();
+            DateTime dateValue;
 
             //Create word document
             using (WordprocessingDocument wordDocument =
@@ -307,6 +328,23 @@ namespace LightSwitchApplication
                 //Create the main document part, which is the part that holds the text.
                 wordDocument.AddMainDocumentPart();
                 wordDocument.MainDocumentPart.Document = new Document(new Body());
+
+                DocumentSettingsPart settingsPart = wordDocument.MainDocumentPart.DocumentSettingsPart;
+                if (settingsPart == null)
+                    settingsPart = wordDocument.MainDocumentPart.AddNewPart<DocumentSettingsPart>();
+                settingsPart.Settings = new Settings(
+                  new Compatibility(
+                    new CompatibilitySetting()
+                    {
+                        Name = new EnumValue<CompatSettingNameValues>
+                                (CompatSettingNameValues.CompatibilityMode),
+                        Val = new StringValue("15"),
+                        Uri = new StringValue
+                                ("http://schemas.microsoft.com/office/word")
+                    }
+                ));
+                settingsPart.Settings.Save();
+
                 Body body = wordDocument.MainDocumentPart.Document.Body;
 
                 // Get the Styles part for this document.
@@ -332,11 +370,19 @@ namespace LightSwitchApplication
                 //Add Each property
                     foreach (var entry in entityData)
                     {
-                        String valS = entry.Value == null ? "" : entry.Value.ToString();
+                        String valS = entry.Value == null ? "" :
+                            DateTime.TryParse(entry.Value.ToString(), out dateValue) ?
+                            dateValue.ToShortDateString() : entry.Value.ToString();
                         body.Append(
                         new Paragraph(
                             new ParagraphProperties(new ParagraphStyleId() { Val = "Heading1" }),
-                            new Run(new Text(entry.Key))),
+                            new Run(new Text(entry.Key == "LocationName" ? "Location" :
+                                            entry.Key == "OperatingSystem1" ? "Operating System" :
+                                            entry.Key == "ComputerName" ? "Computer Name" :
+                                            entry.Key == "EndUser1" ? "End User" :
+                                            entry.Key == "WarrantyExp" ? "Warranty Expire" :
+                                            entry.Key == "ShipDate" ? "Ship Date" :
+                                            entry.Key))),
                             new Paragraph(new Run(new Text(valS)))
                         );
                     }

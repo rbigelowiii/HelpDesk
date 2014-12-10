@@ -24,5 +24,9 @@ myapp.ViewDeptHead.Departments1_ItemTap_execute = function (screen) {
 };
 myapp.ViewDeptHead.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditDeptHead").isVisible = myapp.permissions["LightSwitchApplicationUpdateDeptHead"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditDeptHead").isVisible = myapp.permissions["LightSwitchApplicationUpdateDeptHead"];
+    });
 };

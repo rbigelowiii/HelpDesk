@@ -38,6 +38,5 @@ myapp.AddEditTicketComment.Details_postRender = function (element, contentItem) 
                 ".msls-close-button").hide();
 };
 myapp.AddEditTicketComment.Save_execute = function (screen) {
-    // Write code here.
     myapp.commitChanges();
 };

@@ -64,9 +64,13 @@ myapp.ViewLocation.Printers1_ItemTap_execute = function (screen) {
 };
 myapp.ViewLocation.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditLocation").isVisible = myapp.permissions["LightSwitchApplication:UpdateLocation"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditLocation").isVisible = myapp.permissions["LightSwitchApplication:UpdateLocation"];
 
-    screen.findContentItem("ShowAddEditDesktop").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+        screen.findContentItem("ShowAddEditDesktop").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
 
-    screen.findContentItem("ShowAddEditPrinter").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+        screen.findContentItem("ShowAddEditPrinter").isVisible = myapp.permissions["LightSwitchApplication:AddDevice"];
+    });
 };

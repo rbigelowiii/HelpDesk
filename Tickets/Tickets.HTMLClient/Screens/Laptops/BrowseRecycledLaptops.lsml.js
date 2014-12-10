@@ -38,3 +38,9 @@ myapp.BrowseRecycledLaptops.LaptopList_postRender = function (element, contentIt
                 parent.history.back();
             });
 };
+myapp.BrowseRecycledLaptops.created = function (screen) {
+    // Write code here.
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    });
+};

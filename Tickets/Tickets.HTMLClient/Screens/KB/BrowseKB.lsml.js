@@ -43,7 +43,11 @@ myapp.BrowseKB.SearchKB_ItemTap_execute = function (screen) {
 };
 myapp.BrowseKB.created = function (screen) {
     // Write code here.
-    screen.findContentItem("AddKBItem").isVisible = myapp.permissions["LightSwitchApplication:AddKnowledgeBase"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("AddKBItem").isVisible = myapp.permissions["LightSwitchApplication:AddKnowledgeBase"];
+    });
 };
 myapp.BrowseKB.KBItemList_postRender = function (element, contentItem) {
     // Write code here.

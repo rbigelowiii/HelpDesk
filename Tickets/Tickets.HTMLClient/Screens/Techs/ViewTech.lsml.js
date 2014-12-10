@@ -17,7 +17,11 @@ myapp.ViewTech.Details_postRender = function (element, contentItem) {
 
 myapp.ViewTech.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditTech").isVisible = myapp.permissions["LightSwitchApplication:UpdateTech"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditTech").isVisible = myapp.permissions["LightSwitchApplication:UpdateTech"];
+    });
 };
 myapp.ViewTech.Delete_execute = function (screen) {
     // Write code here.
@@ -28,7 +32,7 @@ myapp.ViewTech.Delete_execute = function (screen) {
 };
 myapp.ViewTech.ShowAddEditTicket_Tap_execute = function (screen) {
     // Write code here.
-    myapp.showAddEditTicket(null, {
+    myapp.showAddTicket(null, {
         beforeShown: function (TicketScreen) {
             var newTicket = new myapp.Ticket();
             TicketScreen.Ticket = newTicket;

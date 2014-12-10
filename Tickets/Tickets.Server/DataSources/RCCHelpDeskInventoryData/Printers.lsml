@@ -115,6 +115,16 @@
         Association="FKPrinterLocation"
         FromEnd="Printers"
         ToEnd="Locations" />
+      <EntityProperty
+        Name="LocationName"
+        IsReadOnly="True"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Computed />
+          <NotSearchable />
+          <NotSortable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
     </EntityType.Properties>
   </EntityType>
   <Association

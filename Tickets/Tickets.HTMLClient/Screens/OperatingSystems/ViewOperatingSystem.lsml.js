@@ -17,9 +17,13 @@ myapp.ViewOperatingSystem.Details_postRender = function (element, contentItem) {
 
 myapp.ViewOperatingSystem.created = function (screen) {
     // Write code here.
-    screen.findContentItem("EditOperatingSystem").isVisible = myapp.permissions["LightSwitchApplication:UpdateOS"];
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    }).then(function () {
+        screen.findContentItem("EditOperatingSystem").isVisible = myapp.permissions["LightSwitchApplication:UpdateOS"];
 
-    screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteOS"];
+        screen.findContentItem("Delete").isVisible = myapp.permissions["LightSwitchApplication:DeleteOS"];
+    });
 };
 myapp.ViewOperatingSystem.Delete_execute = function (screen) {
     // Write code here.

@@ -15024,7 +15024,7 @@ var msls_templateStrings = {
     '<div class="msls-back-button-contain">' +
         '<div class="subControl msls-home-button msls-large-icon" control="ShellButton" tabindex="0" data-icon="msls-home"' +
            ' data-iconpos="notext" data-role="button" data-ls-content="content:{data.shell.homeCommand.displayName}"' +
-           ' data-ls-isenabled="isEnabled:{tap.canExecute}"' +
+           //' data-ls-isenabled="isEnabled:{tap.canExecute}"' +
            ' data-ls-tap="tap:{data.shell.homeCommand.command}">' +
         '</div>' +
     '</div>',

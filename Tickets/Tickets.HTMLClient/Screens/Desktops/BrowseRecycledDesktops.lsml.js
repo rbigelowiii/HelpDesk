@@ -39,3 +39,9 @@ myapp.BrowseRecycledDesktops.DesktopList_postRender = function (element, content
                 parent.history.back();
             });
 };
+myapp.BrowseRecycledDesktops.created = function (screen) {
+    // Write code here.
+    $.getJSON("../Perms/UserPermissions/", function (data) {
+        myapp.permissions = data;
+    });
+};
